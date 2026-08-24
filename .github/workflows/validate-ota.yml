@@ -1,0 +1,38 @@
+name: Validate OTA Manifest
+
+on:
+  push:
+    paths:
+      - version.json
+      - .github/workflows/validate-ota.yml
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate version.json
+        run: |
+          python3 - <<'PY'
+          import json, re
+          from pathlib import Path
+
+          data = json.loads(Path('version.json').read_text(encoding='utf-8'))
+          assert isinstance(data.get('schemaVersion'), int)
+          assert isinstance(data.get('enabled'), bool)
+          assert isinstance(data.get('versionName'), str)
+          assert isinstance(data.get('versionCode'), int) and data['versionCode'] >= 0
+          assert isinstance(data.get('apkUrl'), str)
+          assert isinstance(data.get('sha256'), str)
+          assert isinstance(data.get('forceUpdate'), bool)
+          assert isinstance(data.get('releaseNotes'), list)
+
+          if data['enabled']:
+              assert data['versionName'].strip(), 'versionName required'
+              assert data['versionCode'] > 0, 'versionCode must be > 0'
+              assert data['apkUrl'].startswith('https://'), 'apkUrl must use HTTPS'
+              assert re.fullmatch(r'[0-9a-fA-F]{64}', data['sha256']), 'sha256 must be 64 hex chars'
+
+          print('OTA manifest valid')
+          PY
