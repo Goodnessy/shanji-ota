@@ -1,15 +1,13 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "versionName": "4.1.4",
-  "versionCode": 4240,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v4.1.4/app-release.apk",
-  "sha256": "de86c39e528b84d35e25653537073e71e8e6d158799758aeb2a66edb0d93dc72",
+  "versionName": "4.1.5",
+  "versionCode": 4250,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v4.1.5/app-release.apk",
+  "sha256": "48e43566ea45350cc918a694dd42ba78f6fa4c4b6aa9742924e9dd1bc3c035a7",
   "forceUpdate": false,
   "releaseNotes": [
-    "修复 Groq / Qwen 3.6 AI 请求兼容与 403 请求头问题。",
-    "Agnes 网络中断时自动轻量重试，并优化错误提示。",
-    "修复小红书导入可能混入其他笔记图片的问题。",
-    "修复小红书已识别图片未同步到 Notion 的问题。"
+    "调整待办页信息层级：闪记待办优先展示，系统日历后置并降低视觉权重。",
+    "修复 V4.1.4 小红书图片识别过滤过严导致无图的问题，同时继续避免混入其他笔记图片。"
   ]
 }
