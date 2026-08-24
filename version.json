@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
-  "enabled": false,
-  "versionName": "4.1.1",
-  "versionCode": 4210,
-  "apkUrl": "",
-  "sha256": "",
+  "enabled": true,
+  "versionName": "4.1.3",
+  "versionCode": 4230,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v4.1.3/app-release.apk",
+  "sha256": "6ab5624344a6d96729ec5f430c1f2f300e5065d332db248b783e695b122518a5",
   "forceUpdate": false,
   "releaseNotes": [
-    "OTA 发布仓库已初始化，当前暂未开放在线更新。"
+    "首次 OTA 升级测试版本。",
+    "验证在线检查、APK 下载、SHA256 校验与覆盖安装流程。"
   ]
 }
