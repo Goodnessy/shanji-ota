@@ -1,0 +1,127 @@
+name: Publish Latest OTA
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/publish-ota.yml
+      - ota-trigger.txt
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Android tools
+        uses: android-actions/setup-android@v3
+
+      - name: Read latest release and download APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          gh api "repos/${GITHUB_REPOSITORY}/releases/latest" > release.json
+          TAG="$(jq -r '.tag_name' release.json)"
+          APK_URL="$(jq -r '[.assets[] | select(.name | endswith(".apk"))][0].browser_download_url // empty' release.json)"
+          APK_NAME="$(jq -r '[.assets[] | select(.name | endswith(".apk"))][0].name // empty' release.json)"
+          if [ -z "$TAG" ] || [ -z "$APK_URL" ] || [ -z "$APK_NAME" ]; then
+            echo "Latest release does not contain an APK asset" >&2
+            exit 1
+          fi
+          gh release download "$TAG" --pattern '*.apk' --dir dist
+          APK_PATH="dist/$APK_NAME"
+          if [ ! -f "$APK_PATH" ]; then
+            APK_PATH="$(find dist -maxdepth 1 -type f -name '*.apk' | head -n 1)"
+          fi
+          if [ -z "$APK_PATH" ] || [ ! -f "$APK_PATH" ]; then
+            echo "APK download failed" >&2
+            exit 1
+          fi
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+          echo "APK_URL=$APK_URL" >> "$GITHUB_ENV"
+          echo "APK_NAME=$APK_NAME" >> "$GITHUB_ENV"
+          echo "APK_PATH=$APK_PATH" >> "$GITHUB_ENV"
+
+      - name: Verify APK identity and version
+        run: |
+          set -euo pipefail
+          APKA="$(command -v apkanalyzer || true)"
+          if [ -z "$APKA" ]; then
+            APKA="$(find "${ANDROID_SDK_ROOT:-$ANDROID_HOME}" -type f -name apkanalyzer 2>/dev/null | head -n 1)"
+          fi
+          if [ -z "$APKA" ] || [ ! -x "$APKA" ]; then
+            echo "apkanalyzer not found" >&2
+            exit 1
+          fi
+
+          PACKAGE_ID="$($APKA manifest application-id "$APK_PATH" | tr -d '\r\n')"
+          VERSION_NAME="$($APKA manifest version-name "$APK_PATH" | tr -d '\r\n')"
+          VERSION_CODE="$($APKA manifest version-code "$APK_PATH" | tr -d '\r\n')"
+          EXPECTED_VERSION="${TAG#v}"
+          EXPECTED_VERSION="${EXPECTED_VERSION#V}"
+
+          echo "APK package=$PACKAGE_ID versionName=$VERSION_NAME versionCode=$VERSION_CODE tag=$TAG"
+
+          if [ "$PACKAGE_ID" != "com.wenhe.shanji" ]; then
+            echo "Unexpected package id: $PACKAGE_ID" >&2
+            exit 1
+          fi
+          if [ "$VERSION_NAME" != "$EXPECTED_VERSION" ]; then
+            echo "APK versionName ($VERSION_NAME) does not match release tag ($TAG)" >&2
+            exit 1
+          fi
+          if ! [[ "$VERSION_CODE" =~ ^[0-9]+$ ]]; then
+            echo "Invalid APK versionCode: $VERSION_CODE" >&2
+            exit 1
+          fi
+
+          SHA256="$(sha256sum "$APK_PATH" | awk '{print $1}')"
+          echo "VERSION_NAME=$VERSION_NAME" >> "$GITHUB_ENV"
+          echo "VERSION_CODE=$VERSION_CODE" >> "$GITHUB_ENV"
+          echo "SHA256=$SHA256" >> "$GITHUB_ENV"
+
+      - name: Update version.json
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+
+          data = {
+              "schemaVersion": 1,
+              "enabled": True,
+              "versionName": os.environ["VERSION_NAME"],
+              "versionCode": int(os.environ["VERSION_CODE"]),
+              "apkUrl": os.environ["APK_URL"],
+              "sha256": os.environ["SHA256"],
+              "forceUpdate": False,
+              "releaseNotes": [
+                  "首次 OTA 升级测试版本。",
+                  "验证在线检查、APK 下载、SHA256 校验与覆盖安装流程。"
+              ]
+          }
+          Path("version.json").write_text(
+              json.dumps(data, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8"
+          )
+          PY
+          cat version.json
+
+      - name: Commit OTA manifest
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add version.json
+          if git diff --cached --quiet; then
+            echo "version.json already up to date"
+            exit 0
+          fi
+          git commit -m "publish OTA ${TAG}"
+          git push
