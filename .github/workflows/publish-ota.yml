@@ -93,6 +93,20 @@ jobs:
           import json, os
           from pathlib import Path
 
+          release = json.loads(Path("release.json").read_text(encoding="utf-8"))
+          body = (release.get("body") or "").strip()
+          notes = []
+          for raw in body.splitlines():
+              line = raw.strip()
+              if not line or line.startswith("#"):
+                  continue
+              if line.startswith("- "):
+                  line = line[2:].strip()
+              if line:
+                  notes.append(line)
+          if not notes:
+              notes = [f"闪记 V{os.environ['VERSION_NAME']} 更新"]
+
           data = {
               "schemaVersion": 1,
               "enabled": True,
@@ -101,10 +115,7 @@ jobs:
               "apkUrl": os.environ["APK_URL"],
               "sha256": os.environ["SHA256"],
               "forceUpdate": False,
-              "releaseNotes": [
-                  "首次 OTA 升级测试版本。",
-                  "验证在线检查、APK 下载、SHA256 校验与覆盖安装流程。"
-              ]
+              "releaseNotes": notes[:8]
           }
           Path("version.json").write_text(
               json.dumps(data, ensure_ascii=False, indent=2) + "\n",
