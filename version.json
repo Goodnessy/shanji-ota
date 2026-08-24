@@ -1,12 +1,15 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "versionName": "4.1.3",
-  "versionCode": 4230,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v4.1.3/app-release.apk",
-  "sha256": "6ab5624344a6d96729ec5f430c1f2f300e5065d332db248b783e695b122518a5",
+  "versionName": "4.1.4",
+  "versionCode": 4240,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v4.1.4/app-release.apk",
+  "sha256": "de86c39e528b84d35e25653537073e71e8e6d158799758aeb2a66edb0d93dc72",
   "forceUpdate": false,
   "releaseNotes": [
-    "首次 OTA 升级测试版本，验证在线检查、下载、校验与覆盖安装流程。"
+    "修复 Groq / Qwen 3.6 AI 请求兼容与 403 请求头问题。",
+    "Agnes 网络中断时自动轻量重试，并优化错误提示。",
+    "修复小红书导入可能混入其他笔记图片的问题。",
+    "修复小红书已识别图片未同步到 Notion 的问题。"
   ]
 }
