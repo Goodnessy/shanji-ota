@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "enabled": false,
+  "versionName": "4.1.1",
+  "versionCode": 4210,
+  "apkUrl": "",
+  "sha256": "",
+  "forceUpdate": false,
+  "releaseNotes": [
+    "OTA 发布仓库已初始化，当前暂未开放在线更新。"
+  ]
+}
