@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "versionName": "4.1.6",
-  "versionCode": 4260,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v4.1.6/app-release.apk",
-  "sha256": "07a02473ddd054f0a8da26c35f8be2f80ee084d9d034c7b4a3e5f87f2b490b1c",
+  "versionName": "5.0",
+  "versionCode": 5000,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.0/app-release.apk",
+  "sha256": "dc8c1052bc2bbd08de53e1a94e344e9adaf969fbbdb92d60af7cc53d4ee7e512",
   "forceUpdate": false,
   "releaseNotes": [
-    "重做阅读页排版节奏，统一正文与图片宽度并优化段落留白。",
-    "优化待办与系统日历层级，过滤闪记同步产生的重复日程。",
-    "修复回顾取数并增强总结提炼、数据摘要与轻量可视化。",
-    "图片分类仅保留首页上传的纯图片闪记。",
-    "修复虎嗅转公众号时误把微信访问确认页当正文的问题。"
+    "内容详情页收敛为连续阅读体验，保留 AI 整理、AI 摘要和 Notion 同步状态。",
+    "改进网页图文顺序并修复整段误高亮。",
+    "待办新增自然语言日期时间识别与确认创建。",
+    "加固 Google Calendar 映射、删除和去重。",
+    "回顾页进一步去卡片化并强化事实数据边界。"
   ]
 }
