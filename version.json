@@ -1,13 +1,16 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "versionName": "4.1.5",
-  "versionCode": 4250,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v4.1.5/app-release.apk",
-  "sha256": "48e43566ea45350cc918a694dd42ba78f6fa4c4b6aa9742924e9dd1bc3c035a7",
+  "versionName": "4.1.6",
+  "versionCode": 4260,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v4.1.6/app-release.apk",
+  "sha256": "07a02473ddd054f0a8da26c35f8be2f80ee084d9d034c7b4a3e5f87f2b490b1c",
   "forceUpdate": false,
   "releaseNotes": [
-    "调整待办页信息层级：闪记待办优先展示，系统日历后置并降低视觉权重。",
-    "修复 V4.1.4 小红书图片识别过滤过严导致无图的问题，同时继续避免混入其他笔记图片。"
+    "重做阅读页排版节奏，统一正文与图片宽度并优化段落留白。",
+    "优化待办与系统日历层级，过滤闪记同步产生的重复日程。",
+    "修复回顾取数并增强总结提炼、数据摘要与轻量可视化。",
+    "图片分类仅保留首页上传的纯图片闪记。",
+    "修复虎嗅转公众号时误把微信访问确认页当正文的问题。"
   ]
 }
