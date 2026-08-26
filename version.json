@@ -1,16 +1,18 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "versionName": "5.1.1",
-  "versionCode": 5110,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.1/app-release.apk",
-  "sha256": "9c797a271a6a3b619091011f0731dfa9eb5f1146c82c9cd5203e6f30e1a5f27f",
+  "versionName": "5.1.2",
+  "versionCode": 5120,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.2/app-release.apk",
+  "sha256": "3a88f1b1fd5f0945d55050ea8eb92507c7ffe8a63a1c4b8b0f0ecc7931bbf5f6",
   "forceUpdate": false,
   "releaseNotes": [
-    "修复备份恢复数据被错误计入恢复当天回顾。",
-    "回顾日期区域改为紧凑单行导航，回到今天收为小图标。",
-    "恢复文章原文链接卡片。",
-    "内容列表改为连续中性视觉，移除块状粉色感。",
-    "AI 工作流区分来源文章与自有内容；AI 标签仅建议，确认后采用。"
-  ]
+    "修复备份恢复历史事项污染当前回顾与项目分布。",
+    "回顾导航和项目分布改为更紧凑的固定高度展示。",
+    "恢复历史来源链接，并支持使用当前解析器重新导入源内容。",
+    "内容及功能页视觉统一，首页继续保留 IP 配色。",
+    "来源文章与自有内容 AI 工作流分离。",
+    "AI 建议标签可单独选择并仅采用 1–2 个。"
+  ],
+  "apkSizeBytes": 100971249
 }
