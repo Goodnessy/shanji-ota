@@ -1,17 +1,16 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "versionName": "5.1",
-  "versionCode": 5100,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1/app-release.apk",
-  "sha256": "92f42b890e7c155ac034983d3670f4051c2ebaccf7c0d99a513ffe975bc80e38",
+  "versionName": "5.1.1",
+  "versionCode": 5110,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.1/app-release.apk",
+  "sha256": "9c797a271a6a3b619091011f0731dfa9eb5f1146c82c9cd5203e6f30e1a5f27f",
   "forceUpdate": false,
   "releaseNotes": [
-    "内容与待办彻底解耦，文章升级为来源正文连续阅读。",
-    "修复公众号背景色误转黄色高亮。",
-    "文章原文、用户笔记和 AI 元数据独立保存。",
-    "待办结构化确认并增加创建、更新、导入日期。",
-    "Calendar 同步状态、错误重试与备份映射进一步加固。",
-    "月度回顾新增环状数据展示并合并同名项目活动。"
+    "修复备份恢复数据被错误计入恢复当天回顾。",
+    "回顾日期区域改为紧凑单行导航，回到今天收为小图标。",
+    "恢复文章原文链接卡片。",
+    "内容列表改为连续中性视觉，移除块状粉色感。",
+    "AI 工作流区分来源文章与自有内容；AI 标签仅建议，确认后采用。"
   ]
 }
