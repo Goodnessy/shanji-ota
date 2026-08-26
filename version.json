@@ -1,15 +1,16 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "versionName": "5.1.3",
-  "versionCode": 5130,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.3/app-release.apk",
-  "sha256": "71f4a190e569667691387bf1f589d4ce5b22ff39288c9ddff1d47bb2b422123c",
+  "versionName": "5.1.4",
+  "versionCode": 5140,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.4/app-release.apk",
+  "sha256": "e91802161f57725ea36e8d8ba03a6e35c8d937605b3389485e6d3d0a4a0c8fe6",
   "forceUpdate": false,
   "releaseNotes": [
-    "修复内容列表粉色背景残留。",
-    "修复备份恢复历史任务污染所选日期项目分布。",
-    "修复来源文章正文块状白底并保留明确高亮。"
+    "提升小红书图片采集成功率。",
+    "除微信公众号外的来源均可使用 AI 整理。",
+    "AI 整理后可选择保留原文并折叠查看。",
+    "内容列表统一来源与内容类型标识。"
   ],
-  "apkSizeBytes": 100971249
+  "apkSizeBytes": 100987633
 }
