@@ -4,13 +4,13 @@
   "versionName": "5.1.1",
   "versionCode": 5110,
   "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.1/app-release.apk",
-  "sha256": "01a8deba0f6f406348eb31ab8ab3973cf0f6ba5bcd2c91db5a7065a57fbd692d",
+  "sha256": "f7fbf5a9754ca4d23aa0ec1f9f10edf103c9f977074c5f7ee56e2a3ac6e1704b",
   "forceUpdate": false,
   "releaseNotes": [
     "修复备份恢复数据被错误计入恢复当天回顾。",
     "回顾日期区域改为紧凑单行导航，回到今天收为小图标。",
     "恢复文章原文链接卡片。",
     "内容列表改为连续中性视觉，移除块状粉色感。",
-    "AI 整理增加明确内容说明、进度与结果反馈，并统一按钮样式。"
+    "AI 工作流区分来源文章与自有内容：来源文章只做摘要，自有文章和录音转写保留正文整理与确认应用。"
   ]
 }
