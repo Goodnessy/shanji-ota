@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "versionName": "5.1.7",
-  "versionCode": 5170,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.7/app-release.apk",
-  "sha256": "2199b2d466d0800789a6e94a307d8c9d8641d0e9528d7e044a97d4afecd546be",
+  "versionName": "5.1.8",
+  "versionCode": 5180,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.8/app-release.apk",
+  "sha256": "c48504d1e26eca30b35ff21eba3dc0e71bf742b9ec0b1a62721a918ec481105e",
   "forceUpdate": false,
   "releaseNotes": [
-    "修复公众号长文章阅读时内外层滚动冲突，长文可连续向下阅读，并保留长内容稳定性保护。",
-    "优化公众号来源阅读图片加载，补全懒加载图片真实地址，减少占位图或图片缺失。",
-    "修复小红书图片候选地址为 HTTP 时 Android 正式版无法下载的问题，统一安全升级为 HTTPS 后保存。"
-  ],
-  "apkSizeBytes": 101004017
+    "精简首页入口：移除重复的“智能采集”，网址继续可在“文字记录”中自动识别并采集。",
+    "修复小红书已成功保存的图片在文章阅读页不显示的问题，采集图片现在可正常查看。",
+    "修复小红书图片 CDN 重定向后回到 HTTP 导致正式版下载被拦截的问题，每次跳转均重新安全升级为 HTTPS。",
+    "修复小红书未识别到图片时仍误报“采集完整”的状态，改为明确提示并支持重试。"
+  ]
 }
