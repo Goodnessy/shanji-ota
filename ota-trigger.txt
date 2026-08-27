@@ -1,2 +1,2 @@
 2026-08-27
-Trigger latest OTA release processing for V5.1.6.
+Trigger latest OTA release processing for V5.1.7.
