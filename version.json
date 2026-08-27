@@ -1,15 +1,18 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "versionName": "5.1.5",
-  "versionCode": 5150,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.5/app-release.apk",
-  "sha256": "648575a688af7f15d6f7ef2deba74e768169ede6b2a48173ee0630046eb281b5",
+  "versionName": "5.1.6",
+  "versionCode": 5160,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.6/app-release.apk",
+  "sha256": "4270cc2892b81cd27b31f8320adfcc75cd56e57190a5e3e58c5036210d72cd9a",
   "forceUpdate": false,
   "releaseNotes": [
-    "内容历史升级为按日期分组的紧凑列表。",
-    "左侧使用来源/类型竖向标签，列表不再显示文章缩略图。",
-    "提升小红书图片抓取和保存成功率。"
-  ],
-  "apkSizeBytes": 100987633
+    "修复小红书图片下载与保存链路，提高多图内容保存成功率。",
+    "优化公众号长文章阅读稳定性，并修复来源背景色被误识别为高亮的问题。",
+    "内容页统一分类体系，顶部快捷分类调整为：全部、公众号、小红书、图片、笔记。",
+    "优化内容列表预览，清理 HTML 与转义字符残留。",
+    "AI 正文整理升级为受控富文本，支持标题、粗体、高亮、列表、引用与分隔线。",
+    "AI 整理时保护正文图片与附件，尽可能保持图片原有位置。",
+    "清理 V5.1.6 开发期一次性脚本与诊断 workflow，正式验证恢复为直接源码构建。"
+  ]
 }
