@@ -1,19 +1,14 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "versionName": "5.1.6",
-  "versionCode": 5160,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.6/app-release.apk",
-  "sha256": "4270cc2892b81cd27b31f8320adfcc75cd56e57190a5e3e58c5036210d72cd9a",
+  "versionName": "5.1.7",
+  "versionCode": 5170,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.7/app-release.apk",
+  "sha256": "2199b2d466d0800789a6e94a307d8c9d8641d0e9528d7e044a97d4afecd546be",
   "forceUpdate": false,
   "releaseNotes": [
-    "修复小红书图片下载与保存链路，提高多图内容保存成功率。",
-    "优化公众号长文章阅读稳定性，并修复来源背景色被误识别为高亮的问题。",
-    "内容页统一分类体系，顶部快捷分类调整为：全部、公众号、小红书、图片、笔记。",
-    "优化内容列表预览，清理 HTML 与转义字符残留。",
-    "AI 正文整理升级为受控富文本，支持标题、粗体、高亮、列表、引用与分隔线。",
-    "AI 整理时保护正文图片与附件，尽可能保持图片原有位置。",
-    "清理 V5.1.6 开发期一次性脚本与诊断 workflow，正式验证恢复为直接源码构建。"
-  ],
-  "apkSizeBytes": 101004017
+    "修复公众号长文章阅读时内外层滚动冲突，长文可连续向下阅读，并保留长内容稳定性保护。",
+    "优化公众号来源阅读图片加载，补全懒加载图片真实地址，减少占位图或图片缺失。",
+    "修复小红书图片候选地址为 HTTP 时 Android 正式版无法下载的问题，统一安全升级为 HTTPS 后保存。"
+  ]
 }
