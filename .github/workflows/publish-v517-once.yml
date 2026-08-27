@@ -1,0 +1,61 @@
+name: Publish V5.1.7 OTA Once
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/publish-v517-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish-v517:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CANDIDATE_URL: 'https://sdmntprwestcentralus.oaiusercontent.com/files/00000000-6190-81fb-bf47-c8e0cbca30f1/raw?se=2026-08-27T14%3A39%3A09Z&sp=r&sv=2026-02-06&sr=b&scid=8508e6f4-bf7e-58b6-82da-acd3e10ec9c0&skoid=d5627e4c-566b-4761-a954-54993b0ed17b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-27T02%3A52%3A36Z&ske=2026-08-28T02%3A52%3A36Z&sks=b&skv=2026-02-06&sig=xa%2BH7EmgLazTh7PpmCwe2E8e0HSShpUiXIzyw/DQFIw%3D'
+      EXPECTED_APK_SHA256: '2199b2d466d0800789a6e94a307d8c9d8641d0e9528d7e044a97d4afecd546be'
+      EXPECTED_SOURCE_COMMIT: '308391628d3502f29070af0f2b4faa51dec96589'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download validated signed candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 "$CANDIDATE_URL" -o /tmp/v517-candidate.zip
+          mkdir -p /tmp/v517
+          unzip -j /tmp/v517-candidate.zip 'app-release.apk' 'candidate-metadata.txt' -d /tmp/v517
+          test -s /tmp/v517/app-release.apk
+          ACTUAL_SHA="$(sha256sum /tmp/v517/app-release.apk | awk '{print $1}')"
+          echo "V5.1.7 candidate APK SHA256: $ACTUAL_SHA"
+          [ "$ACTUAL_SHA" = "$EXPECTED_APK_SHA256" ]
+          grep -q '^versionName=5.1.7$' /tmp/v517/candidate-metadata.txt
+          grep -q '^versionCode=5170$' /tmp/v517/candidate-metadata.txt
+          grep -q '^packageName=com.wenhe.shanji$' /tmp/v517/candidate-metadata.txt
+          grep -q '^signingContinuity=verified$' /tmp/v517/candidate-metadata.txt
+          grep -q "^sourceCommit=${EXPECTED_SOURCE_COMMIT}$" /tmp/v517/candidate-metadata.txt
+          echo 'V5.1.7 VALIDATED SIGNED CANDIDATE READY FOR RELEASE'
+
+      - name: Publish GitHub Release v5.1.7
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view v5.1.7 >/dev/null 2>&1; then
+            echo 'Release v5.1.7 already exists; refusing to overwrite.' >&2
+            exit 2
+          fi
+          cp /tmp/v517/app-release.apk ./app-release.apk
+          cat > /tmp/v517-notes.md <<'EOF'
+          - 修复公众号长文章阅读时内外层滚动冲突，长文可连续向下阅读，并保留长内容稳定性保护。
+          - 优化公众号来源阅读图片加载，补全懒加载图片真实地址，减少占位图或图片缺失。
+          - 修复小红书图片候选地址为 HTTP 时 Android 正式版无法下载的问题，统一安全升级为 HTTPS 后保存。
+          EOF
+          gh release create v5.1.7 ./app-release.apk \
+            --title 'ShanJi V5.1.7' \
+            --notes-file /tmp/v517-notes.md \
+            --target main
+          echo 'V5.1.7 GITHUB RELEASE PUBLISHED'
