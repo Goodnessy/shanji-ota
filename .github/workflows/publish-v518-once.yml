@@ -1,0 +1,62 @@
+name: Publish V5.1.8 OTA Once
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/publish-v518-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish-v518:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CANDIDATE_URL: 'https://sdmntprseasia.oaiusercontent.com/files/00000000-9c7c-8207-987e-fed851e9aa18/raw?se=2026-08-27T16%3A01%3A28Z&sp=r&sv=2026-02-06&sr=b&scid=ea9aca4b-1262-588b-b851-8c7d08012196&skoid=45d5558d-260a-4eed-aec4-6bc512bdfda4&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-27T04%3A05%3A27Z&ske=2026-08-28T04%3A05%3A27Z&sks=b&skv=2026-02-06&sig=0SBrx7RbHaV8MV4uVYidkrJxqWnVbKDjxuCKNDlxUAs%3D'
+      EXPECTED_APK_SHA256: 'c48504d1e26eca30b35ff21eba3dc0e71bf742b9ec0b1a62721a918ec481105e'
+      EXPECTED_SOURCE_COMMIT: 'fb3c3059d0cb24c27be00b88cb8532ab9caad7b8'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download validated signed candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 "$CANDIDATE_URL" -o /tmp/v518-candidate.zip
+          mkdir -p /tmp/v518
+          unzip -j /tmp/v518-candidate.zip 'app-release.apk' 'candidate-metadata.txt' -d /tmp/v518
+          test -s /tmp/v518/app-release.apk
+          ACTUAL_SHA="$(sha256sum /tmp/v518/app-release.apk | awk '{print $1}')"
+          echo "V5.1.8 candidate APK SHA256: $ACTUAL_SHA"
+          [ "$ACTUAL_SHA" = "$EXPECTED_APK_SHA256" ]
+          grep -q '^versionName=5.1.8$' /tmp/v518/candidate-metadata.txt
+          grep -q '^versionCode=5180$' /tmp/v518/candidate-metadata.txt
+          grep -q '^packageName=com.wenhe.shanji$' /tmp/v518/candidate-metadata.txt
+          grep -q '^signingContinuity=verified$' /tmp/v518/candidate-metadata.txt
+          grep -q "^sourceCommit=${EXPECTED_SOURCE_COMMIT}$" /tmp/v518/candidate-metadata.txt
+          echo 'V5.1.8 VALIDATED SIGNED CANDIDATE READY FOR RELEASE'
+
+      - name: Publish GitHub Release v5.1.8
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view v5.1.8 >/dev/null 2>&1; then
+            echo 'Release v5.1.8 already exists; refusing to overwrite.' >&2
+            exit 2
+          fi
+          cp /tmp/v518/app-release.apk ./app-release.apk
+          cat > /tmp/v518-notes.md <<'EOF'
+          - 精简首页入口：移除重复的“智能采集”，网址继续可在“文字记录”中自动识别并采集。
+          - 修复小红书已成功保存的图片在文章阅读页不显示的问题，采集图片现在可正常查看。
+          - 修复小红书图片 CDN 重定向后回到 HTTP 导致正式版下载被拦截的问题，每次跳转均重新安全升级为 HTTPS。
+          - 修复小红书未识别到图片时仍误报“采集完整”的状态，改为明确提示并支持重试。
+          EOF
+          gh release create v5.1.8 ./app-release.apk \
+            --title 'ShanJi V5.1.8' \
+            --notes-file /tmp/v518-notes.md \
+            --target main
+          echo 'V5.1.8 GITHUB RELEASE PUBLISHED'
