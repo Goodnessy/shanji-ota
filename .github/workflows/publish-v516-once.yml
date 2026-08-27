@@ -1,0 +1,63 @@
+name: Publish V5.1.6 OTA Once
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/publish-v516-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish-v516:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CANDIDATE_URL: 'https://sdmntprwestus3.oaiusercontent.com/files/00000000-b774-81fd-a3bd-3b038a2f2360/raw?se=2026-08-27T11%3A12%3A27Z&sp=r&sv=2026-02-06&sr=b&scid=c632b529-0d65-5f73-9827-285686a413a8&skoid=03727f49-62d3-42ac-8350-1c0e6559d238&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-27T04%3A11%3A31Z&ske=2026-08-28T04%3A11%3A31Z&sks=b&skv=2026-02-06&sig=dyAOp/H3qDC6IFFWzJmzlMx1%2BoBl3e95NZj6ffsccJ0%3D'
+      EXPECTED_APK_SHA256: '4270cc2892b81cd27b31f8320adfcc75cd56e57190a5e3e58c5036210d72cd9a'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download validated signed candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 "$CANDIDATE_URL" -o /tmp/v516-candidate.zip
+          mkdir -p /tmp/v516
+          unzip -j /tmp/v516-candidate.zip 'app-release.apk' 'candidate-metadata.txt' -d /tmp/v516
+          test -s /tmp/v516/app-release.apk
+          ACTUAL_SHA="$(sha256sum /tmp/v516/app-release.apk | awk '{print $1}')"
+          echo "V5.1.6 candidate APK SHA256: $ACTUAL_SHA"
+          [ "$ACTUAL_SHA" = "$EXPECTED_APK_SHA256" ]
+          grep -q '^versionName=5.1.6$' /tmp/v516/candidate-metadata.txt
+          grep -q '^versionCode=5160$' /tmp/v516/candidate-metadata.txt
+          grep -q '^packageName=com.wenhe.shanji$' /tmp/v516/candidate-metadata.txt
+          grep -q '^signingContinuity=verified$' /tmp/v516/candidate-metadata.txt
+          echo 'V5.1.6 VALIDATED SIGNED CANDIDATE READY FOR RELEASE'
+
+      - name: Publish GitHub Release v5.1.6
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view v5.1.6 >/dev/null 2>&1; then
+            echo 'Release v5.1.6 already exists; refusing to overwrite.' >&2
+            exit 2
+          fi
+          cp /tmp/v516/app-release.apk ./app-release.apk
+          cat > /tmp/v516-notes.md <<'EOF'
+          - 修复小红书图片下载与保存链路，提高多图内容保存成功率。
+          - 优化公众号长文章阅读稳定性，并修复来源背景色被误识别为高亮的问题。
+          - 内容页统一分类体系，顶部快捷分类调整为：全部、公众号、小红书、图片、笔记。
+          - 优化内容列表预览，清理 HTML 与转义字符残留。
+          - AI 正文整理升级为受控富文本，支持标题、粗体、高亮、列表、引用与分隔线。
+          - AI 整理时保护正文图片与附件，尽可能保持图片原有位置。
+          - 清理 V5.1.6 开发期一次性脚本与诊断 workflow，正式验证恢复为直接源码构建。
+          EOF
+          gh release create v5.1.6 ./app-release.apk \
+            --title 'ShanJi V5.1.6' \
+            --notes-file /tmp/v516-notes.md \
+            --target main
+          echo 'V5.1.6 GITHUB RELEASE PUBLISHED'
