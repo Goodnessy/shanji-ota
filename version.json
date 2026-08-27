@@ -1,16 +1,15 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "versionName": "5.1.4",
-  "versionCode": 5140,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.4/app-release.apk",
-  "sha256": "e91802161f57725ea36e8d8ba03a6e35c8d937605b3389485e6d3d0a4a0c8fe6",
+  "versionName": "5.1.5",
+  "versionCode": 5150,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.5/app-release.apk",
+  "sha256": "648575a688af7f15d6f7ef2deba74e768169ede6b2a48173ee0630046eb281b5",
   "forceUpdate": false,
   "releaseNotes": [
-    "提升小红书图片采集成功率。",
-    "除微信公众号外的来源均可使用 AI 整理。",
-    "AI 整理后可选择保留原文并折叠查看。",
-    "内容列表统一来源与内容类型标识。"
+    "内容历史升级为按日期分组的紧凑列表。",
+    "左侧使用来源/类型竖向标签，列表不再显示文章缩略图。",
+    "提升小红书图片抓取和保存成功率。"
   ],
   "apkSizeBytes": 100987633
 }
