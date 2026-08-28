@@ -27,12 +27,14 @@ jobs:
           assert isinstance(data.get('sha256'), str)
           assert isinstance(data.get('forceUpdate'), bool)
           assert isinstance(data.get('releaseNotes'), list)
+          assert isinstance(data.get('apkSizeBytes'), int) and data['apkSizeBytes'] >= 0
 
           if data['enabled']:
               assert data['versionName'].strip(), 'versionName required'
               assert data['versionCode'] > 0, 'versionCode must be > 0'
               assert data['apkUrl'].startswith('https://'), 'apkUrl must use HTTPS'
               assert re.fullmatch(r'[0-9a-fA-F]{64}', data['sha256']), 'sha256 must be 64 hex chars'
+              assert data['apkSizeBytes'] > 0, 'apkSizeBytes must be > 0'
 
           print('OTA manifest valid')
           PY
