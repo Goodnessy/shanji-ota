@@ -1,0 +1,74 @@
+name: Publish V5.1.9 OTA Once
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/publish-v519-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish-v519:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CANDIDATE_URL: 'https://sdmntprkoreacentral.oaiusercontent.com/files/00000000-1118-8206-bc51-a5a5606a0c6e/raw?se=2026-08-28T14%3A46%3A13Z&sp=r&sv=2026-02-06&sr=b&scid=829e3084-b6f6-5d39-b6ba-430937e560e6&skoid=1e4bb9ed-6bb5-424a-a3aa-79f21566e722&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-28T03%3A04%3A22Z&ske=2026-08-29T03%3A04%3A22Z&sks=b&skv=2026-02-06&sig=pJYRnW7xshg7GrwT18FjID5NmlyrGWJZvZNoOKxIvS8%3D'
+      EXPECTED_APK_SHA256: '76faa67496f7bb22cbc0611ac81976e084b970d712ef00d73b22e7dc454d59d6'
+      EXPECTED_APK_SIZE: '101020401'
+      EXPECTED_SOURCE_COMMIT: 'f6262ee3d4b740ba1d1f38eddb7b9379bc4d87a5'
+      EXPECTED_SIGNER_SHA256: '39da40c39668839dc18e6891234cbb4f462853a451ebf31c1761f1a7b00f3ac3'
+      EXPECTED_PREVIOUS_APK_SHA256: 'c48504d1e26eca30b35ff21eba3dc0e71bf742b9ec0b1a62721a918ec481105e'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download validated signed candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 "$CANDIDATE_URL" -o /tmp/v519-candidate.zip
+          mkdir -p /tmp/v519
+          unzip -j /tmp/v519-candidate.zip 'app-release.apk' 'candidate-metadata.txt' -d /tmp/v519
+          test -s /tmp/v519/app-release.apk
+          test -s /tmp/v519/candidate-metadata.txt
+          ACTUAL_SHA="$(sha256sum /tmp/v519/app-release.apk | awk '{print $1}')"
+          ACTUAL_SIZE="$(stat -c '%s' /tmp/v519/app-release.apk)"
+          echo "V5.1.9 candidate APK SHA256: $ACTUAL_SHA"
+          echo "V5.1.9 candidate APK size: $ACTUAL_SIZE"
+          [ "$ACTUAL_SHA" = "$EXPECTED_APK_SHA256" ]
+          [ "$ACTUAL_SIZE" = "$EXPECTED_APK_SIZE" ]
+          grep -q '^versionName=5.1.9$' /tmp/v519/candidate-metadata.txt
+          grep -q '^versionCode=5190$' /tmp/v519/candidate-metadata.txt
+          grep -q '^packageName=com.wenhe.shanji$' /tmp/v519/candidate-metadata.txt
+          grep -q "^apkSha256=${EXPECTED_APK_SHA256}$" /tmp/v519/candidate-metadata.txt
+          grep -q "^apkSizeBytes=${EXPECTED_APK_SIZE}$" /tmp/v519/candidate-metadata.txt
+          grep -q "^signerSha256=${EXPECTED_SIGNER_SHA256}$" /tmp/v519/candidate-metadata.txt
+          grep -q '^previousOfficialVersion=5.1.8$' /tmp/v519/candidate-metadata.txt
+          grep -q "^previousOfficialApkSha256=${EXPECTED_PREVIOUS_APK_SHA256}$" /tmp/v519/candidate-metadata.txt
+          grep -q '^signingContinuity=verified$' /tmp/v519/candidate-metadata.txt
+          grep -q "^sourceCommit=${EXPECTED_SOURCE_COMMIT}$" /tmp/v519/candidate-metadata.txt
+          echo 'V5.1.9 VALIDATED SIGNED CANDIDATE READY FOR RELEASE'
+
+      - name: Publish GitHub Release v5.1.9
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view v5.1.9 >/dev/null 2>&1; then
+            echo 'Release v5.1.9 already exists; refusing to overwrite.' >&2
+            exit 2
+          fi
+          cp /tmp/v519/app-release.apk ./app-release.apk
+          cat > /tmp/v519-notes.md <<'EOF'
+          - 回顾（日/周/月/年）统一时间事实语义，计划、完成、项目背景不再混淆，恢复导入的历史数据不会污染当前回顾。
+          - AI 整理后的文章正文可从右上角“更多 → 编辑正文”继续人工修改，并保留现有图文结构。
+          - 修复微信公众号文章固定宽度、负边距、位移等导致的左右文字裁切，已保存的旧文章直接受益。
+          - 微信公众号文章图片改为本地优先读取，已下载图片支持更可靠的离线阅读；本地图缺失时安全回退远程图片。
+          EOF
+          gh release create v5.1.9 ./app-release.apk \
+            --title 'ShanJi V5.1.9' \
+            --notes-file /tmp/v519-notes.md \
+            --target main
+          echo 'V5.1.9 GITHUB RELEASE PUBLISHED'
