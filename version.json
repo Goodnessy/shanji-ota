@@ -1,16 +1,17 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "versionName": "5.1.9",
-  "versionCode": 5190,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.9/app-release.apk",
-  "sha256": "76faa67496f7bb22cbc0611ac81976e084b970d712ef00d73b22e7dc454d59d6",
+  "versionName": "5.1.10",
+  "versionCode": 5191,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.10/app-release.apk",
+  "sha256": "8258c7e63dd8044c390d3ced5b029d7e520b9dfb00d824290aec8ee3123e2448",
   "forceUpdate": false,
   "releaseNotes": [
-    "回顾（日/周/月/年）统一时间事实语义，计划、完成、项目背景不再混淆，恢复导入的历史数据不会污染当前回顾。",
-    "AI 整理后的文章正文可从右上角“更多 → 编辑正文”继续人工修改，并保留现有图文结构。",
-    "修复微信公众号文章固定宽度、负边距、位移等导致的左右文字裁切，已保存的旧文章直接受益。",
-    "微信公众号文章图片改为本地优先读取，已下载图片支持更可靠的离线阅读；本地图缺失时安全回退远程图片。"
+    "修复回顾（日/周/月/年）的任务计划、完成与历史补记统计口径，减少旧数据对当前周期回顾的干扰。",
+    "加强 AI 回顾的事实校验、上下文压缩与失败降级，降低异常数字和无依据结论进入回顾的概率。",
+    "优化微信公众号文章阅读体验：本地图片优先、图片全屏查看与缺失图片安全回退。",
+    "优化内容页长内容滚动，以及任务日期视图在“查看全部 / 回到今天”之间的切换体验。",
+    "OTA 更新页新增“更新包大小”显示，使用发布清单中的真实 APK 大小。"
   ],
   "apkSizeBytes": 101020401
 }
