@@ -1,0 +1,75 @@
+name: Publish V5.1.10 OTA Once
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/publish-v5110-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish-v5110:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CANDIDATE_URL: 'https://sdmntprjapaneast.oaiusercontent.com/files/00000000-fdc8-8209-9436-614687e400f1/raw?se=2026-08-28T18%3A13%3A18Z&sp=r&sv=2026-02-06&sr=b&scid=d7c9cec7-7f26-54fe-8c96-de9d0033dfb4&skoid=b1bca990-dcac-4c31-8ca1-ac563cf24c54&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-28T03%3A34%3A08Z&ske=2026-08-29T03%3A34%3A08Z&sks=b&skv=2026-02-06&sig=B8xJrCqBSHFi/Fa1L8DF3sVhGIjcbWcvD4IBZ4Kv8xI%3D'
+      EXPECTED_APK_SHA256: '8258c7e63dd8044c390d3ced5b029d7e520b9dfb00d824290aec8ee3123e2448'
+      EXPECTED_APK_SIZE: '101020401'
+      EXPECTED_SOURCE_COMMIT: '89268577595c01a9d6339911b0467e78f57d439b'
+      EXPECTED_SIGNER_SHA256: '39da40c39668839dc18e6891234cbb4f462853a451ebf31c1761f1a7b00f3ac3'
+      EXPECTED_PREVIOUS_APK_SHA256: '76faa67496f7bb22cbc0611ac81976e084b970d712ef00d73b22e7dc454d59d6'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download validated signed candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 "$CANDIDATE_URL" -o /tmp/v5110-candidate.zip
+          mkdir -p /tmp/v5110
+          unzip -j /tmp/v5110-candidate.zip 'app-release.apk' 'candidate-metadata.txt' -d /tmp/v5110
+          test -s /tmp/v5110/app-release.apk
+          test -s /tmp/v5110/candidate-metadata.txt
+          ACTUAL_SHA="$(sha256sum /tmp/v5110/app-release.apk | awk '{print $1}')"
+          ACTUAL_SIZE="$(stat -c '%s' /tmp/v5110/app-release.apk)"
+          echo "V5.1.10 candidate APK SHA256: $ACTUAL_SHA"
+          echo "V5.1.10 candidate APK size: $ACTUAL_SIZE"
+          [ "$ACTUAL_SHA" = "$EXPECTED_APK_SHA256" ]
+          [ "$ACTUAL_SIZE" = "$EXPECTED_APK_SIZE" ]
+          grep -q '^versionName=5.1.10$' /tmp/v5110/candidate-metadata.txt
+          grep -q '^versionCode=5191$' /tmp/v5110/candidate-metadata.txt
+          grep -q '^packageName=com.wenhe.shanji$' /tmp/v5110/candidate-metadata.txt
+          grep -q "^apkSha256=${EXPECTED_APK_SHA256}$" /tmp/v5110/candidate-metadata.txt
+          grep -q "^apkSizeBytes=${EXPECTED_APK_SIZE}$" /tmp/v5110/candidate-metadata.txt
+          grep -q "^signerSha256=${EXPECTED_SIGNER_SHA256}$" /tmp/v5110/candidate-metadata.txt
+          grep -q '^previousOfficialVersion=5.1.9$' /tmp/v5110/candidate-metadata.txt
+          grep -q "^previousOfficialApkSha256=${EXPECTED_PREVIOUS_APK_SHA256}$" /tmp/v5110/candidate-metadata.txt
+          grep -q '^signingContinuity=verified$' /tmp/v5110/candidate-metadata.txt
+          grep -q "^sourceCommit=${EXPECTED_SOURCE_COMMIT}$" /tmp/v5110/candidate-metadata.txt
+          echo 'V5.1.10 VALIDATED SIGNED CANDIDATE READY FOR RELEASE'
+
+      - name: Publish GitHub Release v5.1.10
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view v5.1.10 >/dev/null 2>&1; then
+            echo 'Release v5.1.10 already exists; refusing to overwrite.' >&2
+            exit 2
+          fi
+          cp /tmp/v5110/app-release.apk ./app-release.apk
+          cat > /tmp/v5110-notes.md <<'EOF'
+          - 修复回顾（日/周/月/年）的任务计划、完成与历史补记统计口径，减少旧数据对当前周期回顾的干扰。
+          - 加强 AI 回顾的事实校验、上下文压缩与失败降级，降低异常数字和无依据结论进入回顾的概率。
+          - 优化微信公众号文章阅读体验：本地图片优先、图片全屏查看与缺失图片安全回退。
+          - 优化内容页长内容滚动，以及任务日期视图在“查看全部 / 回到今天”之间的切换体验。
+          - OTA 更新页新增“更新包大小”显示，使用发布清单中的真实 APK 大小。
+          EOF
+          gh release create v5.1.10 ./app-release.apk \
+            --title 'ShanJi V5.1.10' \
+            --notes-file /tmp/v5110-notes.md \
+            --target main
+          echo 'V5.1.10 GITHUB RELEASE PUBLISHED'
