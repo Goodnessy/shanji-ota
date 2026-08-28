@@ -1,4 +1,3 @@
-# V5.1.9 final validation trigger
 name: Validate OTA Manifest
 
 on:
