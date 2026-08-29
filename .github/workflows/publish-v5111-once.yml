@@ -1,0 +1,73 @@
+name: Publish V5.1.11 OTA Once
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/publish-v5111-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish-v5111:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CANDIDATE_URL: 'https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-feb4-81fa-a3d9-b21ba3901c02/raw?se=2026-08-29T03%3A37%3A05Z&sp=r&sv=2026-02-06&sr=b&scid=93629f22-cfd4-5aee-a442-838a4a38e92d&skoid=f5e14fda-2af7-44a3-9d18-d372ffcad871&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-28T20%3A50%3A27Z&ske=2026-08-29T20%3A50%3A27Z&sks=b&skv=2026-02-06&sig=APQsJ7GsU/GFBiARGr9lUec/73TKyeZczc6pblttkhA%3D'
+      EXPECTED_APK_SHA256: 'b0e841e79485c475b4a63b297777426f9f2e6555d61b58854c88aa644441c3df'
+      EXPECTED_APK_SIZE: '101020401'
+      EXPECTED_SOURCE_COMMIT: '4a662d42e20291c7da211ffff87438e202ee8a24'
+      EXPECTED_SIGNER_SHA256: '39da40c39668839dc18e6891234cbb4f462853a451ebf31c1761f1a7b00f3ac3'
+      EXPECTED_PREVIOUS_APK_SHA256: '8258c7e63dd8044c390d3ced5b029d7e520b9dfb00d824290aec8ee3123e2448'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download and verify validated candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 "$CANDIDATE_URL" -o /tmp/v5111-candidate.zip
+          mkdir -p /tmp/v5111
+          unzip -j /tmp/v5111-candidate.zip 'app-release.apk' 'candidate-metadata.txt' -d /tmp/v5111
+          test -s /tmp/v5111/app-release.apk
+          test -s /tmp/v5111/candidate-metadata.txt
+          ACTUAL_SHA="$(sha256sum /tmp/v5111/app-release.apk | awk '{print $1}')"
+          ACTUAL_SIZE="$(stat -c '%s' /tmp/v5111/app-release.apk)"
+          echo "V5.1.11 candidate APK SHA256: $ACTUAL_SHA"
+          echo "V5.1.11 candidate APK size: $ACTUAL_SIZE"
+          [ "$ACTUAL_SHA" = "$EXPECTED_APK_SHA256" ]
+          [ "$ACTUAL_SIZE" = "$EXPECTED_APK_SIZE" ]
+          grep -q '^versionName=5.1.11$' /tmp/v5111/candidate-metadata.txt
+          grep -q '^versionCode=5192$' /tmp/v5111/candidate-metadata.txt
+          grep -q '^packageName=com.wenhe.shanji$' /tmp/v5111/candidate-metadata.txt
+          grep -q "^apkSha256=${EXPECTED_APK_SHA256}$" /tmp/v5111/candidate-metadata.txt
+          grep -q "^apkSizeBytes=${EXPECTED_APK_SIZE}$" /tmp/v5111/candidate-metadata.txt
+          grep -q "^signerSha256=${EXPECTED_SIGNER_SHA256}$" /tmp/v5111/candidate-metadata.txt
+          grep -q '^previousOfficialVersion=5.1.10$' /tmp/v5111/candidate-metadata.txt
+          grep -q "^previousOfficialApkSha256=${EXPECTED_PREVIOUS_APK_SHA256}$" /tmp/v5111/candidate-metadata.txt
+          grep -q '^signingContinuity=verified$' /tmp/v5111/candidate-metadata.txt
+          grep -q "^sourceCommit=${EXPECTED_SOURCE_COMMIT}$" /tmp/v5111/candidate-metadata.txt
+          echo 'V5.1.11 VALIDATED SIGNED CANDIDATE READY FOR RELEASE'
+
+      - name: Publish GitHub Release v5.1.11
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view v5.1.11 >/dev/null 2>&1; then
+            echo 'Release v5.1.11 already exists; refusing to overwrite.' >&2
+            exit 2
+          fi
+          cp /tmp/v5111/app-release.apk ./app-release.apk
+          cat > /tmp/v5111-notes.md <<'EOF'
+          - 回顾历史日期新增明确的“今天”入口，月回顾和年回顾新增“本月 / 今年”，可一键返回当前周期。
+          - 已生成的历史回顾继续保存在数据库中；后续数据变化不再把旧回顾隐藏，只提示可重新生成。
+          - 修复提示词版本变化导致旧回顾看似消失的问题，可自动找回同一周期此前已保存的回顾。
+          EOF
+          gh release create v5.1.11 ./app-release.apk \
+            --title 'ShanJi V5.1.11' \
+            --notes-file /tmp/v5111-notes.md \
+            --target main
+          echo 'V5.1.11 GITHUB RELEASE PUBLISHED'
