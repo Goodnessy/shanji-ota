@@ -1,18 +1,15 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "versionName": "5.1.10",
-  "versionCode": 5191,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.10/app-release.apk",
-  "sha256": "8258c7e63dd8044c390d3ced5b029d7e520b9dfb00d824290aec8ee3123e2448",
+  "versionName": "5.1.11",
+  "versionCode": 5192,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.11/app-release.apk",
+  "sha256": "b0e841e79485c475b4a63b297777426f9f2e6555d61b58854c88aa644441c3df",
   "forceUpdate": false,
   "releaseNotes": [
-    "修复回顾（日/周/月/年）的任务计划、完成与历史补记统计口径，减少旧数据对当前周期回顾的干扰。",
-    "加强 AI 回顾的事实校验、上下文压缩与失败降级，降低异常数字和无依据结论进入回顾的概率。",
-    "优化微信公众号文章阅读体验：本地图片优先、图片全屏查看与缺失图片安全回退。",
-    "优化内容页长内容滚动，以及任务日期视图在“查看全部 / 回到今天”之间的切换体验。",
-    "OTA 更新页新增“更新包大小”显示，使用发布清单中的真实 APK 大小。"
+    "回顾历史日期新增明确的“今天”入口，月回顾和年回顾新增“本月 / 今年”，可一键返回当前周期。",
+    "已生成的历史回顾继续保存在数据库中；后续数据变化不再把旧回顾隐藏，只提示可重新生成。",
+    "修复提示词版本变化导致旧回顾看似消失的问题，可自动找回同一周期此前已保存的回顾。"
   ],
   "apkSizeBytes": 101020401
 }
-
