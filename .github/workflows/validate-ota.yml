@@ -1,5 +1,4 @@
 name: Validate OTA Manifest
-# V5.1.11 validation trigger; restore after this run.
 
 on:
   push:
