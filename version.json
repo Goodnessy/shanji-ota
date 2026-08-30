@@ -7,9 +7,9 @@
   "sha256": "cbe257adbd31fc71bae9ce8f9d9a310c1876f565eec3330d6a2c8385e0af793a",
   "forceUpdate": false,
   "releaseNotes": [
-    "修复 DeepSeek 官方余额读取与同步，优先读取当前启用且已保存 API Key 的官方配置。",
-    "回顾页新增轻量 Token 用量展示：日、月、年分别显示对应周期累计用量。",
-    "显著缩小 Android 更新包体积，语音模型改为按需使用并支持断点续传。"
+    "修复 DeepSeek 官方余额读取与同步：优先使用当前启用且已保存 API Key 的官方 DeepSeek 配置。",
+    "回顾页新增轻量 Token 用量展示：日回顾显示当天，月回顾显示当月累计，年回顾显示当年累计。",
+    "显著缩小 Android 更新包体积；语音模型改为按需使用并支持断点续传，已安装旧版本的用户优先复用现有模型。"
   ],
   "apkSizeBytes": 35679092
 }
