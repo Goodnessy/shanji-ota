@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "versionName": "5.1.11",
-  "versionCode": 5192,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.11/app-release.apk",
-  "sha256": "b0e841e79485c475b4a63b297777426f9f2e6555d61b58854c88aa644441c3df",
+  "versionName": "5.1.12",
+  "versionCode": 5193,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.12/app-release.apk",
+  "sha256": "cbe257adbd31fc71bae9ce8f9d9a310c1876f565eec3330d6a2c8385e0af793a",
   "forceUpdate": false,
   "releaseNotes": [
-    "回顾历史日期新增明确的“今天”入口，月回顾和年回顾新增“本月 / 今年”，可一键返回当前周期。",
-    "已生成的历史回顾继续保存在数据库中；后续数据变化不再把旧回顾隐藏，只提示可重新生成。",
-    "修复提示词版本变化导致旧回顾看似消失的问题，可自动找回同一周期此前已保存的回顾。"
+    "修复 DeepSeek 官方余额读取与同步，优先读取当前启用且已保存 API Key 的官方配置。",
+    "回顾页新增轻量 Token 用量展示：日、月、年分别显示对应周期累计用量。",
+    "显著缩小 Android 更新包体积，语音模型改为按需使用并支持断点续传。"
   ],
-  "apkSizeBytes": 101020401
+  "apkSizeBytes": 35679092
 }
