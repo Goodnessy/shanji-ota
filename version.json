@@ -1,15 +1,25 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.1.12",
-  "versionCode": 5193,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.12/app-release.apk",
-  "sha256": "cbe257adbd31fc71bae9ce8f9d9a310c1876f565eec3330d6a2c8385e0af793a",
+  "versionName": "5.1.13",
+  "versionCode": 5194,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.13/app-release.apk",
+  "sha256": "3dda19f6ba2b66a73c92e07f9d00d6dfbef516100bb589ebd59ee0ecf9cb9984",
   "forceUpdate": false,
   "releaseNotes": [
-    "修复 DeepSeek 官方余额读取与同步：优先使用当前启用且已保存 API Key 的官方 DeepSeek 配置。",
-    "回顾页新增轻量 Token 用量展示：日回顾显示当天，月回顾显示当月累计，年回顾显示当年累计。",
-    "显著缩小 Android 更新包体积；语音模型改为按需使用并支持断点续传，已安装旧版本的用户优先复用现有模型。"
+    "新增 APK 二进制增量更新能力：从 V5.1.12 升级时优先下载更小的差分包。",
+    "增量更新会校验来源版本、文件哈希、目标版本与正式签名；任一环节异常自动回退完整 APK。",
+    "优化链接采集行为：取消打开应用时自动读取剪贴板，保留主动采集入口。"
   ],
-  "apkSizeBytes": 35679092
+  "apkSizeBytes": 36745026,
+  "patches": [
+    {
+      "fromVersionName": "5.1.12",
+      "fromVersionCode": 5193,
+      "fromSha256": "cbe257adbd31fc71bae9ce8f9d9a310c1876f565eec3330d6a2c8385e0af793a",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.13/from-5193-to-5194.bsdiff",
+      "patchSha256": "97b8b310ff5c92b2289834c3060586b64cf375ca73b6371ed389b7eee60a3b8f",
+      "patchSizeBytes": 8064215
+    }
+  ]
 }
