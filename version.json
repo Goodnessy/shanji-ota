@@ -6,11 +6,7 @@
   "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.13/app-release.apk",
   "sha256": "3dda19f6ba2b66a73c92e07f9d00d6dfbef516100bb589ebd59ee0ecf9cb9984",
   "forceUpdate": false,
-  "releaseNotes": [
-    "新增 APK 二进制增量更新能力：从 V5.1.12 升级时优先下载更小的差分包。",
-    "增量更新会校验来源版本、文件哈希、目标版本与正式签名；任一环节异常自动回退完整 APK。",
-    "优化链接采集行为：取消打开应用时自动读取剪贴板，保留主动采集入口。"
-  ],
+  "releaseNotes": ["新增 APK 二进制增量更新能力：从 V5.1.12 升级时优先下载更小的差分包。", "增量更新会校验来源版本、文件哈希、目标版本与正式签名；任一环节异常自动回退完整 APK。", "优化链接采集行为：取消打开应用时自动读取剪贴板，保留主动采集入口。"],
   "apkSizeBytes": 36745026,
   "patches": [
     {
