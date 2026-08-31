@@ -19,16 +19,23 @@ jobs:
       - name: Setup Android tools
         uses: android-actions/setup-android@v3
 
-      - name: Install binary diff tools
+      - name: Install deterministic APK and binary diff tools
         shell: bash
         run: |
           set -euo pipefail
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager 'build-tools;36.0.0' 'platform-tools'
           sudo apt-get update
           sudo apt-get install -y bsdiff
+          test -x "${ANDROID_SDK_ROOT:-$ANDROID_HOME}/build-tools/36.0.0/aapt"
+          test -x "${ANDROID_SDK_ROOT:-$ANDROID_HOME}/build-tools/36.0.0/apksigner"
+          command -v bsdiff
+          command -v bspatch
 
       - name: Read latest release and download APK
         env:
           GH_TOKEN: ${{ github.token }}
+        shell: bash
         run: |
           set -euo pipefail
           mkdir -p dist
@@ -42,13 +49,9 @@ jobs:
           fi
           gh release download "$TAG" --pattern '*.apk' --dir dist
           APK_PATH="dist/$APK_NAME"
-          if [ ! -f "$APK_PATH" ]; then
-            APK_PATH="$(find dist -maxdepth 1 -type f -name '*.apk' | head -n 1)"
-          fi
-          if [ -z "$APK_PATH" ] || [ ! -f "$APK_PATH" ]; then
-            echo "APK download failed" >&2
-            exit 1
-          fi
+          test -s "$APK_PATH" || { echo 'APK download failed' >&2; exit 1; }
+          echo "Latest formal release: $TAG"
+          echo "Target APK: $APK_PATH"
           echo "TAG=$TAG" >> "$GITHUB_ENV"
           echo "APK_URL=$APK_URL" >> "$GITHUB_ENV"
           echo "APK_NAME=$APK_NAME" >> "$GITHUB_ENV"
@@ -58,38 +61,22 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          APKA="$(command -v apkanalyzer || true)"
-          if [ -z "$APKA" ]; then
-            APKA="$(find "${ANDROID_SDK_ROOT:-$ANDROID_HOME}" -type f -name apkanalyzer 2>/dev/null | head -n 1)"
-          fi
-          if [ -z "$APKA" ] || [ ! -x "$APKA" ]; then
-            echo "apkanalyzer not found" >&2
-            exit 1
-          fi
-
-          PACKAGE_ID="$($APKA manifest application-id "$APK_PATH" | tr -d '\r\n')"
-          VERSION_NAME="$($APKA manifest version-name "$APK_PATH" | tr -d '\r\n')"
-          VERSION_CODE="$($APKA manifest version-code "$APK_PATH" | tr -d '\r\n')"
+          BT="${ANDROID_SDK_ROOT:-$ANDROID_HOME}/build-tools/36.0.0"
+          AAPT="$BT/aapt"
+          "$AAPT" dump badging "$APK_PATH" > /tmp/target-badging.txt
+          BADGING="$(head -n 1 /tmp/target-badging.txt)"
+          PACKAGE_ID="$(printf '%s\n' "$BADGING" | sed -n "s/^package: name='\([^']*\)'.*/\1/p")"
+          VERSION_CODE="$(printf '%s\n' "$BADGING" | sed -n "s/.*versionCode='\([^']*\)'.*/\1/p")"
+          VERSION_NAME="$(printf '%s\n' "$BADGING" | sed -n "s/.*versionName='\([^']*\)'.*/\1/p")"
           EXPECTED_VERSION="${TAG#v}"
           EXPECTED_VERSION="${EXPECTED_VERSION#V}"
-
           echo "APK package=$PACKAGE_ID versionName=$VERSION_NAME versionCode=$VERSION_CODE tag=$TAG"
-
-          if [ "$PACKAGE_ID" != "com.wenhe.shanji" ]; then
-            echo "Unexpected package id: $PACKAGE_ID" >&2
-            exit 1
-          fi
-          if [ "$VERSION_NAME" != "$EXPECTED_VERSION" ]; then
-            echo "APK versionName ($VERSION_NAME) does not match release tag ($TAG)" >&2
-            exit 1
-          fi
-          if ! [[ "$VERSION_CODE" =~ ^[0-9]+$ ]]; then
-            echo "Invalid APK versionCode: $VERSION_CODE" >&2
-            exit 1
-          fi
-
+          test "$PACKAGE_ID" = 'com.wenhe.shanji' || { echo "Unexpected package id: $PACKAGE_ID" >&2; exit 1; }
+          test "$VERSION_NAME" = "$EXPECTED_VERSION" || { echo "APK versionName mismatch" >&2; exit 1; }
+          [[ "$VERSION_CODE" =~ ^[0-9]+$ ]] || { echo "Invalid APK versionCode: $VERSION_CODE" >&2; exit 1; }
           SHA256="$(sha256sum "$APK_PATH" | awk '{print $1}')"
           APK_SIZE_BYTES="$(stat -c '%s' "$APK_PATH")"
+          echo "Target APK sha256=$SHA256 bytes=$APK_SIZE_BYTES"
           echo "VERSION_NAME=$VERSION_NAME" >> "$GITHUB_ENV"
           echo "VERSION_CODE=$VERSION_CODE" >> "$GITHUB_ENV"
           echo "SHA256=$SHA256" >> "$GITHUB_ENV"
@@ -103,63 +90,64 @@ jobs:
           set -euo pipefail
           echo 'PATCH_AVAILABLE=0' >> "$GITHUB_ENV"
           gh api "repos/${GITHUB_REPOSITORY}/releases?per_page=100" > releases.json
-          PREV_TAG="$(jq -r --arg tag "$TAG" '[.[] | select(.draft == false and .prerelease == false and .tag_name != $tag)][0].tag_name // empty' releases.json)"
+          PREV_TAG="$(jq -r --arg tag "$TAG" '[.[] | select(.draft == false and .prerelease == false and .tag_name != $tag)] | sort_by(.published_at) | reverse | .[0].tag_name // empty' releases.json)"
           if [ -z "$PREV_TAG" ]; then
             echo 'No previous formal release; full APK only.'
             exit 0
           fi
+          echo "Previous formal release selected: $PREV_TAG"
 
           mkdir -p previous
           gh release download "$PREV_TAG" --pattern '*.apk' --dir previous
           PREV_APK="$(find previous -maxdepth 1 -type f -name '*.apk' | head -n 1)"
-          if [ -z "$PREV_APK" ] || [ ! -f "$PREV_APK" ]; then
-            echo "Previous release $PREV_TAG has no APK" >&2
-            exit 1
-          fi
+          test -s "$PREV_APK" || { echo "Previous release $PREV_TAG has no APK" >&2; exit 1; }
 
-          APKA="$(command -v apkanalyzer || true)"
-          if [ -z "$APKA" ]; then
-            APKA="$(find "${ANDROID_SDK_ROOT:-$ANDROID_HOME}" -type f -name apkanalyzer 2>/dev/null | head -n 1)"
-          fi
-          APKSIGNER="$(command -v apksigner || true)"
-          if [ -z "$APKSIGNER" ]; then
-            APKSIGNER="$(find "${ANDROID_SDK_ROOT:-$ANDROID_HOME}" -type f -name apksigner 2>/dev/null | sort -V | tail -n 1)"
-          fi
-          if [ -z "$APKA" ] || [ ! -x "$APKA" ] || [ -z "$APKSIGNER" ] || [ ! -x "$APKSIGNER" ]; then
-            echo 'Android APK verification tools not found' >&2
-            exit 1
-          fi
+          BT="${ANDROID_SDK_ROOT:-$ANDROID_HOME}/build-tools/36.0.0"
+          AAPT="$BT/aapt"
+          APKSIGNER="$BT/apksigner"
 
-          PREV_PACKAGE="$($APKA manifest application-id "$PREV_APK" | tr -d '\r\n')"
-          PREV_VERSION_NAME="$($APKA manifest version-name "$PREV_APK" | tr -d '\r\n')"
-          PREV_VERSION_CODE="$($APKA manifest version-code "$PREV_APK" | tr -d '\r\n')"
+          "$AAPT" dump badging "$PREV_APK" > /tmp/previous-badging.txt
+          PREV_BADGING="$(head -n 1 /tmp/previous-badging.txt)"
+          PREV_PACKAGE="$(printf '%s\n' "$PREV_BADGING" | sed -n "s/^package: name='\([^']*\)'.*/\1/p")"
+          PREV_VERSION_CODE="$(printf '%s\n' "$PREV_BADGING" | sed -n "s/.*versionCode='\([^']*\)'.*/\1/p")"
+          PREV_VERSION_NAME="$(printf '%s\n' "$PREV_BADGING" | sed -n "s/.*versionName='\([^']*\)'.*/\1/p")"
           PREV_SHA256="$(sha256sum "$PREV_APK" | awk '{print $1}')"
-          PREV_SIGNER="$($APKSIGNER verify --print-certs "$PREV_APK" | awk -F': ' '/Signer #1 certificate SHA-256 digest:/ {print tolower($2); exit}')"
-          TARGET_SIGNER="$($APKSIGNER verify --print-certs "$APK_PATH" | awk -F': ' '/Signer #1 certificate SHA-256 digest:/ {print tolower($2); exit}')"
 
-          test "$PREV_PACKAGE" = 'com.wenhe.shanji'
-          [[ "$PREV_VERSION_CODE" =~ ^[0-9]+$ ]]
-          test "$PREV_VERSION_CODE" -lt "$VERSION_CODE"
-          test -n "$PREV_SIGNER"
-          test "$PREV_SIGNER" = "$TARGET_SIGNER"
+          "$APKSIGNER" verify --verbose --print-certs "$PREV_APK" > /tmp/previous-cert.txt
+          "$APKSIGNER" verify --verbose --print-certs "$APK_PATH" > /tmp/target-cert.txt
+          PREV_SIGNER="$(sed -n 's/^Signer #1 certificate SHA-256 digest: //p' /tmp/previous-cert.txt | head -n 1 | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')"
+          TARGET_SIGNER="$(sed -n 's/^Signer #1 certificate SHA-256 digest: //p' /tmp/target-cert.txt | head -n 1 | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')"
+
+          echo "Previous APK package=$PREV_PACKAGE versionName=$PREV_VERSION_NAME versionCode=$PREV_VERSION_CODE sha256=$PREV_SHA256"
+          echo "Previous signer=$PREV_SIGNER"
+          echo "Target signer=$TARGET_SIGNER"
+          test "$PREV_PACKAGE" = 'com.wenhe.shanji' || { echo 'Previous package mismatch' >&2; exit 1; }
+          [[ "$PREV_VERSION_CODE" =~ ^[0-9]+$ ]] || { echo 'Previous versionCode invalid' >&2; exit 1; }
+          test "$PREV_VERSION_CODE" -lt "$VERSION_CODE" || { echo 'Previous version is not older' >&2; exit 1; }
+          test -n "$PREV_SIGNER" || { echo 'Previous signer digest missing' >&2; exit 1; }
+          test "$PREV_SIGNER" = "$TARGET_SIGNER" || { echo 'Signing certificate continuity check failed' >&2; exit 1; }
 
           PATCH_NAME="from-${PREV_VERSION_CODE}-to-${VERSION_CODE}.bsdiff"
           PATCH_PATH="dist/$PATCH_NAME"
+          echo "Generating $PATCH_NAME ..."
           bsdiff "$PREV_APK" "$APK_PATH" "$PATCH_PATH"
+          echo 'Reconstructing target APK from patch ...'
           bspatch "$PREV_APK" /tmp/rebuilt.apk "$PATCH_PATH"
           cmp "$APK_PATH" /tmp/rebuilt.apk
           echo "$SHA256  /tmp/rebuilt.apk" | sha256sum -c -
 
           PATCH_SIZE_BYTES="$(stat -c '%s' "$PATCH_PATH")"
+          PATCH_SHA256="$(sha256sum "$PATCH_PATH" | awk '{print $1}')"
+          echo "Verified patch sha256=$PATCH_SHA256 bytes=$PATCH_SIZE_BYTES fullBytes=$APK_SIZE_BYTES"
           if [ "$PATCH_SIZE_BYTES" -ge "$APK_SIZE_BYTES" ]; then
-            echo "Patch is not smaller than full APK; publishing full APK only."
+            echo 'Patch is not smaller than full APK; publishing full APK only.'
             rm -f "$PATCH_PATH"
             exit 0
           fi
-          PATCH_SHA256="$(sha256sum "$PATCH_PATH" | awk '{print $1}')"
+
+          echo "Uploading verified patch to formal release $TAG ..."
           gh release upload "$TAG" "$PATCH_PATH" --clobber
           PATCH_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${TAG}/${PATCH_NAME}"
-
           echo "PATCH_AVAILABLE=1" >> "$GITHUB_ENV"
           echo "PATCH_URL=$PATCH_URL" >> "$GITHUB_ENV"
           echo "PATCH_SHA256=$PATCH_SHA256" >> "$GITHUB_ENV"
@@ -167,23 +155,24 @@ jobs:
           echo "PREV_VERSION_NAME=$PREV_VERSION_NAME" >> "$GITHUB_ENV"
           echo "PREV_VERSION_CODE=$PREV_VERSION_CODE" >> "$GITHUB_ENV"
           echo "PREV_SHA256=$PREV_SHA256" >> "$GITHUB_ENV"
-          echo "Incremental patch verified: $PREV_VERSION_NAME ($PREV_VERSION_CODE) -> $VERSION_NAME ($VERSION_CODE), $PATCH_SIZE_BYTES bytes"
+          echo "Incremental patch verified and uploaded: $PREV_VERSION_NAME ($PREV_VERSION_CODE) -> $VERSION_NAME ($VERSION_CODE), $PATCH_SIZE_BYTES bytes"
 
       - name: Update version.json
         shell: bash
         run: |
+          set -euo pipefail
           python3 - <<'PY'
           import json, os
           from pathlib import Path
 
-          release = json.loads(Path("release.json").read_text(encoding="utf-8"))
-          body = (release.get("body") or "").strip()
+          release = json.loads(Path('release.json').read_text(encoding='utf-8'))
+          body = (release.get('body') or '').strip()
           notes = []
           for raw in body.splitlines():
               line = raw.strip()
-              if not line or line.startswith("#"):
+              if not line or line.startswith('#'):
                   continue
-              if line.startswith("- "):
+              if line.startswith('- '):
                   line = line[2:].strip()
               if line:
                   notes.append(line)
@@ -191,32 +180,29 @@ jobs:
               notes = [f"闪记 V{os.environ['VERSION_NAME']} 更新"]
 
           patches = []
-          if os.environ.get("PATCH_AVAILABLE") == "1":
+          if os.environ.get('PATCH_AVAILABLE') == '1':
               patches.append({
-                  "fromVersionName": os.environ["PREV_VERSION_NAME"],
-                  "fromVersionCode": int(os.environ["PREV_VERSION_CODE"]),
-                  "fromSha256": os.environ["PREV_SHA256"],
-                  "patchUrl": os.environ["PATCH_URL"],
-                  "patchSha256": os.environ["PATCH_SHA256"],
-                  "patchSizeBytes": int(os.environ["PATCH_SIZE_BYTES"]),
+                  'fromVersionName': os.environ['PREV_VERSION_NAME'],
+                  'fromVersionCode': int(os.environ['PREV_VERSION_CODE']),
+                  'fromSha256': os.environ['PREV_SHA256'],
+                  'patchUrl': os.environ['PATCH_URL'],
+                  'patchSha256': os.environ['PATCH_SHA256'],
+                  'patchSizeBytes': int(os.environ['PATCH_SIZE_BYTES']),
               })
 
           data = {
-              "schemaVersion": 2,
-              "enabled": True,
-              "versionName": os.environ["VERSION_NAME"],
-              "versionCode": int(os.environ["VERSION_CODE"]),
-              "apkUrl": os.environ["APK_URL"],
-              "sha256": os.environ["SHA256"],
-              "forceUpdate": False,
-              "releaseNotes": notes[:8],
-              "apkSizeBytes": int(os.environ["APK_SIZE_BYTES"]),
-              "patches": patches,
+              'schemaVersion': 2,
+              'enabled': True,
+              'versionName': os.environ['VERSION_NAME'],
+              'versionCode': int(os.environ['VERSION_CODE']),
+              'apkUrl': os.environ['APK_URL'],
+              'sha256': os.environ['SHA256'],
+              'forceUpdate': False,
+              'releaseNotes': notes[:8],
+              'apkSizeBytes': int(os.environ['APK_SIZE_BYTES']),
+              'patches': patches,
           }
-          Path("version.json").write_text(
-              json.dumps(data, ensure_ascii=False, indent=2) + "\n",
-              encoding="utf-8"
-          )
+          Path('version.json').write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           PY
           cat version.json
 
@@ -224,11 +210,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add version.json
           if git diff --cached --quiet; then
-            echo "version.json already up to date"
+            echo 'version.json already up to date'
             exit 0
           fi
           git commit -m "publish OTA ${TAG}"
