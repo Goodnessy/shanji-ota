@@ -1,0 +1,174 @@
+name: Repair ShanJi V5.1.13 Incremental OTA
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/repair-v5113-ota.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout OTA main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Android tools
+        uses: android-actions/setup-android@v3
+
+      - name: Install deterministic tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager 'build-tools;36.0.0' 'platform-tools'
+          sudo apt-get update
+          sudo apt-get install -y bsdiff
+
+      - name: Download exact formal APKs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist previous
+          gh release download 'v5.1.13' --pattern 'app-release.apk' --dir dist
+          gh release download 'v5.1.12' --pattern 'app-release.apk' --dir previous
+          mv previous/app-release.apk previous/app-v5.1.12.apk
+          echo '3dda19f6ba2b66a73c92e07f9d00d6dfbef516100bb589ebd59ee0ecf9cb9984  dist/app-release.apk' | sha256sum -c -
+          echo 'cbe257adbd31fc71bae9ce8f9d9a310c1876f565eec3330d6a2c8385e0af793a  previous/app-v5.1.12.apk' | sha256sum -c -
+          test "$(stat -c '%s' dist/app-release.apk)" = '36745026'
+          test "$(stat -c '%s' previous/app-v5.1.12.apk)" = '35679092'
+          echo 'FORMAL APK BYTES AND SHA256 VERIFIED'
+
+      - name: Verify identities and signing continuity
+        shell: bash
+        run: |
+          set -euo pipefail
+          BT="${ANDROID_SDK_ROOT:-$ANDROID_HOME}/build-tools/36.0.0"
+          "$BT/aapt" dump badging previous/app-v5.1.12.apk > /tmp/old-badging.txt
+          "$BT/aapt" dump badging dist/app-release.apk > /tmp/new-badging.txt
+          OLD="$(head -n 1 /tmp/old-badging.txt)"
+          NEW="$(head -n 1 /tmp/new-badging.txt)"
+          echo "$OLD"
+          echo "$NEW"
+          echo "$OLD" | grep -q "name='com.wenhe.shanji'"
+          echo "$OLD" | grep -q "versionCode='5193'"
+          echo "$OLD" | grep -q "versionName='5.1.12'"
+          echo "$NEW" | grep -q "name='com.wenhe.shanji'"
+          echo "$NEW" | grep -q "versionCode='5194'"
+          echo "$NEW" | grep -q "versionName='5.1.13'"
+
+          "$BT/apksigner" verify --verbose --print-certs previous/app-v5.1.12.apk > /tmp/old-cert.txt
+          "$BT/apksigner" verify --verbose --print-certs dist/app-release.apk > /tmp/new-cert.txt
+          OLD_CERT="$(sed -n 's/^Signer #1 certificate SHA-256 digest: //p' /tmp/old-cert.txt | head -n 1 | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')"
+          NEW_CERT="$(sed -n 's/^Signer #1 certificate SHA-256 digest: //p' /tmp/new-cert.txt | head -n 1 | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')"
+          echo "V5.1.12 signer=$OLD_CERT"
+          echo "V5.1.13 signer=$NEW_CERT"
+          test "$OLD_CERT" = '39da40c39668839dc18e6891234cbb4f462853a451ebf31c1761f1a7b00f3ac3'
+          test "$NEW_CERT" = "$OLD_CERT"
+          echo 'FORMAL APK IDENTITY AND SIGNING CONTINUITY VERIFIED'
+
+      - name: Generate and verify formal binary patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          PATCH='dist/from-5193-to-5194.bsdiff'
+          bsdiff previous/app-v5.1.12.apk dist/app-release.apk "$PATCH"
+          bspatch previous/app-v5.1.12.apk /tmp/rebuilt-v5.1.13.apk "$PATCH"
+          cmp dist/app-release.apk /tmp/rebuilt-v5.1.13.apk
+          echo '3dda19f6ba2b66a73c92e07f9d00d6dfbef516100bb589ebd59ee0ecf9cb9984  /tmp/rebuilt-v5.1.13.apk' | sha256sum -c -
+          PATCH_SHA="$(sha256sum "$PATCH" | awk '{print $1}')"
+          PATCH_BYTES="$(stat -c '%s' "$PATCH")"
+          TARGET_BYTES="$(stat -c '%s' dist/app-release.apk)"
+          test "$PATCH_BYTES" -lt "$TARGET_BYTES"
+          echo "FORMAL_PATCH_SHA256=$PATCH_SHA"
+          echo "FORMAL_PATCH_BYTES=$PATCH_BYTES"
+          python3 - "$TARGET_BYTES" "$PATCH_BYTES" <<'PY'
+          import sys
+          target=int(sys.argv[1]); patch=int(sys.argv[2])
+          print(f'FORMAL_PATCH_PERCENT_OF_FULL={patch/target*100:.2f}%')
+          print(f'FORMAL_SAVED_BYTES={target-patch}')
+          PY
+          echo "PATCH_SHA=$PATCH_SHA" >> "$GITHUB_ENV"
+          echo "PATCH_BYTES=$PATCH_BYTES" >> "$GITHUB_ENV"
+          echo 'FORMAL BSDIFF ROUND TRIP VERIFIED'
+
+      - name: Upload verified patch to formal V5.1.13 release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release upload 'v5.1.13' dist/from-5193-to-5194.bsdiff --clobber
+          gh release view 'v5.1.13' --json assets | jq -e '.assets[] | select(.name == "from-5193-to-5194.bsdiff")' >/tmp/patch-asset.json
+          cat /tmp/patch-asset.json
+          echo 'FORMAL PATCH ASSET UPLOADED'
+
+      - name: Write and validate schema 2 manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os, re
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          data = {
+            'schemaVersion': 2,
+            'enabled': True,
+            'versionName': '5.1.13',
+            'versionCode': 5194,
+            'apkUrl': 'https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.13/app-release.apk',
+            'sha256': '3dda19f6ba2b66a73c92e07f9d00d6dfbef516100bb589ebd59ee0ecf9cb9984',
+            'forceUpdate': False,
+            'releaseNotes': [
+              '新增 APK 二进制增量更新能力：从 V5.1.12 升级时优先下载更小的差分包。',
+              '增量更新会校验来源版本、文件哈希、目标版本与正式签名；任一环节异常自动回退完整 APK。',
+              '优化链接采集行为：取消打开应用时自动读取剪贴板，保留主动采集入口。'
+            ],
+            'apkSizeBytes': 36745026,
+            'patches': [{
+              'fromVersionName': '5.1.12',
+              'fromVersionCode': 5193,
+              'fromSha256': 'cbe257adbd31fc71bae9ce8f9d9a310c1876f565eec3330d6a2c8385e0af793a',
+              'patchUrl': 'https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.13/from-5193-to-5194.bsdiff',
+              'patchSha256': os.environ['PATCH_SHA'],
+              'patchSizeBytes': int(os.environ['PATCH_BYTES'])
+            }]
+          }
+
+          assert data['schemaVersion'] == 2
+          assert data['versionName'] == '5.1.13' and data['versionCode'] == 5194
+          assert re.fullmatch(r'[0-9a-f]{64}', data['sha256'])
+          patch = data['patches'][0]
+          assert patch['fromVersionName'] == '5.1.12' and patch['fromVersionCode'] == 5193
+          assert patch['fromSha256'] == 'cbe257adbd31fc71bae9ce8f9d9a310c1876f565eec3330d6a2c8385e0af793a'
+          assert re.fullmatch(r'[0-9a-f]{64}', patch['patchSha256'])
+          assert 0 < patch['patchSizeBytes'] < data['apkSizeBytes']
+          for url in (data['apkUrl'], patch['patchUrl']):
+              parsed=urlparse(url)
+              assert parsed.scheme == 'https' and parsed.hostname == 'github.com'
+
+          Path('version.json').write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+          cat version.json
+          echo 'SCHEMA 2 MANIFEST VERIFIED'
+
+      - name: Commit formal V5.1.13 OTA manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add version.json
+          git diff --cached -- version.json
+          git commit -m 'publish OTA v5.1.13 with verified binary patch'
+          git push
+          echo 'FORMAL V5.1.13 SCHEMA 2 OTA MANIFEST PUBLISHED'
