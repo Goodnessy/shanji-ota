@@ -16,10 +16,12 @@ jobs:
         run: |
           python3 - <<'PY'
           import json, re
+          from urllib.parse import urlparse
           from pathlib import Path
 
           data = json.loads(Path('version.json').read_text(encoding='utf-8'))
-          assert isinstance(data.get('schemaVersion'), int)
+          schema = data.get('schemaVersion')
+          assert isinstance(schema, int) and schema in (1, 2), 'unsupported schemaVersion'
           assert isinstance(data.get('enabled'), bool)
           assert isinstance(data.get('versionName'), str)
           assert isinstance(data.get('versionCode'), int) and data['versionCode'] >= 0
@@ -29,12 +31,40 @@ jobs:
           assert isinstance(data.get('releaseNotes'), list)
           assert isinstance(data.get('apkSizeBytes'), int) and data['apkSizeBytes'] >= 0
 
+          def trusted_https(url):
+              try:
+                  parsed = urlparse(url)
+                  host = (parsed.hostname or '').lower()
+                  return parsed.scheme == 'https' and (
+                      host == 'github.com' or host.endswith('.github.com') or
+                      host == 'githubusercontent.com' or host.endswith('.githubusercontent.com')
+                  )
+              except Exception:
+                  return False
+
           if data['enabled']:
               assert data['versionName'].strip(), 'versionName required'
               assert data['versionCode'] > 0, 'versionCode must be > 0'
-              assert data['apkUrl'].startswith('https://'), 'apkUrl must use HTTPS'
+              assert trusted_https(data['apkUrl']), 'apkUrl must be trusted GitHub HTTPS'
               assert re.fullmatch(r'[0-9a-fA-F]{64}', data['sha256']), 'sha256 must be 64 hex chars'
               assert data['apkSizeBytes'] > 0, 'apkSizeBytes must be > 0'
 
-          print('OTA manifest valid')
+          patches = data.get('patches', [])
+          assert isinstance(patches, list), 'patches must be a list'
+          seen_sources = set()
+          for patch in patches:
+              assert schema >= 2, 'patches require schemaVersion 2'
+              assert isinstance(patch, dict)
+              assert isinstance(patch.get('fromVersionName'), str) and patch['fromVersionName'].strip()
+              assert isinstance(patch.get('fromVersionCode'), int) and patch['fromVersionCode'] >= 0
+              assert patch['fromVersionCode'] < data['versionCode'], 'patch source must be older than target'
+              assert patch['fromVersionCode'] not in seen_sources, 'duplicate patch source versionCode'
+              seen_sources.add(patch['fromVersionCode'])
+              assert re.fullmatch(r'[0-9a-fA-F]{64}', patch.get('fromSha256', '')), 'invalid fromSha256'
+              assert trusted_https(patch.get('patchUrl', '')), 'patchUrl must be trusted GitHub HTTPS'
+              assert re.fullmatch(r'[0-9a-fA-F]{64}', patch.get('patchSha256', '')), 'invalid patchSha256'
+              assert isinstance(patch.get('patchSizeBytes'), int) and patch['patchSizeBytes'] > 0
+              assert patch['patchSizeBytes'] < data['apkSizeBytes'], 'patch must be smaller than full APK'
+
+          print(f"OTA manifest valid: schema={schema}, patches={len(patches)}")
           PY
