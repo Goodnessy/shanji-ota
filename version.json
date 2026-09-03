@@ -1,21 +1,24 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.1.13",
-  "versionCode": 5194,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.13/app-release.apk",
-  "sha256": "3dda19f6ba2b66a73c92e07f9d00d6dfbef516100bb589ebd59ee0ecf9cb9984",
+  "versionName": "5.1.14",
+  "versionCode": 5195,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.14/app-release.apk",
+  "sha256": "5745282e80a1f646d2c1c67215a92b049676584f45e15ed05fcddbb6a5afe496",
   "forceUpdate": false,
-  "releaseNotes": ["新增 APK 二进制增量更新能力：从 V5.1.12 升级时优先下载更小的差分包。", "增量更新会校验来源版本、文件哈希、目标版本与正式签名；任一环节异常自动回退完整 APK。", "优化链接采集行为：取消打开应用时自动读取剪贴板，保留主动采集入口。"],
+  "releaseNotes": [
+    "修复回顾页“下一步 / 明日日程”中全天事项跨时区日期边界误入次日的问题。",
+    "避免闪记自身同步到系统日历的镜像事项被回顾页重复读取。"
+  ],
   "apkSizeBytes": 36745026,
   "patches": [
     {
-      "fromVersionName": "5.1.12",
-      "fromVersionCode": 5193,
-      "fromSha256": "cbe257adbd31fc71bae9ce8f9d9a310c1876f565eec3330d6a2c8385e0af793a",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.13/from-5193-to-5194.bsdiff",
-      "patchSha256": "97b8b310ff5c92b2289834c3060586b64cf375ca73b6371ed389b7eee60a3b8f",
-      "patchSizeBytes": 8064215
+      "fromVersionName": "5.1.13",
+      "fromVersionCode": 5194,
+      "fromSha256": "3dda19f6ba2b66a73c92e07f9d00d6dfbef516100bb589ebd59ee0ecf9cb9984",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.14/from-5194-to-5195.bsdiff",
+      "patchSha256": "f2433fd5842a428240828b3a1d7a88cdcd86bdbf4df9c4400ec70da31d462443",
+      "patchSizeBytes": 4017244
     }
   ]
 }
