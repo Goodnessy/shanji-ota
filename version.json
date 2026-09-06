@@ -1,24 +1,24 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.1.14",
-  "versionCode": 5195,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.14/app-release.apk",
-  "sha256": "5745282e80a1f646d2c1c67215a92b049676584f45e15ed05fcddbb6a5afe496",
+  "versionName": "5.1.15",
+  "versionCode": 5196,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.15/app-release.apk",
+  "sha256": "c9a1e7d45babd6349904c62616e99f1d19a278fcb5b9757b130a7f48e6a10ba7",
   "forceUpdate": false,
   "releaseNotes": [
-    "修复回顾页“下一步 / 明日日程”中全天事项跨时区日期边界误入次日的问题。",
-    "避免闪记自身同步到系统日历的镜像事项被回顾页重复读取。"
+    "修复从 Google / Android 系统日历返回闪记后，日历事件未自动刷新的问题。",
+    "开启 Google 日历同步时自动开启“显示系统日历”，让已同步的日程在闪记中可见。"
   ],
   "apkSizeBytes": 36745026,
   "patches": [
     {
-      "fromVersionName": "5.1.13",
-      "fromVersionCode": 5194,
-      "fromSha256": "3dda19f6ba2b66a73c92e07f9d00d6dfbef516100bb589ebd59ee0ecf9cb9984",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.14/from-5194-to-5195.bsdiff",
-      "patchSha256": "f2433fd5842a428240828b3a1d7a88cdcd86bdbf4df9c4400ec70da31d462443",
-      "patchSizeBytes": 4017244
+      "fromVersionName": "5.1.14",
+      "fromVersionCode": 5195,
+      "fromSha256": "5745282e80a1f646d2c1c67215a92b049676584f45e15ed05fcddbb6a5afe496",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.15/from-5195-to-5196.bsdiff",
+      "patchSha256": "55e8f2336434a1a1f932a2351640a3be65108c330f2f7a860c9a116fed203a76",
+      "patchSizeBytes": 4100946
     }
   ]
 }
