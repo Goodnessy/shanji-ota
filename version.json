@@ -1,24 +1,24 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.1.15",
-  "versionCode": 5196,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.15/app-release.apk",
-  "sha256": "c9a1e7d45babd6349904c62616e99f1d19a278fcb5b9757b130a7f48e6a10ba7",
+  "versionName": "5.1.16",
+  "versionCode": 5197,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.16/app-release.apk",
+  "sha256": "fc93675cd3dd162b1c109c4b864f933d8591417e658f2e2a8c93e975578f54b6",
   "forceUpdate": false,
   "releaseNotes": [
-    "修复从 Google / Android 系统日历返回闪记后，日历事件未自动刷新的问题。",
-    "开启 Google 日历同步时自动开启“显示系统日历”，让已同步的日程在闪记中可见。"
+    "新增待办搜索：可搜索待办标题、备注、所属项目和分区。",
+    "搜索结果覆盖历史待办和已完成待办，便于快速找回旧事项。"
   ],
   "apkSizeBytes": 36745026,
   "patches": [
     {
-      "fromVersionName": "5.1.14",
-      "fromVersionCode": 5195,
-      "fromSha256": "5745282e80a1f646d2c1c67215a92b049676584f45e15ed05fcddbb6a5afe496",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.15/from-5195-to-5196.bsdiff",
-      "patchSha256": "55e8f2336434a1a1f932a2351640a3be65108c330f2f7a860c9a116fed203a76",
-      "patchSizeBytes": 4100946
+      "fromVersionName": "5.1.15",
+      "fromVersionCode": 5196,
+      "fromSha256": "c9a1e7d45babd6349904c62616e99f1d19a278fcb5b9757b130a7f48e6a10ba7",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.16/from-5196-to-5197.bsdiff",
+      "patchSha256": "41388d32a587fc9dfc4efdb3c4bd0f668d4e145836cdcffc14f34ca229c4a61a",
+      "patchSizeBytes": 4124199
     }
   ]
 }
