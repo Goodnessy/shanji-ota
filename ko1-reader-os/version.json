@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "enabled": true,
+  "channel": "stable",
+  "versionName": "V0.2.5",
+  "minSourceVersion": "V0.2.5",
+  "packageUrl": "",
+  "packageSha256": "",
+  "packageSizeBytes": 0,
+  "releaseNotes": [
+    "首次加入 Reader OS OTA 更新模块。",
+    "本版本用于安装 OTA 引导；后续版本可直接在 KO1 上检查并安装更新。"
+  ]
+}
