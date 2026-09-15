@@ -1,24 +1,25 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.1.16",
-  "versionCode": 5197,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.16/app-release.apk",
-  "sha256": "fc93675cd3dd162b1c109c4b864f933d8591417e658f2e2a8c93e975578f54b6",
+  "versionName": "5.1.17",
+  "versionCode": 5198,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.17/app-release.apk",
+  "sha256": "efccb3457929818a04ab97771e1de7b7a453b0fd9409fd63ad4a630c919b40e8",
   "forceUpdate": false,
   "releaseNotes": [
-    "新增待办搜索：可搜索待办标题、备注、所属项目和分区。",
-    "搜索结果覆盖历史待办和已完成待办，便于快速找回旧事项。"
+    "修复待办同步到 Google 日历：创建有计划日期的待办时补齐日历写入权限，并明确提示同步失败原因。",
+    "优化新建待办弹窗：键盘弹出时支持顺畅滚动，确认创建按钮保持可操作。",
+    "优化智能整理：火车票等通知自动提炼为可执行标题和结构化信息，避免长通知直接作为标题。"
   ],
-  "apkSizeBytes": 36745026,
+  "apkSizeBytes": 36761410,
   "patches": [
     {
-      "fromVersionName": "5.1.15",
-      "fromVersionCode": 5196,
-      "fromSha256": "c9a1e7d45babd6349904c62616e99f1d19a278fcb5b9757b130a7f48e6a10ba7",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.16/from-5196-to-5197.bsdiff",
-      "patchSha256": "41388d32a587fc9dfc4efdb3c4bd0f668d4e145836cdcffc14f34ca229c4a61a",
-      "patchSizeBytes": 4124199
+      "fromVersionName": "5.1.16",
+      "fromVersionCode": 5197,
+      "fromSha256": "fc93675cd3dd162b1c109c4b864f933d8591417e658f2e2a8c93e975578f54b6",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.1.17/from-5197-to-5198.bsdiff",
+      "patchSha256": "bfc7adadcf6aeb11318e7a87423a18e1335dd47fff9cb274e6ed91b35e6cc3d2",
+      "patchSizeBytes": 4134584
     }
   ]
 }
