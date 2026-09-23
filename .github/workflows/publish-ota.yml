@@ -27,9 +27,13 @@ jobs:
           set -euo pipefail
           export ANDROID_SDK_ROOT="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
           export ANDROID_HOME="$ANDROID_SDK_ROOT"
-          test -x "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" || command -v sdkmanager
-          yes | sdkmanager --licenses >/dev/null || true
-          sdkmanager 'build-tools;36.0.0' 'platform-tools'
+          SDKMANAGER="$ANDROID_SDK_ROOT/cmdline-tools/16.0/bin/sdkmanager"
+          if [ ! -x "$SDKMANAGER" ]; then
+            SDKMANAGER="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager"
+          fi
+          test -x "$SDKMANAGER" || { echo "sdkmanager not found under $ANDROID_SDK_ROOT" >&2; exit 1; }
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
+          "$SDKMANAGER" 'build-tools;36.0.0' 'platform-tools'
           sudo apt-get update
           sudo apt-get install -y bsdiff
           test -x "${ANDROID_SDK_ROOT:-$ANDROID_HOME}/build-tools/36.0.0/aapt"
