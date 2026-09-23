@@ -1,27 +1,26 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.2.0",
-  "versionCode": 5200,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.2.0/app-release.apk",
-  "sha256": "d3277ba9314c28c038f3d1dcb9ad470f15b50abe6ee7c5aaa47b1751e6cf941b",
+  "versionName": "5.2.1",
+  "versionCode": 5201,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.2.1/app-release.apk",
+  "sha256": "90b5f021a3577801d8c6cf1106f0c12141733460677a7cc7e0eb43cccf0801e5",
   "forceUpdate": false,
   "releaseNotes": [
-    "全新“闪记对话”入口：文字输入后先智能整理为待办或内容建议，确认后再写入正式数据。",
-    "支持连续自然语言操作：新建、修改、取消、确认、补充信息及一条消息中的多个事项。",
-    "新增对话历史与追溯：可查看原始输入，并从对话回到对应待办或内容。",
-    "强化数据安全：V5.2 Conversation 数据、附件、TaskType、SourceLink 纳入完整备份恢复，并完善提醒与日历清理。",
-    "修复 OTA 更新包大小显示：后续升级可区分增量下载大小与完整 APK 大小。"
+    "﻿- 鎭㈠鍘熸湁棣栭〉缁撴瀯锛屽苟浠モ€滈棯璁颁竴涓嬧€濅綔涓虹粺涓€杈撳叆鍏ュ彛銆?",
+    "閲嶅缓闂瀵硅瘽鐣岄潰锛氱敤鎴锋秷鎭€佺粨鏋勫寲寰呭姙/璁板綍鍗＄墖銆佸浜嬮」纭銆?",
+    "杈撳叆鏍忚皟鏁翠负鈥滐紜 / 杈撳叆妗?/ 鐭闊?/ 鍙戦€佲€濓紝闀垮綍闊崇瓑浣庨鑳藉姏鏀惰繘鎵╁睍鑿滃崟銆?",
+    "鏈増鏈敤浜庨杞湡鏈?UI 涓庝氦浜掗獙璇侊紝鍚庣画灏嗘牴鎹疄闄呬娇鐢ㄧ户缁凯浠ｃ€?"
   ],
-  "apkSizeBytes": 36859714,
+  "apkSizeBytes": 36892482,
   "patches": [
     {
-      "fromVersionName": "5.1.17",
-      "fromVersionCode": 5198,
-      "fromSha256": "efccb3457929818a04ab97771e1de7b7a453b0fd9409fd63ad4a630c919b40e8",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.2.0/from-5198-to-5200.bsdiff",
-      "patchSha256": "55ad9333db42865b8fb26d4895ed1017b98a4d38be4e622e63b06b773d890262",
-      "patchSizeBytes": 4296549
+      "fromVersionName": "5.2.0",
+      "fromVersionCode": 5200,
+      "fromSha256": "d3277ba9314c28c038f3d1dcb9ad470f15b50abe6ee7c5aaa47b1751e6cf941b",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.2.1/from-5200-to-5201.bsdiff",
+      "patchSha256": "bb8b8d9b745b02134297fb7249f0dfbbac3e933b92ad641afeeeb6182c734fc7",
+      "patchSizeBytes": 11436222
     }
   ]
 }
