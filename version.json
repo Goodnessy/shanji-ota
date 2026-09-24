@@ -1,26 +1,26 @@
 {
-  "schemaVersion": 2,
-  "enabled": true,
-  "versionName": "5.2.1",
-  "versionCode": 5201,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.2.1/app-release.apk",
-  "sha256": "90b5f021a3577801d8c6cf1106f0c12141733460677a7cc7e0eb43cccf0801e5",
-  "forceUpdate": false,
-  "releaseNotes": [
-    "恢复原有首页结构，并以“闪记一下”作为统一输入入口。",
-    "重建闪记对话界面：用户消息、结构化待办/记录卡片、多事项确认。",
-    "输入栏调整为“＋ / 输入框 / 短语音 / 发送”，长录音等低频能力收进扩展菜单。",
-    "本版本用于首轮真机 UI 与交互验证，后续将根据实际使用继续迭代。"
-  ],
-  "apkSizeBytes": 36892482,
-  "patches": [
-    {
-      "fromVersionName": "5.2.0",
-      "fromVersionCode": 5200,
-      "fromSha256": "d3277ba9314c28c038f3d1dcb9ad470f15b50abe6ee7c5aaa47b1751e6cf941b",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.2.1/from-5200-to-5201.bsdiff",
-      "patchSha256": "bb8b8d9b745b02134297fb7249f0dfbbac3e933b92ad641afeeeb6182c734fc7",
-      "patchSizeBytes": 11436222
-    }
-  ]
+    "schemaVersion":  2,
+    "enabled":  true,
+    "versionName":  "5.2.2",
+    "versionCode":  5202,
+    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.2.2/app-release.apk",
+    "sha256":  "73fe5ab280fd9eb07d4efe0390a41ae52f9bfbbeab1ef6119559b06830285414",
+    "forceUpdate":  false,
+    "releaseNotes":  [
+                         "重构“闪记一下”对话页：业务卡改为轻量内容卡，减少边框、图标和表单感。",
+                         "候选内容支持在当前聊天页直接修改标题、时间、类型、项目、分类、正文与标签，确认后才写入正式数据。",
+                         "强化多事项识别与自然语言纠正：“这是两件事，你分开”等表达会重新拆分上一轮待确认结果。",
+                         "搜索扩展到原话、AI候选、录音/附件文字及确认后的待办/记录。"
+                     ],
+    "apkSizeBytes":  36925250,
+    "patches":  [
+                    {
+                        "fromVersionName":  "5.2.1",
+                        "fromVersionCode":  5201,
+                        "fromSha256":  "90b5f021a3577801d8c6cf1106f0c12141733460677a7cc7e0eb43cccf0801e5",
+                        "patchUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.2.2/from-5201-to-5202.bsdiff",
+                        "patchSha256":  "bb759e13f19cf43e52e36cca4a0d94c1670251ba1abe1ecb83265191eb276490",
+                        "patchSizeBytes":  4296080
+                    }
+                ]
 }
