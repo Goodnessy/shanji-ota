@@ -1,26 +1,26 @@
 {
-    "schemaVersion":  2,
-    "enabled":  true,
-    "versionName":  "5.2.2",
-    "versionCode":  5202,
-    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.2.2/app-release.apk",
-    "sha256":  "73fe5ab280fd9eb07d4efe0390a41ae52f9bfbbeab1ef6119559b06830285414",
-    "forceUpdate":  false,
-    "releaseNotes":  [
-                         "重构“闪记一下”对话页：业务卡改为轻量内容卡，减少边框、图标和表单感。",
-                         "候选内容支持在当前聊天页直接修改标题、时间、类型、项目、分类、正文与标签，确认后才写入正式数据。",
-                         "强化多事项识别与自然语言纠正：“这是两件事，你分开”等表达会重新拆分上一轮待确认结果。",
-                         "搜索扩展到原话、AI候选、录音/附件文字及确认后的待办/记录。"
-                     ],
-    "apkSizeBytes":  36925250,
-    "patches":  [
-                    {
-                        "fromVersionName":  "5.2.1",
-                        "fromVersionCode":  5201,
-                        "fromSha256":  "90b5f021a3577801d8c6cf1106f0c12141733460677a7cc7e0eb43cccf0801e5",
-                        "patchUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.2.2/from-5201-to-5202.bsdiff",
-                        "patchSha256":  "bb759e13f19cf43e52e36cca4a0d94c1670251ba1abe1ecb83265191eb276490",
-                        "patchSizeBytes":  4296080
-                    }
-                ]
+  "schemaVersion": 2,
+  "enabled": true,
+  "versionName": "5.2.2",
+  "versionCode": 5202,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.2.2/app-release.apk",
+  "sha256": "73fe5ab280fd9eb07d4efe0390a41ae52f9bfbbeab1ef6119559b06830285414",
+  "forceUpdate": false,
+  "releaseNotes": [
+    "重构“闪记一下”对话页：业务卡改为轻量内容卡，减少边框、图标和表单感。",
+    "候选内容支持在当前聊天页直接修改标题、时间、类型、项目、分类、正文与标签，确认后才写入正式数据。",
+    "强化多事项识别与自然语言纠正：“这是两件事，你分开”等表达会重新拆分上一轮待确认结果。",
+    "搜索扩展到原话、AI候选、录音/附件文字及确认后的待办/记录。"
+  ],
+  "apkSizeBytes": 36925250,
+  "patches": [
+    {
+      "fromVersionName": "5.2.1",
+      "fromVersionCode": 5201,
+      "fromSha256": "90b5f021a3577801d8c6cf1106f0c12141733460677a7cc7e0eb43cccf0801e5",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.2.2/from-5201-to-5202.bsdiff",
+      "patchSha256": "f150676ec21c923ff523dfe9994dffc4fce2e2952e784b04af8c18b3e6962e8c",
+      "patchSizeBytes": 4295508
+    }
+  ]
 }
