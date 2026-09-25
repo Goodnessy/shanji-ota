@@ -1,27 +1,25 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1",
-  "versionCode": 5410,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1/app-release.apk",
-  "sha256": "02477eea6aeb9f73df961b66cb0d49e95a867606d622e36d159ec3fc80da9dd3",
+  "versionName": "5.4.1.2",
+  "versionCode": 5412,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.2/app-release.apk",
+  "sha256": "be573af34ad50d75c549c10d86877761c53e2d524994568598e8ebc258e0be76",
   "forceUpdate": false,
   "releaseNotes": [
-    "重做首页：采用浅蓝雾化背景与轻毛玻璃布局，重新对齐字体、间距和层级。",
-    "新增男女两套喝咖啡的 Q 版陪伴者，可在设置中切换。",
-    "首页支持自定义称呼，固定文案为 “Capture first. Use later.”。",
-    "Chat Agent、Library、To-Do、Review、Connect 五个快捷入口按新首页布局直达对应功能。",
-    "底部“点击开始记录”作为 Chat Agent 快捷入口；本次只重做首页，不改动其他成熟页面结构。"
+    "棣栭〉闄即鑰呮槑鏄炬斁澶э紝澧炲己棣栭〉涓昏瑙夊瓨鍦ㄦ劅銆?",
+    "鍒犻櫎鐭ヨ瘑搴撱€佸緟鍔炪€佸洖椤鹃〉闈㈠簳閮?Dock 涓棿鐨勭壒娈娾€滃姪鐞嗏€濈悆锛屽鑸仮澶嶄负浠婂ぉ銆佺煡璇嗗簱銆佸緟鍔炪€佸洖椤惧洓涓父瑙勫叆鍙ｃ€?",
+    "鍏朵綑棣栭〉涓庣幇鏈夋垚鐔熼〉闈㈢粨鏋勪繚鎸佷笉鍙樸€?"
   ],
   "apkSizeBytes": 38461420,
   "patches": [
     {
-      "fromVersionName": "5.4.0",
-      "fromVersionCode": 5400,
-      "fromSha256": "77638750b1dcbe39496251850d071bb1926d92bb1e50f86aa400277433186d5f",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1/from-5400-to-5410.bsdiff",
-      "patchSha256": "1284082f66bb8cb369bd3170aed34ec7daad6f1ee98706e22567db2c102dafb0",
-      "patchSizeBytes": 4386258
+      "fromVersionName": "5.4.1",
+      "fromVersionCode": 5410,
+      "fromSha256": "02477eea6aeb9f73df961b66cb0d49e95a867606d622e36d159ec3fc80da9dd3",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.2/from-5410-to-5412.bsdiff",
+      "patchSha256": "0ac66b408d2f001f285686710207654df4dce87c2bd2af1ea3a7136ca486ca88",
+      "patchSizeBytes": 4298576
     }
   ]
 }
