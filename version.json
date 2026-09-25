@@ -1,27 +1,27 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.6",
-  "versionCode": 5416,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.6/app-release.apk",
-  "sha256": "69cd02d99f796ebe087f91665b24ea7e895a3a5879de31e05921518f006fab50",
+  "versionName": "5.4.1.7",
+  "versionCode": 5417,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.7/app-release.apk",
+  "sha256": "e27042fbe7af4b78a8c8a027feebfad986b9cf4f25ab8a930cdfda42f1c76bf5",
   "forceUpdate": false,
   "releaseNotes": [
-    "Chat Agent 棣栬疆閲嶆瀯锛氭敼涓烘祬鐏拌亰澶╃敾甯冦€佺櫧鑹?AI 姘旀场銆佸井淇＄豢鐢ㄦ埛姘旀场锛屽苟缁熶竴鍙屾柟澶村儚灏哄銆?",
-    "寰呭姙纭鍗℃敼涓?24dp 鍦嗚瀵硅薄鍗★紝鍔犲叆杞昏壊灞傛锛屽彧灞曠ず鏍囬銆佹棩鏈熸椂闂村拰璇︽儏锛涚‘璁ゅ悗浠呬繚鐣欌€滄煡鐪嬧€濄€?",
-    "杈撳叆鍖烘敼涓虹揣鍑戝竷灞€锛氬乏渚р€滃綍闊斥€濓紝涓棿杈撳叆妗嗭紱绌虹櫧鏃跺彸渚т负鈥?鈥濓紝杈撳叆鏂囧瓧鍚庡垏鎹负缁胯壊鈥滃彂閫佲€濄€?",
-    "鈥?鈥濋潰鏉夸粎淇濈暀鎷嶇収銆佸浘鐗囥€佹枃浠讹紱缃戦〉缁х画鑷姩璇嗗埆锛岄棯璁颁簰鑱斾粛浠庨椤佃繘鍏ャ€?",
-    "淇濈暀鐜版湁 AI 澶氫换鍔¤瘑鍒€佽嚜鐒惰瑷€纭/淇敼銆佹悳绱笌鍊欓€夌‘璁や笟鍔￠€昏緫锛屽苟澧炲姞澶勭悊涓殑杞婚噺鐘舵€佹彁绀恒€?"
+    "Chat Agent 高频聊天界面整体精修：重新统一文字、气泡、头像、时间与消息间距，提升长时间使用的舒适度。",
+    "输入区改为微信式紧凑交互：空白无提示文字，支持自动多行与回车换行，右侧按内容在“+ / 发送”间切换。",
+    "“+”附件面板仅保留拍照、图片、文件，并重做为轻量聊天附件面板；长按菜单、多选与删除操作同步重做。",
+    "待办与内容卡片仅做视觉优化：收敛字号、圆角、留白和层级，不改变既有字段、确认、修改、取消与查看逻辑。",
+    "新增并启用“我的头像”上传、本地持久化和恢复默认；修复直接粘贴虎嗅、微信公众号等 URL 后的自动识别与解析。"
   ],
-  "apkSizeBytes": 38461420,
+  "apkSizeBytes": 38494188,
   "patches": [
     {
-      "fromVersionName": "5.4.1.5",
-      "fromVersionCode": 5415,
-      "fromSha256": "53761b778e5fa8a90d1c79d0489ffdbd95cf0bce77376ad23d8f84b50b03b54e",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.6/from-5415-to-5416.bsdiff",
-      "patchSha256": "cc8a2fcf641743ba584cb49a3789257668cf562e3b80c147635c0c9731a67e36",
-      "patchSizeBytes": 4332433
+      "fromVersionName": "5.4.1.6",
+      "fromVersionCode": 5416,
+      "fromSha256": "69cd02d99f796ebe087f91665b24ea7e895a3a5879de31e05921518f006fab50",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.7/from-5416-to-5417.bsdiff",
+      "patchSha256": "48d8298d2d7c0681e87d13c5ac3427eff20917716005da2344ecc10967481157",
+      "patchSizeBytes": 4391610
     }
   ]
 }
