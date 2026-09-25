@@ -1,25 +1,25 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.2",
-  "versionCode": 5412,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.2/app-release.apk",
-  "sha256": "be573af34ad50d75c549c10d86877761c53e2d524994568598e8ebc258e0be76",
+  "versionName": "5.4.1.3",
+  "versionCode": 5413,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.3/app-release.apk",
+  "sha256": "b31089ffecb31e8cee3a42cf0ede6ea8126f229e8da9b4d8c445caaf651d12fc",
   "forceUpdate": false,
   "releaseNotes": [
-    "首页陪伴者明显放大，增强首页主视觉存在感。",
-    "删除知识库、待办、回顾页面底部 Dock 中间的特殊“助理”球，导航恢复为今天、知识库、待办、回顾四个常规入口。",
-    "其余首页与现有成熟页面结构保持不变。"
+    "棣栭〉闄即鑰呮敼涓烘寜灞忓箷瀹藉害鑷€傚簲鏄剧ず锛屽苟璁剧疆鍚堢悊涓婁笅闄愩€?",
+    "浜虹墿鏄剧ず鍖哄煙鐢卞崟鐙媺楂樻敼涓哄楂樺悓姝ユ帶鍒讹紝纭繚鐪熸満涓婂疄闄呮斁澶с€?",
+    "鍏朵綑棣栭〉鍜屽簳閮ㄥ鑸€昏緫淇濇寔涓嶅彉銆?"
   ],
   "apkSizeBytes": 38461420,
   "patches": [
     {
-      "fromVersionName": "5.4.1",
-      "fromVersionCode": 5410,
-      "fromSha256": "02477eea6aeb9f73df961b66cb0d49e95a867606d622e36d159ec3fc80da9dd3",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.2/from-5410-to-5412.bsdiff",
-      "patchSha256": "0ac66b408d2f001f285686710207654df4dce87c2bd2af1ea3a7136ca486ca88",
-      "patchSizeBytes": 4298576
+      "fromVersionName": "5.4.1.2",
+      "fromVersionCode": 5412,
+      "fromSha256": "be573af34ad50d75c549c10d86877761c53e2d524994568598e8ebc258e0be76",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.3/from-5412-to-5413.bsdiff",
+      "patchSha256": "d70fe9ca849f455aeb8430ee1f609ca261a88f1a15765985d38920e6c1e42a91",
+      "patchSizeBytes": 4257070
     }
   ]
 }
