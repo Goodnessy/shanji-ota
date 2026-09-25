@@ -1,25 +1,26 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.4",
-  "versionCode": 5414,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.4/app-release.apk",
-  "sha256": "d4d5d96440f49e346fd7d34fd2be911e2ff41b7083c415ba8e6a070531454bf6",
+  "versionName": "5.4.1.5",
+  "versionCode": 5415,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.5/app-release.apk",
+  "sha256": "53761b778e5fa8a90d1c79d0489ffdbd95cf0bce77376ad23d8f84b50b03b54e",
   "forceUpdate": false,
   "releaseNotes": [
-    "首页陪伴者尺寸由 50% 屏宽调整为 45%，自适应范围调整为 172–214dp。",
-    "内容、待办、回顾页面底部 Dock 第一个入口由“今天”改为“主页”，点击返回新版首页。",
-    "其余页面与交互保持不变。"
+    "鐭ヨ瘑搴撻〉闈㈡寜鏂扮増瑙嗚缁х画浼樺寲锛氭悳绱㈠尯銆佸垎绫荤瓫閫夈€佹棩鏈熷眰绾т笌鍐呭鍗＄墖鏇存帴杩戠‘璁ょ銆?",
+    "鍐呭銆佸緟鍔炪€佸洖椤惧簳閮?Dock 棣栭」缁熶竴涓衡€滈椤碘€濄€?",
+    "淇搴曢儴鈥滈椤碘€濈偣鍑诲悗鏈繑鍥?V5.4.1 鏂扮増棣栭〉鐨勯棶棰樸€?",
+    "鍐呭鏁版嵁缁撴瀯涓庣幇鏈変笟鍔￠€昏緫淇濇寔涓嶅彉銆?"
   ],
   "apkSizeBytes": 38461420,
   "patches": [
     {
-      "fromVersionName": "5.4.1.3",
-      "fromVersionCode": 5413,
-      "fromSha256": "b31089ffecb31e8cee3a42cf0ede6ea8126f229e8da9b4d8c445caaf651d12fc",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.4/from-5413-to-5414.bsdiff",
-      "patchSha256": "7f232a22f72ece1ccf438a5bd285810fcdd876cf8d0266b8e1a10acbc42944ce",
-      "patchSizeBytes": 4172680
+      "fromVersionName": "5.4.1.4",
+      "fromVersionCode": 5414,
+      "fromSha256": "d4d5d96440f49e346fd7d34fd2be911e2ff41b7083c415ba8e6a070531454bf6",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.5/from-5414-to-5415.bsdiff",
+      "patchSha256": "7696150c4bf3e66805440e3970ec1c989d4150a6c7b770a669897ff119deff0d",
+      "patchSizeBytes": 4255280
     }
   ]
 }
