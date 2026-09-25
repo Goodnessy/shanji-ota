@@ -1,26 +1,27 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.0",
-  "versionCode": 5400,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.0/app-release.apk",
-  "sha256": "77638750b1dcbe39496251850d071bb1926d92bb1e50f86aa400277433186d5f",
+  "versionName": "5.4.1",
+  "versionCode": 5410,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1/app-release.apk",
+  "sha256": "02477eea6aeb9f73df961b66cb0d49e95a867606d622e36d159ec3fc80da9dd3",
   "forceUpdate": false,
   "releaseNotes": [
-    "﻿- 鍏ㄦ柊娴呰摑涓庢贰绱瑙夐鏍硷紝缁熶竴浠婃棩椤点€丄I 鍔╃悊銆佺煡璇嗗簱銆佸緟鍔炴棩绋嬪拰鍥為【椤甸潰銆?",
-    "浠婃棩椤靛睍绀虹湡瀹炴棩绋嬪緟鍔炰笌鏈€杩戜繚瀛樼殑鍐呭锛屾彁渚涘揩閫熻褰曞拰鍔╃悊鍏ュ彛銆?",
-    "浼樺寲缂栬緫銆佽鎯呫€佽缃€佸綍闊炽€佸浠戒笌鍒嗕韩瀵煎叆绛夐〉闈㈢殑甯冨眬鍜屾搷浣滃眰绾с€?",
-    "淇濈暀鍘熸湁鏁版嵁涓庡姛鑳斤紱姝ょ増鏈緵鏈汉鍏堜綋楠岃瑙夋晥鏋滐紝灏氭湭鍋氱湡鏈鸿瑙夐獙璇併€?"
+    "閲嶅仛棣栭〉锛氶噰鐢ㄦ祬钃濋浘鍖栬儗鏅笌杞绘瘺鐜荤拑甯冨眬锛岄噸鏂板榻愬瓧浣撱€侀棿璺濆拰灞傜骇銆?",
+    "鏂板鐢峰コ涓ゅ鍠濆挅鍟＄殑 Q 鐗堥櫔浼磋€咃紝鍙湪璁剧疆涓垏鎹€?",
+    "棣栭〉鏀寔鑷畾涔夌О鍛硷紝鍥哄畾鏂囨涓?鈥淐apture first. Use later.鈥濄€?",
+    "Chat Agent銆丩ibrary銆乀o-Do銆丷eview銆丆onnect 浜斾釜蹇嵎鍏ュ彛鎸夋柊棣栭〉甯冨眬鐩磋揪瀵瑰簲鍔熻兘銆?",
+    "搴曢儴鈥滅偣鍑诲紑濮嬭褰曗€濅綔涓?Chat Agent 蹇嵎鍏ュ彛锛涙湰娆″彧閲嶅仛棣栭〉锛屼笉鏀瑰姩鍏朵粬鎴愮啛椤甸潰缁撴瀯銆?"
   ],
-  "apkSizeBytes": 38428538,
+  "apkSizeBytes": 38461420,
   "patches": [
     {
-      "fromVersionName": "5.3.1",
-      "fromVersionCode": 5301,
-      "fromSha256": "51ac2f4871555b197ff6b6acf041fee7adc1f3a77817fa293e22ca67e3833b5f",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.0/from-5301-to-5400.bsdiff",
-      "patchSha256": "69b71ffe79d97f41a8057c0ac7ca5b5b6d04e7d7b6e3f27c5709c429b545ccea",
-      "patchSizeBytes": 6840784
+      "fromVersionName": "5.4.0",
+      "fromVersionCode": 5400,
+      "fromSha256": "77638750b1dcbe39496251850d071bb1926d92bb1e50f86aa400277433186d5f",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1/from-5400-to-5410.bsdiff",
+      "patchSha256": "1284082f66bb8cb369bd3170aed34ec7daad6f1ee98706e22567db2c102dafb0",
+      "patchSizeBytes": 4386258
     }
   ]
 }
