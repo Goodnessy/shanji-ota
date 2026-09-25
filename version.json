@@ -1,26 +1,26 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.3.1",
-  "versionCode": 5301,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.3.1/app-release.apk",
-  "sha256": "51ac2f4871555b197ff6b6acf041fee7adc1f3a77817fa293e22ca67e3833b5f",
+  "versionName": "5.4.0",
+  "versionCode": 5400,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.0/app-release.apk",
+  "sha256": "77638750b1dcbe39496251850d071bb1926d92bb1e50f86aa400277433186d5f",
   "forceUpdate": false,
   "releaseNotes": [
-    "﻿- 浠婃棩椤靛睍绀虹湡瀹炴棩绋嬪緟鍔炰笌鏈€杩戜繚瀛樼殑绗旇銆佹敹钘忥紝骞舵彁渚涘揩閫熻褰曞叆鍙ｃ€?",
-    "鍔╃悊鏌ユ壘宸叉湁寰呭姙鍜屽唴瀹规椂锛屽彲浠庡洖绛旂洿鎺ユ墦寮€鍘熻褰曘€?",
-    "鐭ヨ瘑搴撴悳绱㈢粨鏋滄寜鐩稿叧搴︽帓鍒楋紱姣忔棩 AI 鍥為【鍙煡鐪嬪畬鏁村唴瀹逛笌鐢熸垚渚濇嵁銆?",
-    "娣辫壊浠婃棩椤靛姞鍏ユ柊鐨勭鎶€鎰熸皼鍥磋儗鏅€傛鐗堟湰鏈仛鐪熸満瑙嗚楠岃瘉銆?"
+    "﻿- 鍏ㄦ柊娴呰摑涓庢贰绱瑙夐鏍硷紝缁熶竴浠婃棩椤点€丄I 鍔╃悊銆佺煡璇嗗簱銆佸緟鍔炴棩绋嬪拰鍥為【椤甸潰銆?",
+    "浠婃棩椤靛睍绀虹湡瀹炴棩绋嬪緟鍔炰笌鏈€杩戜繚瀛樼殑鍐呭锛屾彁渚涘揩閫熻褰曞拰鍔╃悊鍏ュ彛銆?",
+    "浼樺寲缂栬緫銆佽鎯呫€佽缃€佸綍闊炽€佸浠戒笌鍒嗕韩瀵煎叆绛夐〉闈㈢殑甯冨眬鍜屾搷浣滃眰绾с€?",
+    "淇濈暀鍘熸湁鏁版嵁涓庡姛鑳斤紱姝ょ増鏈緵鏈汉鍏堜綋楠岃瑙夋晥鏋滐紝灏氭湭鍋氱湡鏈鸿瑙夐獙璇併€?"
   ],
-  "apkSizeBytes": 38412154,
+  "apkSizeBytes": 38428538,
   "patches": [
     {
-      "fromVersionName": "5.2.3",
-      "fromVersionCode": 5203,
-      "fromSha256": "3e8ef978c028ec368e3b5f138463924840890c9dc2bfc9721e1da4732fb61dcb",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.3.1/from-5203-to-5301.bsdiff",
-      "patchSha256": "6fd1073215d0799435a44fa81aecfc4375bca0e43e7d077dae8ee62e0a981ff4",
-      "patchSizeBytes": 5845718
+      "fromVersionName": "5.3.1",
+      "fromVersionCode": 5301,
+      "fromSha256": "51ac2f4871555b197ff6b6acf041fee7adc1f3a77817fa293e22ca67e3833b5f",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.0/from-5301-to-5400.bsdiff",
+      "patchSha256": "69b71ffe79d97f41a8057c0ac7ca5b5b6d04e7d7b6e3f27c5709c429b545ccea",
+      "patchSizeBytes": 6840784
     }
   ]
 }
