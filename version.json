@@ -1,25 +1,25 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.3",
-  "versionCode": 5413,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.3/app-release.apk",
-  "sha256": "b31089ffecb31e8cee3a42cf0ede6ea8126f229e8da9b4d8c445caaf651d12fc",
+  "versionName": "5.4.1.4",
+  "versionCode": 5414,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.4/app-release.apk",
+  "sha256": "d4d5d96440f49e346fd7d34fd2be911e2ff41b7083c415ba8e6a070531454bf6",
   "forceUpdate": false,
   "releaseNotes": [
-    "首页陪伴者改为按屏幕宽度自适应显示，并设置合理上下限。",
-    "人物显示区域由单独拉高改为宽高同步控制，确保真机上实际放大。",
-    "其余首页和底部导航逻辑保持不变。"
+    "棣栭〉闄即鑰呭昂瀵哥敱 50% 灞忓璋冩暣涓?45%锛岃嚜閫傚簲鑼冨洿璋冩暣涓?172鈥?14dp銆?",
+    "鍐呭銆佸緟鍔炪€佸洖椤鹃〉闈㈠簳閮?Dock 绗竴涓叆鍙ｇ敱鈥滀粖澶┾€濇敼涓衡€滀富椤碘€濓紝鐐瑰嚮杩斿洖鏂扮増棣栭〉銆?",
+    "鍏朵綑椤甸潰涓庝氦浜掍繚鎸佷笉鍙樸€?"
   ],
   "apkSizeBytes": 38461420,
   "patches": [
     {
-      "fromVersionName": "5.4.1.2",
-      "fromVersionCode": 5412,
-      "fromSha256": "be573af34ad50d75c549c10d86877761c53e2d524994568598e8ebc258e0be76",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.3/from-5412-to-5413.bsdiff",
-      "patchSha256": "d70fe9ca849f455aeb8430ee1f609ca261a88f1a15765985d38920e6c1e42a91",
-      "patchSizeBytes": 4257070
+      "fromVersionName": "5.4.1.3",
+      "fromVersionCode": 5413,
+      "fromSha256": "b31089ffecb31e8cee3a42cf0ede6ea8126f229e8da9b4d8c445caaf651d12fc",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.4/from-5413-to-5414.bsdiff",
+      "patchSha256": "7f232a22f72ece1ccf438a5bd285810fcdd876cf8d0266b8e1a10acbc42944ce",
+      "patchSizeBytes": 4172680
     }
   ]
 }
