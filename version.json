@@ -1,26 +1,26 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.2.3",
-  "versionCode": 5203,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.2.3/app-release.apk",
-  "sha256": "3e8ef978c028ec368e3b5f138463924840890c9dc2bfc9721e1da4732fb61dcb",
+  "versionName": "5.3.1",
+  "versionCode": 5301,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.3.1/app-release.apk",
+  "sha256": "51ac2f4871555b197ff6b6acf041fee7adc1f3a77817fa293e22ca67e3833b5f",
   "forceUpdate": false,
   "releaseNotes": [
-    "恢复首页“闪记互联”入口，继续进入原有手机/电脑互传功能。",
-    "“闪记一下”支持长按单条对话进行删除。",
-    "支持进入多选模式批量删除多条对话，交互参考微信。",
-    "删除聊天记录不会删除已经确认生成的正式待办或记录。"
+    "﻿- 浠婃棩椤靛睍绀虹湡瀹炴棩绋嬪緟鍔炰笌鏈€杩戜繚瀛樼殑绗旇銆佹敹钘忥紝骞舵彁渚涘揩閫熻褰曞叆鍙ｃ€?",
+    "鍔╃悊鏌ユ壘宸叉湁寰呭姙鍜屽唴瀹规椂锛屽彲浠庡洖绛旂洿鎺ユ墦寮€鍘熻褰曘€?",
+    "鐭ヨ瘑搴撴悳绱㈢粨鏋滄寜鐩稿叧搴︽帓鍒楋紱姣忔棩 AI 鍥為【鍙煡鐪嬪畬鏁村唴瀹逛笌鐢熸垚渚濇嵁銆?",
+    "娣辫壊浠婃棩椤靛姞鍏ユ柊鐨勭鎶€鎰熸皼鍥磋儗鏅€傛鐗堟湰鏈仛鐪熸満瑙嗚楠岃瘉銆?"
   ],
-  "apkSizeBytes": 36925250,
+  "apkSizeBytes": 38412154,
   "patches": [
     {
-      "fromVersionName": "5.2.2",
-      "fromVersionCode": 5202,
-      "fromSha256": "73fe5ab280fd9eb07d4efe0390a41ae52f9bfbbeab1ef6119559b06830285414",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.2.3/from-5202-to-5203.bsdiff",
-      "patchSha256": "ee2c39916e5ee2b9e2840234459cd5531b985756ffeaa36d5d6f867521706827",
-      "patchSizeBytes": 4305733
+      "fromVersionName": "5.2.3",
+      "fromVersionCode": 5203,
+      "fromSha256": "3e8ef978c028ec368e3b5f138463924840890c9dc2bfc9721e1da4732fb61dcb",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.3.1/from-5203-to-5301.bsdiff",
+      "patchSha256": "6fd1073215d0799435a44fa81aecfc4375bca0e43e7d077dae8ee62e0a981ff4",
+      "patchSizeBytes": 5845718
     }
   ]
 }
