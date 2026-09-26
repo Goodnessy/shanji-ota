@@ -1,27 +1,26 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.7",
-  "versionCode": 5417,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.7/app-release.apk",
-  "sha256": "e27042fbe7af4b78a8c8a027feebfad986b9cf4f25ab8a930cdfda42f1c76bf5",
+  "versionName": "5.4.1.8",
+  "versionCode": 5418,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.8/app-release.apk",
+  "sha256": "6b6d7c24e0a73712f29a1f1c30f9601958624153d2d4ee647a17ce79e23d1ed0",
   "forceUpdate": false,
   "releaseNotes": [
-    "Chat Agent 高频聊天界面整体精修：重新统一文字、气泡、头像、时间与消息间距，提升长时间使用的舒适度。",
-    "输入区改为微信式紧凑交互：空白无提示文字，支持自动多行与回车换行，右侧按内容在“+ / 发送”间切换。",
-    "“+”附件面板仅保留拍照、图片、文件，并重做为轻量聊天附件面板；长按菜单、多选与删除操作同步重做。",
-    "待办与内容卡片仅做视觉优化：收敛字号、圆角、留白和层级，不改变既有字段、确认、修改、取消与查看逻辑。",
-    "新增并启用“我的头像”上传、本地持久化和恢复默认；修复直接粘贴虎嗅、微信公众号等 URL 后的自动识别与解析。"
+    "﻿- 浼樺寲 Chat Agent 瀵硅瘽鐣岄潰銆佽緭鍏ュ尯涓庡崱鐗囦氦浜掔粏鑺傘€?",
+    "寮哄寲鑷劧璇█寰呭姙璇嗗埆涓庨暱鏂囨湰鐞嗚В銆?",
+    "琛ラ綈鎼滅储涓庡洖椤剧殑鍥炬枃璇佹嵁鍛堢幇鍜岃鎯呬綋楠屻€?",
+    "寤剁画 V5.4.1.7 姝ｅ紡绛惧悕涓?OTA 鍗囩骇閾捐矾銆?"
   ],
-  "apkSizeBytes": 38494188,
+  "apkSizeBytes": 38510572,
   "patches": [
     {
-      "fromVersionName": "5.4.1.6",
-      "fromVersionCode": 5416,
-      "fromSha256": "69cd02d99f796ebe087f91665b24ea7e895a3a5879de31e05921518f006fab50",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.7/from-5416-to-5417.bsdiff",
-      "patchSha256": "48d8298d2d7c0681e87d13c5ac3427eff20917716005da2344ecc10967481157",
-      "patchSizeBytes": 4391610
+      "fromVersionName": "5.4.1.7",
+      "fromVersionCode": 5417,
+      "fromSha256": "e27042fbe7af4b78a8c8a027feebfad986b9cf4f25ab8a930cdfda42f1c76bf5",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.8/from-5417-to-5418.bsdiff",
+      "patchSha256": "6a65ee59ae7fbbc487992d6aedf3c5ca0ea89d2489c536a18cb1141d81a0bb6d",
+      "patchSizeBytes": 4405452
     }
   ]
 }
