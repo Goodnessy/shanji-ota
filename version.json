@@ -1,26 +1,26 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.8",
-  "versionCode": 5418,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.8/app-release.apk",
-  "sha256": "6b6d7c24e0a73712f29a1f1c30f9601958624153d2d4ee647a17ce79e23d1ed0",
+  "versionName": "5.4.1.9",
+  "versionCode": 5419,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.9/app-release.apk",
+  "sha256": "4f0c3e661d80c5ebb02491f3ff192917685df1dee5bfedea1b043ed8fa7e6822",
   "forceUpdate": false,
   "releaseNotes": [
-    "优化 Chat Agent 对话界面、输入区与卡片交互细节。",
-    "强化自然语言待办识别与长文本理解。",
-    "补齐搜索与回顾的图文证据呈现和详情体验。",
-    "延续 V5.4.1.7 正式签名与 OTA 升级链路。"
+    "新增统一搜索系统：Chat Agent 支持跨内容、对话、待办、项目、回顾、图片/附件的全局搜索，并可基于证据进行 AI 整理。",
+    "内容、待办/项目、回顾模块接入统一搜索底层，支持“查看全闪记相关结果”和“让闪记整理”的双向联动。",
+    "完善搜索筛选、结果详情、引用证据、搜索历史与上下文保留，模块搜索与 Agent 搜索共享检索基础。",
+    "修复 Chat Agent 双侧头像安全线：Agent 卡片不进入用户头像区域，用户内容也不进入 Agent 头像区域。"
   ],
-  "apkSizeBytes": 38510572,
+  "apkSizeBytes": 38625260,
   "patches": [
     {
-      "fromVersionName": "5.4.1.7",
-      "fromVersionCode": 5417,
-      "fromSha256": "e27042fbe7af4b78a8c8a027feebfad986b9cf4f25ab8a930cdfda42f1c76bf5",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.8/from-5417-to-5418.bsdiff",
-      "patchSha256": "6a65ee59ae7fbbc487992d6aedf3c5ca0ea89d2489c536a18cb1141d81a0bb6d",
-      "patchSizeBytes": 4405452
+      "fromVersionName": "5.4.1.8",
+      "fromVersionCode": 5418,
+      "fromSha256": "6b6d7c24e0a73712f29a1f1c30f9601958624153d2d4ee647a17ce79e23d1ed0",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.9/from-5418-to-5419.bsdiff",
+      "patchSha256": "298ac31e76dc1fb15f431cd60139dfe7e270078e2e6c5d27d04d0040686ad1e9",
+      "patchSizeBytes": 4526552
     }
   ]
 }
