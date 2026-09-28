@@ -1,26 +1,26 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.10",
-  "versionCode": 54110,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.10/app-release.apk",
-  "sha256": "5ac9aa33dced7a0d4294a940f514a339a793c92d1862a7c48b7ce94d9ae944b0",
+  "versionName": "5.4.1.11",
+  "versionCode": 54111,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.11/app-release.apk",
+  "sha256": "f0a8e183184594be2ca608f3b9997d74817347816d6d7be2add5daa95ef0da01",
   "forceUpdate": false,
   "releaseNotes": [
-    "完成统一搜索最后收口：关键词搜索直接返回结果，问句搜索进入“闪记回答”，不再强制 AI 整理。",
-    "新增“项目”搜索分类，并让内容、待办、项目结果直接进入正式业务详情页。",
-    "从搜索结果进入正式详情后，返回可恢复原查询、筛选、AI 回答、追问与滚动位置。",
-    "回答依据改为仅展示 AI 实际引用的相关记录，并改为纵向结果展示，保留图片结果的精确身份。"
+    "﻿- 鍐呭涓婚〉闈㈤噸寤轰负杞婚噺鍐呭娴侊紝鍑忓皯澶у崱鐗囥€侀暱鏈熺瓫閫夊櫒鍜岀鐞嗗櫒鎰熴€?",
+    "浠庡唴瀹瑰垪琛ㄨ繘鍏ュ叏鏂伴槄璇绘€侊細鏍囬銆佹潵婧愩€丄I鏁寸悊缁撴灉銆佹鏂囧舰鎴愯繛缁槄璇诲眰绾с€?",
+    "鏍囩銆佸浠姐€佸洖鏀剁珯绛夌鐞嗚兘鍔涢檷鍒扮浜屽眰锛涙棫缂栬緫鍣ㄤ粛閫氳繃鈥滅鐞嗏€濅繚鐣欙紝搴曞眰鏁版嵁閫昏緫涓嶉噸鍐欍€?",
+    "AI鏁寸悊鍚庣殑鍘熸枃缁х画鍙拷婧紝骞朵互绠€娲佹姌鍙犲叆鍙ｅ憟鐜般€?"
   ],
-  "apkSizeBytes": 38658028,
+  "apkSizeBytes": 38690796,
   "patches": [
     {
-      "fromVersionName": "5.4.1.9",
-      "fromVersionCode": 5419,
-      "fromSha256": "4f0c3e661d80c5ebb02491f3ff192917685df1dee5bfedea1b043ed8fa7e6822",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.10/from-5419-to-54110.bsdiff",
-      "patchSha256": "0c16d3b6630a4741a5a1ade468a514984dc7b3ed1fa35e62d5d87e0bbef368b0",
-      "patchSizeBytes": 4548501
+      "fromVersionName": "5.4.1.10",
+      "fromVersionCode": 54110,
+      "fromSha256": "5ac9aa33dced7a0d4294a940f514a339a793c92d1862a7c48b7ce94d9ae944b0",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.11/from-54110-to-54111.bsdiff",
+      "patchSha256": "49c2e3f456b650b9dc55867d8eac83eb4551c500b85d3d5537cbb919dcd0e79c",
+      "patchSizeBytes": 4583551
     }
   ]
 }
