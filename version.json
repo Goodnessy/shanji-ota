@@ -1,26 +1,26 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.11",
-  "versionCode": 54111,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.11/app-release.apk",
-  "sha256": "f0a8e183184594be2ca608f3b9997d74817347816d6d7be2add5daa95ef0da01",
+  "versionName": "5.4.1.12",
+  "versionCode": 54112,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.12/app-release.apk",
+  "sha256": "988d24d70d243e3b16afa4018bade07778e233b893d8805b25f6ec307518d093",
   "forceUpdate": false,
   "releaseNotes": [
-    "内容主页面重建为轻量内容流，减少大卡片、长期筛选器和管理器感。",
-    "从内容列表进入全新阅读态：标题、来源、AI 整理结果、正文形成连续阅读层级。",
-    "标签、备份、回收站等管理能力降到第二层；旧编辑器仍通过“管理”保留，底层数据逻辑不重写。",
-    "AI 整理后的原文继续可追溯，并以简洁折叠入口呈现。"
+    "﻿- 淇 V5.4.1.11 鍐呭涓婚〉闈㈤噸鏋勯€犳垚鐨勫姛鑳藉洖褰掞紝鎭㈠鎴愮啛 ContentScreen 涓氬姟閾捐矾銆?",
+    "鎭㈠宸︽粦鍒犻櫎銆佸垹闄ょ‘璁ゃ€佸洖鏀剁珯銆佹挙閿€鎭㈠銆侀暱鎸夊揩閫熸爣绛俱€佸垎鍖轰笌闃呰鐘舵€佺瓫閫夌瓑鎴愮啛浜や簰銆?",
+    "鎭㈠ 34脳58dp 绔栨帓鏉ユ簮鏍囪瘑锛氬井淇℃贰缁裤€佸皬绾功娣＄矇銆佺綉椤垫贰钃濓紝骞朵繚鎸佸厠鍒剁殑淇℃伅灞傜骇銆?",
+    "淇濈暀缁熶竴鎼滅储銆丄gent 鍏ㄥ眬鎼滅储銆佹悳绱㈠巻鍙层€丄I 鎼滅储浼樺寲銆佺粨鏋滄帓搴忎笌姝ｅ紡璇︽儏璺宠浆绛夋棦鏈夎兘鍔涖€?"
   ],
-  "apkSizeBytes": 38690796,
+  "apkSizeBytes": 38658028,
   "patches": [
     {
-      "fromVersionName": "5.4.1.10",
-      "fromVersionCode": 54110,
-      "fromSha256": "5ac9aa33dced7a0d4294a940f514a339a793c92d1862a7c48b7ce94d9ae944b0",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.11/from-54110-to-54111.bsdiff",
-      "patchSha256": "49c2e3f456b650b9dc55867d8eac83eb4551c500b85d3d5537cbb919dcd0e79c",
-      "patchSizeBytes": 4583551
+      "fromVersionName": "5.4.1.11",
+      "fromVersionCode": 54111,
+      "fromSha256": "f0a8e183184594be2ca608f3b9997d74817347816d6d7be2add5daa95ef0da01",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.12/from-54111-to-54112.bsdiff",
+      "patchSha256": "aa5bdeb941542112dcc0ae1b0d42dc21669fbfb83ae1253f345e0c1bbf1b8413",
+      "patchSizeBytes": 4544646
     }
   ]
 }
