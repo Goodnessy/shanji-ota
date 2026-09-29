@@ -1,26 +1,26 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.12",
-  "versionCode": 54112,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.12/app-release.apk",
-  "sha256": "988d24d70d243e3b16afa4018bade07778e233b893d8805b25f6ec307518d093",
+  "versionName": "5.4.1.13",
+  "versionCode": 54113,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.13/app-release.apk",
+  "sha256": "bf69589728c88a1585ced59168602934c00fed85b0084b94e9a72d0b71a45668",
   "forceUpdate": false,
   "releaseNotes": [
-    "修复 V5.4.1.11 内容主页面重构造成的功能回归，恢复成熟 ContentScreen 业务链路。",
-    "恢复左滑删除、删除确认、回收站、撤销恢复、长按快速标签、分区与阅读状态筛选等成熟交互。",
-    "恢复 34×58dp 竖排来源标识：微信淡绿、小红书淡粉、网页淡蓝，并保持克制的信息层级。",
-    "保留统一搜索、Agent 全局搜索、搜索历史、AI 搜索优化、结果排序与正式详情跳转等既有能力。"
+    "﻿- 寰呭姙涓€绾т富椤甸潰缁熶竴鍒版柊鐗堥棯璁拌瑙夎瑷€锛岀户缁部鐢ㄩ椤点€佸唴瀹归〉鐨勬祬钃濇皼鍥磋儗鏅笌鍏嬪埗灞傜骇銆?",
+    "椤堕儴鎿嶄綔鍑忚礋锛氭棩鏈?鏃ュ巻浠庡伐鍏疯兌鍥婁腑鐙珛锛屼繚鐣欐悳绱€佺瓫閫夊拰鏂板缓涓変釜鏍稿績鎿嶄綔銆?",
+    "鎼滅储杈撳叆鍖烘敼涓烘洿杞荤殑鍗婇€忔槑鍦嗚鏍峰紡锛屼换鍔″垪琛ㄤ笌椤圭洰鑹插僵闄嶄綆瑙嗚鍣０銆?",
+    "淇濈暀鐜版湁寰呭姙銆侀」鐩€佹棩鍘嗐€丟oogle Calendar銆佺粺涓€鎼滅储涓?AI 瑙ｆ瀽绛夊叏閮ㄤ笟鍔¤兘鍔涖€?"
   ],
   "apkSizeBytes": 38658028,
   "patches": [
     {
-      "fromVersionName": "5.4.1.11",
-      "fromVersionCode": 54111,
-      "fromSha256": "f0a8e183184594be2ca608f3b9997d74817347816d6d7be2add5daa95ef0da01",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.12/from-54111-to-54112.bsdiff",
-      "patchSha256": "aa5bdeb941542112dcc0ae1b0d42dc21669fbfb83ae1253f345e0c1bbf1b8413",
-      "patchSizeBytes": 4544646
+      "fromVersionName": "5.4.1.12",
+      "fromVersionCode": 54112,
+      "fromSha256": "988d24d70d243e3b16afa4018bade07778e233b893d8805b25f6ec307518d093",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.13/from-54112-to-54113.bsdiff",
+      "patchSha256": "c40d5de3ca1b50d939a4c67fa39e7c8532ab77f313146e13d47befbc1ccdd2a0",
+      "patchSizeBytes": 4522800
     }
   ]
 }
