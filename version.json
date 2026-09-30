@@ -1,25 +1,25 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.14",
-  "versionCode": 54114,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.14/app-release.apk",
-  "sha256": "66e3619a2ad9d47b00c886e5eea01eff827f7eb7fbbb3af9d4a6d17a877bea7a",
+  "versionName": "5.4.1.15",
+  "versionCode": 54115,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.15/app-release.apk",
+  "sha256": "31063c66cd7e31de1dfa0fd8108272902803005a2ce3768a75e49000748d7a2e",
   "forceUpdate": false,
   "releaseNotes": [
-    "﻿- 寰呭姙涓€绾ч〉鏀逛负绱у噾椤堕儴宸ュ叿鍖猴紝璁╀换鍔″唴瀹规垚涓洪〉闈富浣撱€?",
-    "淇濈暀鏃ユ湡/鏃ュ巻銆佹椂闂?椤圭洰銆佹悳绱€佺瓫閫夈€佹柊寤轰互鍙婂師鏈夊緟鍔炰笟鍔¤兘鍔涖€?",
-    "鍏ㄥ眬 Dock 鏀逛负鏇磋交銆佹洿钖勭殑鎮诞鐜荤拑瀵艰埅锛岀粺涓€鏂扮増闂瑙嗚璇█銆?"
+    "﻿- Chat Agent 鏂板鏅鸿兘銆佸唴瀹广€佸緟鍔炪€佹棩绋嬨€佺綉椤佃緭鍏ユā寮忥紝鏄庣‘鎰忓浘鍙湪鍙戦€佸墠閫夋嫨銆?",
+    "Chat Agent 杈撳叆鍖烘敼涓鸿交閲忚兌鍥婁笌娴呰摑銆佺櫧鑹茶交鐜荤拑瑙嗚銆?",
+    "绮剧畝寰呭姙绌虹姸鎬佷笌杩囨椂璇存槑鏂囨銆?"
   ],
-  "apkSizeBytes": 38658028,
+  "apkSizeBytes": 38674412,
   "patches": [
     {
-      "fromVersionName": "5.4.1.13",
-      "fromVersionCode": 54113,
-      "fromSha256": "bf69589728c88a1585ced59168602934c00fed85b0084b94e9a72d0b71a45668",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.14/from-54113-to-54114.bsdiff",
-      "patchSha256": "7f606cdd407dff598fbcdbd1a8b26e0e319d79d84538fdfb105be5a64748404f",
-      "patchSizeBytes": 4582964
+      "fromVersionName": "5.4.1.14",
+      "fromVersionCode": 54114,
+      "fromSha256": "66e3619a2ad9d47b00c886e5eea01eff827f7eb7fbbb3af9d4a6d17a877bea7a",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.15/from-54114-to-54115.bsdiff",
+      "patchSha256": "c65f4aab912836356d998340fe762ddded29b5fe17fcbea71a039e36be262cac",
+      "patchSizeBytes": 4607303
     }
   ]
 }
