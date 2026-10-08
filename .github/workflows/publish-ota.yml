@@ -15,6 +15,10 @@ permissions:
 
 jobs:
   publish:
+    # V5.4.1.18 uses the validated office Windows replacement in shanji-build.
+    # Candidate run 37748788170: 204 tests passed, signed APK and BSDIFF40 round-trip verified.
+    # Replacement workflow: .github/workflows/v54118-publish-ota.yml, pinned candidate 97da6c0.
+    if: github.event_name != 'release' || github.event.release.tag_name != 'v5.4.1.18'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
