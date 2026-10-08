@@ -1,25 +1,26 @@
 {
-  "schemaVersion": 2,
-  "enabled": true,
-  "versionName": "5.4.1.17",
-  "versionCode": 54117,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.17/app-release.apk",
-  "sha256": "34492dc3647957093a787890c64b719eefbbf8aee9c286db7938aed9626663d6",
-  "forceUpdate": false,
-  "releaseNotes": [
-    "﻿- Refine Chat Agent composer controls and reduce unnecessary top-level actions.",
-    "Refine task list header and task edit layout while preserving existing task behavior.",
-    "Align Review visual hierarchy with the current app style and retain token usage display."
-  ],
-  "apkSizeBytes": 38658028,
-  "patches": [
-    {
-      "fromVersionName": "5.4.1.16",
-      "fromVersionCode": 54116,
-      "fromSha256": "7af33edc73761cbf58a6b4031024735c0530cdd962e6fec37beb8bedad7f7f4f",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.17/from-54116-to-54117.bsdiff",
-      "patchSha256": "6d576ebcd7d67b2b93224f0b2d51fe9cde6f979b628fbfc171aba8a62b47aa2a",
-      "patchSizeBytes": 4528926
-    }
-  ]
+    "schemaVersion":  2,
+    "enabled":  true,
+    "versionName":  "5.4.1.18",
+    "versionCode":  54118,
+    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.18/app-release.apk",
+    "sha256":  "9941ae592d4f0738857192c76cc63f98c144b0a29e1a8e679332d920d4360686",
+    "forceUpdate":  false,
+    "apkSizeBytes":  38674412,
+    "releaseNotes":  [
+                         "Refactor AI / Chat Core and integrate Article Organizer.",
+                         "Simplify Review reading hierarchy.",
+                         "Refine the settings directory and focused sections.",
+                         "Unify Today tasks and system calendar events."
+                     ],
+    "patches":  [
+                    {
+                        "fromVersionName":  "5.4.1.17",
+                        "fromVersionCode":  54117,
+                        "fromSha256":  "34492dc3647957093a787890c64b719eefbbf8aee9c286db7938aed9626663d6",
+                        "patchUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.18/from-54117-to-54118.bsdiff",
+                        "patchSha256":  "6b9d2913935e42be9ba24e12c52ac25d59c4861020e6dad7a1752a68a357cd0f",
+                        "patchSizeBytes":  4623019
+                    }
+                ]
 }
