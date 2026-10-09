@@ -1,26 +1,31 @@
 {
     "schemaVersion":  2,
     "enabled":  true,
-    "versionName":  "5.4.1.18",
-    "versionCode":  54118,
-    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.18/app-release.apk",
-    "sha256":  "9941ae592d4f0738857192c76cc63f98c144b0a29e1a8e679332d920d4360686",
+    "versionName":  "5.4.1.19",
+    "versionCode":  54119,
+    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.19/app-release.apk",
+    "sha256":  "221899df8bf7b3fd205a5a1222a8546010318abe7829fd8f19ed00b1de664c4a",
     "forceUpdate":  false,
-    "apkSizeBytes":  38674412,
+    "apkSizeBytes":  38690796,
     "releaseNotes":  [
-                         "Refactor AI / Chat Core and integrate Article Organizer.",
-                         "Simplify Review reading hierarchy.",
-                         "Refine the settings directory and focused sections.",
-                         "Unify Today tasks and system calendar events."
+                         {
+                             "value":  [
+                                           "全应用统一界面样式，优化首页、列表、任务、项目、回顾、聊天和设置下级页面。",
+                                           "内容页重构：正文专注阅读，速览独立打开，管理操作收进更多菜单。",
+                                           "优化内容卡片的标题、作者来源、封面和摘要层次。",
+                                           "修复草稿失败保留、退出确认、窄屏和深色大字体布局细节。"
+                                       ],
+                             "Count":  4
+                         }
                      ],
     "patches":  [
                     {
-                        "fromVersionName":  "5.4.1.17",
-                        "fromVersionCode":  54117,
-                        "fromSha256":  "34492dc3647957093a787890c64b719eefbbf8aee9c286db7938aed9626663d6",
-                        "patchUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.18/from-54117-to-54118.bsdiff",
-                        "patchSha256":  "6b9d2913935e42be9ba24e12c52ac25d59c4861020e6dad7a1752a68a357cd0f",
-                        "patchSizeBytes":  4623019
+                        "fromVersionName":  "5.4.1.18",
+                        "fromVersionCode":  54118,
+                        "fromSha256":  "9941ae592d4f0738857192c76cc63f98c144b0a29e1a8e679332d920d4360686",
+                        "patchUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.19/from-54118-to-54119.bsdiff",
+                        "patchSha256":  "0bbbdbc4a972ddde2e98aeeb1b43f066c173dfc9e9636d8a07ba1b45773d6b80",
+                        "patchSizeBytes":  4584179
                     }
                 ]
 }
