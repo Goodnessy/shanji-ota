@@ -1,26 +1,26 @@
 {
-  "schemaVersion": 2,
-  "enabled": true,
-  "versionName": "5.4.1.19",
-  "versionCode": 54119,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.19/app-release.apk",
-  "sha256": "221899df8bf7b3fd205a5a1222a8546010318abe7829fd8f19ed00b1de664c4a",
-  "forceUpdate": false,
-  "apkSizeBytes": 38690796,
-  "releaseNotes": [
-    "全应用统一界面样式，优化首页、列表、任务、项目、回顾、聊天和设置下级页面。",
-    "内容页重构：正文专注阅读，速览独立打开，管理操作收进更多菜单。",
-    "优化内容卡片的标题、作者来源、封面和摘要层次。",
-    "修复草稿失败保留、退出确认、窄屏和深色大字体布局细节。"
-  ],
-  "patches": [
-    {
-      "fromVersionName": "5.4.1.18",
-      "fromVersionCode": 54118,
-      "fromSha256": "9941ae592d4f0738857192c76cc63f98c144b0a29e1a8e679332d920d4360686",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.19/from-54118-to-54119.bsdiff",
-      "patchSha256": "0bbbdbc4a972ddde2e98aeeb1b43f066c173dfc9e9636d8a07ba1b45773d6b80",
-      "patchSizeBytes": 4584179
-    }
-  ]
+    "schemaVersion":  2,
+    "enabled":  true,
+    "versionName":  "5.4.1.20",
+    "versionCode":  54120,
+    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.20/app-release.apk",
+    "sha256":  "acb7b825d5e65177da374ca0cc672038a08fc7b5f66cf1f44d7835530c449e9b",
+    "forceUpdate":  false,
+    "apkSizeBytes":  38707180,
+    "releaseNotes":  [
+                         "内容列表改为紧凑缩略图，恢复清晰的平台来源标识，去除重复来源文字。",
+                         "统一全应用输入框、导航与表单样式，简化助手输入区域。",
+                         "重新分组文章更多操作，保留独立速览与完整正文阅读。",
+                         "待办强化任务行，回顾优先展示完成事项与真实图片，加入统一小插画。AI调用故障本版暂未修复。"
+                     ],
+    "patches":  [
+                    {
+                        "fromVersionName":  "5.4.1.19",
+                        "fromVersionCode":  54119,
+                        "fromSha256":  "221899df8bf7b3fd205a5a1222a8546010318abe7829fd8f19ed00b1de664c4a",
+                        "patchUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.20/from-54119-to-54120.bsdiff",
+                        "patchSha256":  "cb5df5fdd1d59b519b9403e4936eec2e63ecbb6fb331f2d3eb1edb73d4aa19cd",
+                        "patchSizeBytes":  11890921
+                    }
+                ]
 }
