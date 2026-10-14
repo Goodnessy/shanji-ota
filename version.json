@@ -1,26 +1,26 @@
 {
     "schemaVersion":  2,
     "enabled":  true,
-    "versionName":  "5.4.1.20",
-    "versionCode":  54120,
-    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.20/app-release.apk",
-    "sha256":  "acb7b825d5e65177da374ca0cc672038a08fc7b5f66cf1f44d7835530c449e9b",
+    "versionName":  "5.4.1.21",
+    "versionCode":  54121,
+    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.21/app-release.apk",
+    "sha256":  "5e6dd580a70bcef7d0b4fe0491df9d1a5b5a35391dbcbea22cc222862dd95bb8",
     "forceUpdate":  false,
-    "apkSizeBytes":  38707180,
+    "apkSizeBytes":  38723564,
     "releaseNotes":  [
-                         "内容列表改为紧凑缩略图，恢复清晰的平台来源标识，去除重复来源文字。",
-                         "统一全应用输入框、导航与表单样式，简化助手输入区域。",
-                         "重新分组文章更多操作，保留独立速览与完整正文阅读。",
-                         "待办强化任务行，回顾优先展示完成事项与真实图片，加入统一小插画。AI调用故障本版暂未修复。"
+                         "修复导入文章的 AI 整理入口与图文草稿应用保护。",
+                         "改进多事项识别、中文时间区间及项目归属，明确显示 AI 失败时的本地回退。",
+                         "聊天采用左右气泡布局，浅色页面统一白底，优化大字体确认操作。",
+                         "补充 Google 日历同步检查、同步请求及失败提示；实际云端同步请更新后确认。"
                      ],
     "patches":  [
                     {
-                        "fromVersionName":  "5.4.1.19",
-                        "fromVersionCode":  54119,
-                        "fromSha256":  "221899df8bf7b3fd205a5a1222a8546010318abe7829fd8f19ed00b1de664c4a",
-                        "patchUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.20/from-54119-to-54120.bsdiff",
-                        "patchSha256":  "cb5df5fdd1d59b519b9403e4936eec2e63ecbb6fb331f2d3eb1edb73d4aa19cd",
-                        "patchSizeBytes":  11890921
+                        "fromVersionName":  "5.4.1.20",
+                        "fromVersionCode":  54120,
+                        "fromSha256":  "acb7b825d5e65177da374ca0cc672038a08fc7b5f66cf1f44d7835530c449e9b",
+                        "patchUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.21/from-54120-to-54121.bsdiff",
+                        "patchSha256":  "42abe2c0ec6d53ddc03fc25878c33a2a0b6287b084e47400b75e35525e36f81b",
+                        "patchSizeBytes":  8468883
                     }
                 ]
 }
