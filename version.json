@@ -1,26 +1,26 @@
 {
     "schemaVersion":  2,
     "enabled":  true,
-    "versionName":  "5.4.1.21",
-    "versionCode":  54121,
-    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.21/app-release.apk",
-    "sha256":  "5e6dd580a70bcef7d0b4fe0491df9d1a5b5a35391dbcbea22cc222862dd95bb8",
+    "versionName":  "5.4.1.22",
+    "versionCode":  54122,
+    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.22/app-release.apk",
+    "sha256":  "bb12d56d1545cf238d1de53cc934611961548759d05c6b67b2aa86dceeba75c3",
     "forceUpdate":  false,
-    "apkSizeBytes":  38723564,
+    "apkSizeBytes":  38739948,
     "releaseNotes":  [
-                         "修复导入文章的 AI 整理入口与图文草稿应用保护。",
-                         "改进多事项识别、中文时间区间及项目归属，明确显示 AI 失败时的本地回退。",
-                         "聊天采用左右气泡布局，浅色页面统一白底，优化大字体确认操作。",
-                         "补充 Google 日历同步检查、同步请求及失败提示；实际云端同步请更新后确认。"
+                         "恢复首页布局和中文快捷入口，保留 Capture first. Use later.。",
+                         "首页问候支持自定义、清空、隐藏，并持久保存。",
+                         "调整聊天首次定位与历史滚动，恢复原头像尺寸和圆角。",
+                         "长消息三行预览，支持查看全文和关联内容，返回保留聊天位置。"
                      ],
     "patches":  [
                     {
-                        "fromVersionName":  "5.4.1.20",
-                        "fromVersionCode":  54120,
-                        "fromSha256":  "acb7b825d5e65177da374ca0cc672038a08fc7b5f66cf1f44d7835530c449e9b",
-                        "patchUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.21/from-54120-to-54121.bsdiff",
-                        "patchSha256":  "42abe2c0ec6d53ddc03fc25878c33a2a0b6287b084e47400b75e35525e36f81b",
-                        "patchSizeBytes":  8468883
+                        "fromVersionName":  "5.4.1.21",
+                        "fromVersionCode":  54121,
+                        "fromSha256":  "5e6dd580a70bcef7d0b4fe0491df9d1a5b5a35391dbcbea22cc222862dd95bb8",
+                        "patchUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.22/from-54121-to-54122.bsdiff",
+                        "patchSha256":  "69e7cebbc6940d719cd4dec0b0707952ffe9b4ba95c141aed4d9576b678ec6c8",
+                        "patchSizeBytes":  4673719
                     }
                 ]
 }
