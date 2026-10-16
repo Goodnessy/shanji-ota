@@ -1,0 +1,17 @@
+{
+    "patches":  [
+
+                ],
+    "forceUpdate":  false,
+    "enabled":  true,
+    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/test-v5.4.1.22-1/app-release.apk",
+    "releaseNotes":  [
+                         "Independent test baseline; home and chat batch one; fixed home tagline."
+                     ],
+    "packageName":  "com.wenhe.shanji.test",
+    "versionCode":  5412201,
+    "apkSizeBytes":  38739948,
+    "sha256":  "30ead151cb20ec31949201f17890627fb463f5fd156a89570381c6f4d75a162d",
+    "versionName":  "5.4.1.22-test.1",
+    "schemaVersion":  2
+}
