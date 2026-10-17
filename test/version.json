@@ -4,14 +4,21 @@
                 ],
     "forceUpdate":  false,
     "enabled":  true,
-    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/test-v5.4.1.22-1/app-release.apk",
-    "releaseNotes":  [
-                         "Independent test baseline; home and chat batch one; fixed home tagline."
-                     ],
+    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/test-v5.4.1.23-1/app-release.apk",
+    "releaseNotes":  {
+                         "value":  [
+                                       "独立测试候选版，可与正式版并存。",
+                                       "修订图片上下文识别、多任务确认与文章原文保护。",
+                                       "精修首页、聊天、内容列表、文章工具栏和更多操作。",
+                                       "增加日历来源选择、去重、项目时间统计及按需AI估算。",
+                                       "正式OTA未发布；在线AI、OPPO/飞书日历与Google云端结果仍需真机验收。"
+                                   ],
+                         "Count":  5
+                     },
     "packageName":  "com.wenhe.shanji.test",
-    "versionCode":  5412201,
-    "apkSizeBytes":  38739948,
-    "sha256":  "30ead151cb20ec31949201f17890627fb463f5fd156a89570381c6f4d75a162d",
-    "versionName":  "5.4.1.22-test.1",
+    "versionCode":  5412301,
+    "apkSizeBytes":  60336290,
+    "sha256":  "4620e6a0841838b597a64177f19ee48fd14130425178e8341819e32cc796b1e3",
+    "versionName":  "5.4.1.23-test.1",
     "schemaVersion":  2
 }
