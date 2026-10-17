@@ -1,26 +1,18 @@
 {
-    "schemaVersion":  2,
-    "enabled":  true,
-    "versionName":  "5.4.1.22",
-    "versionCode":  54122,
-    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.22/app-release.apk",
-    "sha256":  "bb12d56d1545cf238d1de53cc934611961548759d05c6b67b2aa86dceeba75c3",
-    "forceUpdate":  false,
-    "apkSizeBytes":  38739948,
-    "releaseNotes":  [
-                         "恢复首页布局和中文快捷入口，保留 Capture first. Use later.。",
-                         "首页问候支持自定义、清空、隐藏，并持久保存。",
-                         "调整聊天首次定位与历史滚动，恢复原头像尺寸和圆角。",
-                         "长消息三行预览，支持查看全文和关联内容，返回保留聊天位置。"
-                     ],
-    "patches":  [
-                    {
-                        "fromVersionName":  "5.4.1.21",
-                        "fromVersionCode":  54121,
-                        "fromSha256":  "5e6dd580a70bcef7d0b4fe0491df9d1a5b5a35391dbcbea22cc222862dd95bb8",
-                        "patchUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.22/from-54121-to-54122.bsdiff",
-                        "patchSha256":  "69e7cebbc6940d719cd4dec0b0707952ffe9b4ba95c141aed4d9576b678ec6c8",
-                        "patchSizeBytes":  4673719
-                    }
-                ]
+  "schemaVersion": 2,
+  "enabled": true,
+  "versionName": "5.4.1.23",
+  "versionCode": 54123,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/candidate-v5.4.1.23-780a8f15/app-release.apk",
+  "sha256": "c1be6321a2d0af5b1ef8c9f22a135a3e646dcf8541cfbec76410cd1b581c3e0a",
+  "forceUpdate": false,
+  "apkSizeBytes": 60336290,
+  "releaseNotes": [
+    "本次按用户确认，通过OTA安装V5.4.1.23进行真机验证。",
+    "升级图片上下文识别、多任务确认、隐性跟进建议及文章原文保护。",
+    "精修首页、聊天、内容、文章详情、待办和回顾界面。",
+    "增加日历数据源选择、去重与计划时间统计；区分本机写入与云端同步。",
+    "在线AI、真实日历同步及历史数据升级效果仍待真机确认，请反馈实际表现。"
+  ],
+  "patches": []
 }
