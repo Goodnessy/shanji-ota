@@ -1,18 +1,28 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.23",
-  "versionCode": 54123,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/candidate-v5.4.1.23-780a8f15/app-release.apk",
-  "sha256": "c1be6321a2d0af5b1ef8c9f22a135a3e646dcf8541cfbec76410cd1b581c3e0a",
+  "versionName": "5.4.1.24",
+  "versionCode": 54124,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.24/app-release.apk",
+  "sha256": "4e3bfc600b14be2f24ed219889874abc5228c34f974f61c6ea46287e79039f82",
   "forceUpdate": false,
-  "apkSizeBytes": 60336290,
   "releaseNotes": [
-    "本次按用户确认，通过OTA安装V5.4.1.23进行真机验证。",
-    "升级图片上下文识别、多任务确认、隐性跟进建议及文章原文保护。",
-    "精修首页、聊天、内容、文章详情、待办和回顾界面。",
-    "增加日历数据源选择、去重与计划时间统计；区分本机写入与云端同步。",
-    "在线AI、真实日历同步及历史数据升级效果仍待真机确认，请反馈实际表现。"
+    "小红书图文、视频及 Live 资源接入现有内容收藏与附件系统。",
+    "公众号保留现有正文解析，增加图片补全；保留原图顺序和已有内容。",
+    "媒体下载失败时保留原文与已成功保存的资源，可重新导入补全。",
+    "只执行本次新增媒体单元测试及正式构建；未启动模拟器。",
+    "真实网络解析、媒体打开、历史数据升级及 AI 整理效果待用户 OTA 安装后验收。",
+    "视频号本版未启用；未验证完整视频理解或转写能力。"
   ],
-  "patches": []
+  "apkSizeBytes": 60352674,
+  "patches": [
+    {
+      "fromVersionName": "5.4.1.22",
+      "fromVersionCode": 54122,
+      "fromSha256": "bb12d56d1545cf238d1de53cc934611961548759d05c6b67b2aa86dceeba75c3",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.24/from-54122-to-54124.bsdiff",
+      "patchSha256": "596e2f0c401c0cec79a74001914d52dcbc98f68444498c5c0053edebddcd7350",
+      "patchSizeBytes": 27555263
+    }
+  ]
 }
