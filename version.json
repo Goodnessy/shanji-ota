@@ -1,28 +1,27 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.24",
-  "versionCode": 54124,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.24/app-release.apk",
-  "sha256": "4e3bfc600b14be2f24ed219889874abc5228c34f974f61c6ea46287e79039f82",
+  "versionName": "5.4.1.25",
+  "versionCode": 54125,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.25/app-release.apk",
+  "sha256": "28351c9bb7f44d742580c8002fcc9a28067fbe3acba7f74f117becdfb1bfa13b",
   "forceUpdate": false,
   "releaseNotes": [
-    "小红书图文、视频及 Live 资源接入现有内容收藏与附件系统。",
-    "公众号保留现有正文解析，增加图片补全；保留原图顺序和已有内容。",
-    "媒体下载失败时保留原文与已成功保存的资源，可重新导入补全。",
-    "只执行本次新增媒体单元测试及正式构建；未启动模拟器。",
-    "真实网络解析、媒体打开、历史数据升级及 AI 整理效果待用户 OTA 安装后验收。",
-    "视频号本版未启用；未验证完整视频理解或转写能力。"
+    "整条来源信息栏采用统一玻璃质感样式，包含头像、来源名称、日期与原文入口。",
+    "统一普通正文、图文、历史链接及AI整理后的原文入口显示。",
+    "修复小红书新旧图片版本叠加：记录来源标识，只合并可确认同源的重复图，保留原文、顺序、备注与Live附件。",
+    "已存在的重复图会在打开笔记时尝试安全合并；无法确认的手动图片保持原样。",
+    "本次仅执行17项增量测试和正式构建，真机外观、实际分享及旧图修复效果待OTA安装后反馈。"
   ],
   "apkSizeBytes": 60352674,
   "patches": [
     {
-      "fromVersionName": "5.4.1.22",
-      "fromVersionCode": 54122,
-      "fromSha256": "bb12d56d1545cf238d1de53cc934611961548759d05c6b67b2aa86dceeba75c3",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.24/from-54122-to-54124.bsdiff",
-      "patchSha256": "596e2f0c401c0cec79a74001914d52dcbc98f68444498c5c0053edebddcd7350",
-      "patchSizeBytes": 27555263
+      "fromVersionName": "5.4.1.24",
+      "fromVersionCode": 54124,
+      "fromSha256": "4e3bfc600b14be2f24ed219889874abc5228c34f974f61c6ea46287e79039f82",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.25/from-54124-to-54125.bsdiff",
+      "patchSha256": "154c4ae2aa605951399581f4754183bed3ab7145eb4c8215f2a285b9bb030e9b",
+      "patchSizeBytes": 4642044
     }
   ]
 }
