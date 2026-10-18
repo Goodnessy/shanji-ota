@@ -1,27 +1,26 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.25",
-  "versionCode": 54125,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.25/app-release.apk",
-  "sha256": "28351c9bb7f44d742580c8002fcc9a28067fbe3acba7f74f117becdfb1bfa13b",
+  "versionName": "5.4.1.26",
+  "versionCode": 54126,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.26/app-release.apk",
+  "sha256": "07468147ba80b0bca433b2277b57ee1c081a4e86b653103edddbc12c8a626bf7",
   "forceUpdate": false,
   "releaseNotes": [
-    "整条来源信息栏采用统一玻璃质感样式，包含头像、来源名称、日期与原文入口。",
-    "统一普通正文、图文、历史链接及AI整理后的原文入口显示。",
-    "修复小红书新旧图片版本叠加：记录来源标识，只合并可确认同源的重复图，保留原文、顺序、备注与Live附件。",
-    "已存在的重复图会在打开笔记时尝试安全合并；无法确认的手动图片保持原样。",
-    "本次仅执行17项增量测试和正式构建，真机外观、实际分享及旧图修复效果待OTA安装后反馈。"
+    "原文区域增加可见的浅蓝玻璃底色；AI 整理稿和预览保留独立来源区域。",
+    "闪记互联简化状态和操作，连接诊断默认收起。",
+    "对话输入栏改为内容、待办、提问、网页；提问复用本地搜索和现有 AI，根据已保存内容、待办回答并附来源入口。",
+    "无数据库迁移，沿用正式签名。仅执行12项相关增量检查与正式构建；真机显示、互联及真实问答体验待 OTA 安装后反馈。"
   ],
-  "apkSizeBytes": 60352674,
+  "apkSizeBytes": 60369058,
   "patches": [
     {
-      "fromVersionName": "5.4.1.24",
-      "fromVersionCode": 54124,
-      "fromSha256": "4e3bfc600b14be2f24ed219889874abc5228c34f974f61c6ea46287e79039f82",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.25/from-54124-to-54125.bsdiff",
-      "patchSha256": "154c4ae2aa605951399581f4754183bed3ab7145eb4c8215f2a285b9bb030e9b",
-      "patchSizeBytes": 4642044
+      "fromVersionName": "5.4.1.25",
+      "fromVersionCode": 54125,
+      "fromSha256": "28351c9bb7f44d742580c8002fcc9a28067fbe3acba7f74f117becdfb1bfa13b",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.26/from-54125-to-54126.bsdiff",
+      "patchSha256": "0727235d90785c95255ab9597ea1cdafa0aab6b5f8fcf1c1e980fb111435963b",
+      "patchSizeBytes": 4635296
     }
   ]
 }
