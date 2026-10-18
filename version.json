@@ -1,27 +1,30 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.27",
-  "versionCode": 54127,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.27/app-release.apk",
-  "sha256": "828ce762e9064433dade08c4b3d1cc7a118029bda5daf66b568c7b1fe6eddc33",
+  "versionName": "5.4.1.28",
+  "versionCode": 54128,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.28/app-release.apk",
+  "sha256": "b05e7c181ac3221d9b51d3c37d9a9c0d35d7d70f7b83475fa05a59b0f18a33a6",
   "forceUpdate": false,
   "releaseNotes": [
-    "对话提问加入 AI 主题提取、多路检索、完成状态与时间筛选，并利用可靠的原始用户消息补充旧待办上下文。",
-    "改进待办候选逐项校验、原文片段匹配、项目简称关联、跨分区推荐与文字润色；项目不明确时仍需确认。",
-    "输入栏调整为内容、待办、网页、提问，统一加粗。原文来源条精简排版、取消占位头像与强渐变；互联页移除装饰球。",
-    "虎嗅保留收藏链接，区分采集平台与文章出处，禁止无依据地把推荐链接当作原文。已丢失且无法恢复的历史链接明确提示，不补造网址。",
-    "沿用数据库、正式签名和 OTA，执行27项针对性检查及正式构建。真实在线 AI、历史记录问答与视觉效果待真机 OTA 后反馈。"
+    "本次收尾：",
+    "提问增加泛问、项目追问和完成时间筛选；仅依据已保存内容与正式待办回答，保留来源，失败明确提示。",
+    "待办标题清理口述开场词，项目关联优先明确上下文，支持项目简称与后缀省略。",
+    "速览只保留总结与关键要点，移除保留理由和手动采用标签；AI 自动补充最多三个主题标签，保留人工调整。",
+    "内容更多菜单收起分类关联、阅读笔记、来源同步；Notion 仍在顶部。应用整理稿后原文自动折叠保留。",
+    "原文来源区域统一细化底色、渐变和排版；互联页突出连接码，整合互传操作，折叠诊断。",
+    "沿用正式签名与数据库。必要增量测试和正式构建通过后发布；未启动模拟器。",
+    "真机待验：实际 AI 服务回答与润色质量、历史笔记分类、UI 字号及布局、OPPO/飞书系统日历和媒体在线解析。网络与平台限制不会伪装成解析成功，原文及已保存附件保留。"
   ],
   "apkSizeBytes": 60369058,
   "patches": [
     {
-      "fromVersionName": "5.4.1.26",
-      "fromVersionCode": 54126,
-      "fromSha256": "07468147ba80b0bca433b2277b57ee1c081a4e86b653103edddbc12c8a626bf7",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.27/from-54126-to-54127.bsdiff",
-      "patchSha256": "8512afb467a6a7d15a43d49bebdfc83e4242bac2dc2e6e75bcb9680079f3c9c2",
-      "patchSizeBytes": 4650028
+      "fromVersionName": "5.4.1.27",
+      "fromVersionCode": 54127,
+      "fromSha256": "828ce762e9064433dade08c4b3d1cc7a118029bda5daf66b568c7b1fe6eddc33",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.28/from-54127-to-54128.bsdiff",
+      "patchSha256": "2a8d163595896f5daa008ef8b2e0dc6d5a22f3fdfe1fbf931e9a70a016ce8c22",
+      "patchSizeBytes": 4620147
     }
   ]
 }
