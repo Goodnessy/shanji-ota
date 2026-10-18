@@ -1,26 +1,27 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.26",
-  "versionCode": 54126,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.26/app-release.apk",
-  "sha256": "07468147ba80b0bca433b2277b57ee1c081a4e86b653103edddbc12c8a626bf7",
+  "versionName": "5.4.1.27",
+  "versionCode": 54127,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.27/app-release.apk",
+  "sha256": "828ce762e9064433dade08c4b3d1cc7a118029bda5daf66b568c7b1fe6eddc33",
   "forceUpdate": false,
   "releaseNotes": [
-    "原文区域增加可见的浅蓝玻璃底色；AI 整理稿和预览保留独立来源区域。",
-    "闪记互联简化状态和操作，连接诊断默认收起。",
-    "对话输入栏改为内容、待办、提问、网页；提问复用本地搜索和现有 AI，根据已保存内容、待办回答并附来源入口。",
-    "无数据库迁移，沿用正式签名。仅执行12项相关增量检查与正式构建；真机显示、互联及真实问答体验待 OTA 安装后反馈。"
+    "对话提问加入 AI 主题提取、多路检索、完成状态与时间筛选，并利用可靠的原始用户消息补充旧待办上下文。",
+    "改进待办候选逐项校验、原文片段匹配、项目简称关联、跨分区推荐与文字润色；项目不明确时仍需确认。",
+    "输入栏调整为内容、待办、网页、提问，统一加粗。原文来源条精简排版、取消占位头像与强渐变；互联页移除装饰球。",
+    "虎嗅保留收藏链接，区分采集平台与文章出处，禁止无依据地把推荐链接当作原文。已丢失且无法恢复的历史链接明确提示，不补造网址。",
+    "沿用数据库、正式签名和 OTA，执行27项针对性检查及正式构建。真实在线 AI、历史记录问答与视觉效果待真机 OTA 后反馈。"
   ],
   "apkSizeBytes": 60369058,
   "patches": [
     {
-      "fromVersionName": "5.4.1.25",
-      "fromVersionCode": 54125,
-      "fromSha256": "28351c9bb7f44d742580c8002fcc9a28067fbe3acba7f74f117becdfb1bfa13b",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.26/from-54125-to-54126.bsdiff",
-      "patchSha256": "0727235d90785c95255ab9597ea1cdafa0aab6b5f8fcf1c1e980fb111435963b",
-      "patchSizeBytes": 4635296
+      "fromVersionName": "5.4.1.26",
+      "fromVersionCode": 54126,
+      "fromSha256": "07468147ba80b0bca433b2277b57ee1c081a4e86b653103edddbc12c8a626bf7",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.27/from-54126-to-54127.bsdiff",
+      "patchSha256": "8512afb467a6a7d15a43d49bebdfc83e4242bac2dc2e6e75bcb9680079f3c9c2",
+      "patchSizeBytes": 4650028
     }
   ]
 }
