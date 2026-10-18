@@ -1,29 +1,28 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.29",
-  "versionCode": 54129,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.29/app-release.apk",
-  "sha256": "1dc828ce742964ca16aa59716ff55f04b624d74e133618fcc4f8392a6032de69",
+  "versionName": "5.4.1.30",
+  "versionCode": 54130,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.30/app-release.apk",
+  "sha256": "ea8429aa5c6903ec639cea74669efbc4c731ef82623d9f8e6cfc255a039debe2",
   "forceUpdate": false,
   "releaseNotes": [
-    "视频收藏与旧内容补全：",
-    "小红书、抖音、微信视频号接入统一媒体收藏链路；普通公众号文章保留原阅读流程。",
-    "默认保存正文及图片，视频/Live 动态资源按需下载；内容页可手动下载、看进度、取消和重试。实际视频仍由原附件系统保存，可离线打开。",
-    "修正媒体请求头和小红书 Referer；下载前重新解析地址，复用已有文件，失败保留已成功附件，拒绝把网页或封面当视频。",
-    "内容页“更多”直接提供“重新导入”，旧笔记可按新规则刷新来源及媒体。保留标签、项目、文章笔记和已有附件；原有 AI 整理稿保留，可再次整理。",
-    "必要增量检查 33 项及正式构建；沿用正式签名、数据库及 OTA。",
-    "待真机确认：实际分享链接、视频号/抖音服务可用性、下载及后台状态。第三方解析可能波动或受平台授权限制；未返回视频时明确提示，不宣称下载完成。视频单文件上限 512MB。"
+    "本版包含视频收藏及重新导入更新：",
+    "小红书、抖音、微信视频号统一按需下载；先保存正文和图片，视频/Live 可手动下载、查看进度、取消、重试，文件进入现有附件系统。",
+    "内容页“更多”直接提供“重新导入”，旧内容可按最新规则刷新，保留分类、项目、笔记、已有附件和 AI 草稿。",
+    "虎嗅转载且已有微信原文地址的文章，原文按钮指向微信，按微信公众号显示；重新导入沿用微信原文。虎嗅收藏入口仍保留在来源记录中。",
+    "33 项媒体检查已在 V29 通过；本版只增量运行 10 项来源检查及正式构建，不重复整套媒体测试。沿用正式签名与 OTA。",
+    "真机待验：具体分享链接解析、视频号/抖音平台可用性、实际下载与后台状态。第三方服务可能波动或需要授权；失败保留已有内容并明确提示。单媒体文件沿用 512MB 上限。"
   ],
   "apkSizeBytes": 60385442,
   "patches": [
     {
-      "fromVersionName": "5.4.1.28",
-      "fromVersionCode": 54128,
-      "fromSha256": "b05e7c181ac3221d9b51d3c37d9a9c0d35d7d70f7b83475fa05a59b0f18a33a6",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.29/from-54128-to-54129.bsdiff",
-      "patchSha256": "3d104773e68ffebb137cf2ba54a322a34920c53edb8d80e9c38d5c1046ee8233",
-      "patchSizeBytes": 4679584
+      "fromVersionName": "5.4.1.29",
+      "fromVersionCode": 54129,
+      "fromSha256": "1dc828ce742964ca16aa59716ff55f04b624d74e133618fcc4f8392a6032de69",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.30/from-54129-to-54130.bsdiff",
+      "patchSha256": "7bbfebd030e50505a5ff71ea2a7bdab9d079b0e1ba128c7f2ed68e74d999958c",
+      "patchSizeBytes": 4547104
     }
   ]
 }
