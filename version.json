@@ -1,28 +1,28 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.30",
-  "versionCode": 54130,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.30/app-release.apk",
-  "sha256": "ea8429aa5c6903ec639cea74669efbc4c731ef82623d9f8e6cfc255a039debe2",
+  "versionName": "5.4.1.31",
+  "versionCode": 54131,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.31/app-release.apk",
+  "sha256": "af01e99c319ec29e7a710249d13991433e2daa7b582976a9a86b45ed163f9c91",
   "forceUpdate": false,
   "releaseNotes": [
-    "本版包含视频收藏及重新导入更新：",
-    "小红书、抖音、微信视频号统一按需下载；先保存正文和图片，视频/Live 可手动下载、查看进度、取消、重试，文件进入现有附件系统。",
-    "内容页“更多”直接提供“重新导入”，旧内容可按最新规则刷新，保留分类、项目、笔记、已有附件和 AI 草稿。",
-    "虎嗅转载且已有微信原文地址的文章，原文按钮指向微信，按微信公众号显示；重新导入沿用微信原文。虎嗅收藏入口仍保留在来源记录中。",
-    "33 项媒体检查已在 V29 通过；本版只增量运行 10 项来源检查及正式构建，不重复整套媒体测试。沿用正式签名与 OTA。",
-    "真机待验：具体分享链接解析、视频号/抖音平台可用性、实际下载与后台状态。第三方服务可能波动或需要授权；失败保留已有内容并明确提示。单媒体文件沿用 512MB 上限。"
+    "闪记 V5.4.1.31 · 电脑 H5 连接修复",
+    "直接打开手机「闪记互联」提供的原有地址，进入新版 H5，不必再下载独立的 Web.html。",
+    "网页调用手机现有 AI 对话、闪记内容、待办、回顾和附件接口；手机仍是唯一数据存储端。",
+    "原工作台保留在 /workbench 作为复杂编辑的兼容入口。",
+    "暂不支持网页自动发现设备；首次使用直接复制手机地址即可。",
+    "局域网和 OPPO 真机验收仍需在更新后完成；旧数据、APK 包名、签名及 OTA 均保持连续。"
   ],
   "apkSizeBytes": 60385442,
   "patches": [
     {
-      "fromVersionName": "5.4.1.29",
-      "fromVersionCode": 54129,
-      "fromSha256": "1dc828ce742964ca16aa59716ff55f04b624d74e133618fcc4f8392a6032de69",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.30/from-54129-to-54130.bsdiff",
-      "patchSha256": "7bbfebd030e50505a5ff71ea2a7bdab9d079b0e1ba128c7f2ed68e74d999958c",
-      "patchSizeBytes": 4547104
+      "fromVersionName": "5.4.1.30",
+      "fromVersionCode": 54130,
+      "fromSha256": "ea8429aa5c6903ec639cea74669efbc4c731ef82623d9f8e6cfc255a039debe2",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.31/from-54130-to-54131.bsdiff",
+      "patchSha256": "6ddaafe513cdd2c43e253de4a3136f8d6367fb53248a4c8217404fd5115adadb",
+      "patchSizeBytes": 4601824
     }
   ]
 }
