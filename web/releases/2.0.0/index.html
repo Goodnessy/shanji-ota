@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob: http: https:; media-src 'self' blob:; connect-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'">
+<title>闪记 · Web</title>
+<link rel="stylesheet" href="/desktop.css">
+<script src="/desktop.js" defer></script>
+</head>
+<body>
+<div id="connectScreen" class="connect-screen">
+  <div class="connect-box">
+    <div class="connect-logo">闪</div>
+    <h1>连接闪记</h1>
+    <p>在手机上开启「闪记互联」，把手机提供的网址直接粘贴到电脑浏览器即可。</p>
+    <div class="connect-address" id="connectHost">正在检测本地连接…</div>
+    <form id="connectForm" novalidate>
+      <label for="connectCode">六位连接码</label>
+      <div class="connect-line"><input id="connectCode" autocomplete="one-time-code" inputmode="numeric" maxlength="6" placeholder="输入手机上显示的连接码"><button class="primary" type="submit">连接</button></div>
+      <p class="error-message" id="connectError" role="alert"></p>
+    </form>
+    <small>手机是唯一数据源 · 不使用云端同步</small>
+  </div>
+</div>
+<div class="app" id="appShell" hidden>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-logo">闪</span><span><strong>闪记</strong><small>个人工作台</small></span></div>
+    <nav class="nav" id="nav" aria-label="主导航">
+      <button class="nav-link active" data-page="home" type="button"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></span>首页</button>
+      <button class="nav-link" data-page="chat" type="button"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg></span>闪记一下</button>
+      <button class="nav-link" data-page="library" type="button"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>内容</button>
+      <button class="nav-link" data-page="tasks" type="button"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 9h10M8 14h10"/><path d="m5 9 .5 .5L7 8M5 14l.5.5L7 13"/></svg></span>待办</button>
+      <button class="nav-link" data-page="projects" type="button"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M3 10h18M9 6V4h6v2"/></svg></span>项目</button>
+      <button class="nav-link" data-page="review" type="button"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>回顾</button>
+      <button class="nav-link" data-page="search" type="button"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg></span>搜索</button>
+      <button class="nav-link" data-page="gallery" type="button"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 16-5-5L5 21"/></svg></span>媒体</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="device-online"><span class="pulse"></span><span><strong id="connectionText">手机已连接</strong><small id="deviceVersion">本地局域网</small></span></div>
+      <button type="button" id="disconnectButton" class="sidebar-action">断开本次连接</button>
+    </div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <div class="topbar-left"><button type="button" id="mobileNavButton" class="icon-button mobile-menu" aria-label="展开菜单">☰</button><div><strong id="pageTitle">首页</strong><span id="pageSubtitle">Capture first. Use later.</span></div></div>
+      <div class="topbar-right"><span id="syncStatus" class="sync-status">已连接</span><button type="button" id="refreshButton" class="soft-button">↻ 刷新</button></div>
+    </header>
+    <div class="app-error" id="appError" hidden role="alert"></div>
+    <main class="main">
+      <section id="screen-home" class="screen home-page">
+        <div class="home-hero">
+          <p class="eyebrow">你的随手记录工作台</p>
+          <h1 id="homeGreeting">想到，就闪记一下。</h1>
+          <p>Capture first. Use later.</p>
+          <div class="home-actions">
+            <button class="primary" data-go="chat" type="button">✳ 闪记一下</button>
+            <button class="outline-button" data-go="library" type="button">查看内容</button>
+            <button class="outline-button" data-go="tasks" type="button">我的待办</button>
+          </div>
+        </div>
+        <div class="stats" id="homeStats"></div>
+        <div class="home-columns">
+          <div class="home-panel"><div class="panel-header"><h2>最近记录</h2><button class="text-button" data-go="library" type="button">查看全部 →</button></div><div id="homeRecent" class="compact-list"></div></div>
+          <div class="home-panel"><div class="panel-header"><h2>待处理</h2><button class="text-button" data-go="tasks" type="button">管理待办 →</button></div><div id="homeTasks" class="compact-list"></div></div>
+        </div>
+      </section>
+      <section id="screen-chat" class="screen chat-page" hidden>
+        <div class="section-heading"><div><h1>闪记一下</h1><p>文字或链接交给手机里的闪记识别，确认后才正式保存。</p></div><button class="soft-button" id="chatRefresh" type="button">刷新对话</button></div>
+        <div id="chatMessages" class="chat-messages"><div class="empty">正在读取手机对话…</div></div>
+        <div class="chat-compose">
+          <div class="composer-modes" id="chatModes" aria-label="闪记输入模式">
+            <button type="button" class="mode active" data-input-mode="SMART">智能</button>
+            <button type="button" class="mode" data-input-mode="CONTENT">内容</button>
+            <button type="button" class="mode" data-input-mode="TASK">待办</button>
+            <button type="button" class="mode" data-input-mode="WEB">网页</button>
+            <button type="button" class="mode" data-input-mode="QUESTION">提问</button>
+          </div>
+          <textarea id="chatInput" rows="3" placeholder="写下想法、工作记录、待办，或者粘贴一段内容…"></textarea>
+          <div class="composer-foot"><small>Ctrl + Enter 发送 · AI 整理使用手机现有服务</small><button class="primary" id="chatSend" type="button">发送 <span>↗</span></button></div>
+        </div>
+      </section>
+      <section id="screen-library" class="screen library-page" hidden>
+        <div class="section-heading"><div><h1>内容</h1><p>浏览和整理手机中已经保存的全部闪记。</p></div><button class="primary" id="newNote" type="button">＋ 新建内容</button></div>
+        <div class="library-tools">
+          <div class="search-bar"><span>⌕</span><input id="libraryQuery" type="search" placeholder="搜索标题、正文、标签、来源"></div>
+          <div class="filters" id="libraryFilters"><button type="button" class="chip active" data-kind="all">全部</button><button type="button" class="chip" data-kind="xhs">小红书</button><button type="button" class="chip" data-kind="wechat">微信</button><button type="button" class="chip" data-kind="note">笔记</button><button type="button" class="chip" data-kind="image">图片</button><button type="button" class="chip" data-kind="audio">录音</button></div>
+        </div>
+        <div id="libraryProjectScope" class="scope-line" hidden>所属项目：<strong id="libraryProjectName"></strong><button type="button" id="clearLibraryProject" class="text-button">清除筛选</button></div>
+        <div class="library-layout">
+          <div class="records" id="libraryList"></div>
+          <div class="record-detail" id="noteDetail"><div class="empty">选择一条内容查看或编辑</div></div>
+        </div>
+      </section>
+      <section id="screen-tasks" class="screen" hidden>
+        <div class="section-heading"><div><h1>一周安排</h1><p>日程与待办，一周看清。</p></div><button class="primary" id="newTask" type="button">＋ 新建待办</button></div>
+        <div class="week-toolbar">
+          <div class="week-navigation"><button id="weekPrev" type="button" class="icon-button week-arrow" aria-label="上一周">‹</button><strong id="weekRange">本周</strong><button id="weekNext" type="button" class="icon-button week-arrow" aria-label="下一周">›</button><button id="weekToday" type="button" class="soft-button week-today">今天</button></div>
+          <div class="filters" id="taskZones"><button class="chip active" data-taskzone="ALL" type="button">全部</button><button class="chip" data-taskzone="WORK" type="button">工作</button><button class="chip" data-taskzone="PERSONAL" type="button">个人</button><button class="chip" data-taskzone="FAMILY" type="button">家庭</button></div>
+          <div class="filters" id="taskFilters"><button class="chip active" data-taskfilter="open" type="button">待完成</button><button class="chip" data-taskfilter="all" type="button">全部</button><button class="chip" data-taskfilter="done" type="button">已完成</button></div>
+        </div>
+        <div id="taskProjectScope" class="scope-line" hidden>所属项目：<strong id="taskProjectName"></strong><button type="button" id="clearTaskProject" class="text-button">清除筛选</button></div>
+        <div class="week-workspace">
+          <div class="week-main"><div class="week-calendar" id="weekCalendar" aria-label="本周待办"></div><div class="week-foot"><span id="taskCount" class="tiny-muted"></span><span>拖动待办到日期安排 · 所有修改同步至手机</span></div></div>
+          <aside class="task-inbox" aria-label="逾期与未安排待办"><div id="taskInbox"></div></aside>
+        </div>
+        <div id="taskList" hidden></div>
+      </section>
+      <section id="screen-projects" class="screen" hidden>
+        <div class="section-heading"><div><h1>项目</h1><p>查看项目进度、关联内容与待办，所有修改保存到手机。</p></div><button id="newProject" class="primary" type="button">＋ 新建项目</button></div>
+        <div class="filters" id="projectFilters"><button class="chip active" type="button" data-project-filter="ALL">全部</button><button class="chip" type="button" data-project-filter="ACTIVE">进行中</button><button class="chip" type="button" data-project-filter="PAUSED">暂停</button><button class="chip" type="button" data-project-filter="COMPLETED">已完成</button></div>
+        <div class="project-list" id="projectList"></div>
+      </section>
+      <section id="screen-review" class="screen" hidden>
+        <div class="section-heading"><div><h1>回顾</h1><p>以手机实际数据为准，不虚构记录和工作时长。</p></div><button class="primary" id="reviewGenerate" type="button">✳ 生成智能回顾</button></div>
+        <div class="review-toolbar">
+          <div class="filters" id="reviewPeriods"><button class="chip active" data-period="DAILY" type="button">今日</button><button class="chip" data-period="WEEKLY" type="button">本周</button><button class="chip" data-period="MONTHLY" type="button">本月</button><button class="chip" data-period="YEARLY" type="button">本年</button></div>
+          <div class="filters" id="reviewScopes"><button class="chip active" data-scope="ALL" type="button">全部</button><button class="chip" data-scope="WORK" type="button">工作</button></div>
+          <input type="month" id="reviewMonth" hidden><input type="number" id="reviewYear" min="2000" max="2200" hidden>
+        </div>
+        <div class="stats" id="reviewStats"></div>
+        <div class="review-panels"><article class="paper"><div class="panel-header"><h2>记录与事项</h2><button class="text-button" id="copyReview" type="button">复制</button></div><div class="prose-text" id="reviewLocal"></div></article><article class="paper"><div class="panel-header"><h2>智能回顾</h2></div><div class="prose-text" id="reviewAi"></div></article></div>
+      </section>
+      <section id="screen-search" class="screen" hidden>
+        <div class="section-heading"><div><h1>全局搜索</h1><p>找内容、待办和项目，都在这里。</p></div></div>
+        <div class="search-bar search-large"><span>⌕</span><input id="globalQuery" type="search" placeholder="搜索关键词"></div>
+        <button class="text-button" type="button" data-go="chat">打开智能提问 →</button>
+        <div class="search-results" id="searchResults"></div>
+      </section>
+      <section id="screen-gallery" class="screen" hidden>
+        <div class="section-heading"><div><h1>媒体</h1><p>查看手机授权的相册，也可传送文件到手机。</p></div><button id="galleryRefresh" class="soft-button" type="button">刷新相册</button></div>
+        <div class="media-panel"><div class="panel-header"><h2>手机相册</h2><p id="galleryInfo" class="tiny-muted"></p></div><div class="media-grid" id="galleryGrid"></div><button id="galleryMore" class="outline-button" type="button" hidden>加载更多</button></div>
+        <div class="media-panel"><div class="panel-header"><h2>发送文件</h2></div><div class="upload-row"><label class="file-picker" for="uploadFiles">＋ 选择文件</label><input type="file" id="uploadFiles" multiple><span class="upload-file-count" id="uploadFileCount">尚未选择文件</span><button id="uploadSend" class="primary" type="button">发送到手机</button></div><p class="tiny-muted" id="uploadFeedback">文件将写入手机闪记的现有接收区，不上传云端。</p></div>
+      </section>
+    </main>
+  </div>
+</div>
+<dialog id="noteDialog" class="modal modal-wide"><form id="noteForm">
+  <div class="modal-head"><div><span class="eyebrow">CONTENT</span><h2 id="noteDialogTitle">编辑内容</h2></div><button type="button" class="close-button" data-close="noteDialog" aria-label="关闭">×</button></div>
+  <div class="modal-scroll">
+    <label class="field">标题<input type="text" id="editNoteTitle" maxlength="120" required></label>
+    <label class="field" id="noteAuthorWrap">作者 / 来源<input id="editNoteAuthor" type="text" maxlength="100"></label>
+    <div class="edit-meta"><label class="field">分类<select id="editNoteZone"><option value="WORK">工作</option><option value="PERSONAL">个人</option><option value="INSPIRATION">灵感</option></select></label><label class="field">关联项目<select id="editNoteProject"></select></label></div>
+    <label class="field">标签<select id="editNoteTags" multiple size="3" title="Ctrl 可多选标签"></select></label>
+    <div class="panel-header"><h3>正文</h3><button type="button" id="addNoteParagraph" class="text-button">＋ 添加段落</button></div>
+    <div id="noteBlockEditor" class="block-editor"></div>
+    <p class="tiny-muted">图片、文件、原文来源与已有内容结构均会保留。复杂格式建议使用完整编辑器。</p>
+    <div class="upload-row"><input id="noteUploadFiles" type="file" multiple><button type="button" id="noteUploadButton" class="soft-button">上传附件</button></div>
+  </div>
+  <div class="modal-actions"><button class="outline-button" type="button" data-close="noteDialog">取消</button><button type="submit" class="primary" id="saveNoteButton">保存到手机</button></div>
+</form></dialog>
+<dialog id="taskDialog" class="modal"><form id="taskForm">
+  <div class="modal-head"><h2 id="taskDialogTitle">新建待办</h2><button type="button" class="close-button" data-close="taskDialog" aria-label="关闭">×</button></div>
+  <div class="modal-scroll">
+    <label class="field">待办事项<input id="editTaskTitle" maxlength="300" required></label>
+    <label class="field">详细说明<textarea id="editTaskDescription" rows="4"></textarea></label>
+    <div class="edit-meta"><label class="field">计划日期<input id="editTaskDate" type="date"></label><label class="field">时间<input id="editTaskTime" type="time"></label></div>
+    <label class="field">关联项目<select id="editTaskProject"></select></label>
+  </div>
+  <div class="modal-actions"><button type="button" class="outline-button" data-close="taskDialog">取消</button><button type="submit" id="saveTaskButton" class="primary">保存待办</button></div>
+</form></dialog>
+<dialog id="projectDialog" class="modal"><form id="projectForm">
+  <div class="modal-head"><h2 id="projectDialogTitle">新建项目</h2><button type="button" class="close-button" data-close="projectDialog" aria-label="关闭">×</button></div>
+  <div class="modal-scroll">
+    <label class="field">项目名称<input id="editProjectName" maxlength="120" required></label>
+    <label class="field">项目说明<textarea id="editProjectDescription" rows="4" maxlength="2000"></textarea></label>
+    <div class="edit-meta"><label class="field">分类<select id="editProjectZone"><option value="WORK">工作</option><option value="PERSONAL">个人</option><option value="FAMILY">家庭</option><option value="INSPIRATION">灵感</option></select></label><label class="field">状态<select id="editProjectStatus"><option value="ACTIVE">进行中</option><option value="PAUSED">暂停</option><option value="COMPLETED">已完成</option></select></label></div>
+  </div>
+  <div class="modal-actions"><button id="deleteProject" type="button" class="outline-button" hidden>删除项目</button><button type="button" class="outline-button" data-close="projectDialog">取消</button><button type="submit" id="saveProject" class="primary">保存项目</button></div>
+</form></dialog>
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+</body>
+</html>
