@@ -1,28 +1,27 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.31",
-  "versionCode": 54131,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.31/app-release.apk",
-  "sha256": "af01e99c319ec29e7a710249d13991433e2daa7b582976a9a86b45ed163f9c91",
+  "versionName": "5.4.1.32",
+  "versionCode": 54132,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.32/app-release.apk",
+  "sha256": "c3a82df04be7d440a4078e42f74cb1a9039b0d292075b47189e91d3beaa5842c",
   "forceUpdate": false,
   "releaseNotes": [
-    "闪记 V5.4.1.31 · 电脑 H5 连接修复",
-    "直接打开手机「闪记互联」提供的原有地址，进入新版 H5，不必再下载独立的 Web.html。",
-    "网页调用手机现有 AI 对话、闪记内容、待办、回顾和附件接口；手机仍是唯一数据存储端。",
-    "原工作台保留在 /workbench 作为复杂编辑的兼容入口。",
-    "暂不支持网页自动发现设备；首次使用直接复制手机地址即可。",
-    "局域网和 OPPO 真机验收仍需在更新后完成；旧数据、APK 包名、签名及 OTA 均保持连续。"
+    "闪记 V5.4.1.32 · 电脑 Web 工作台全面重构",
+    "直接通过手机「闪记互联」的网址访问；手机是唯一数据源，不需要云同步。",
+    "增加项目管理、关联内容与待办、Android 原生统一搜索和智能提问。",
+    "保留内容、待办、对话、回顾、附件的原有数据结构与受保护接口。",
+    "Web 与 Android 编译通过，实际 OPPO 真机局域网体验需要用户在 OTA 后验收。"
   ],
-  "apkSizeBytes": 60385442,
+  "apkSizeBytes": 40970104,
   "patches": [
     {
-      "fromVersionName": "5.4.1.30",
-      "fromVersionCode": 54130,
-      "fromSha256": "ea8429aa5c6903ec639cea74669efbc4c731ef82623d9f8e6cfc255a039debe2",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.31/from-54130-to-54131.bsdiff",
-      "patchSha256": "6ddaafe513cdd2c43e253de4a3136f8d6367fb53248a4c8217404fd5115adadb",
-      "patchSizeBytes": 4601824
+      "fromVersionName": "5.4.1.31",
+      "fromVersionCode": 54131,
+      "fromSha256": "af01e99c319ec29e7a710249d13991433e2daa7b582976a9a86b45ed163f9c91",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.32/from-54131-to-54132.bsdiff",
+      "patchSha256": "8222b49a11442cc0e2328dc4f84e70ba4b3ea235ad8644f295eb66331cc2a494",
+      "patchSizeBytes": 17225505
     }
   ]
 }
