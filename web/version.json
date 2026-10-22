@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "webVersion": "2.0.1",
+  "webVersion": "2.1.0",
   "webApiContract": 1,
   "minAndroidVersionCode": 54133,
   "maxAndroidVersionCode": 54199,
   "files": {
-    "index.html": "33b0cd954939e1eea2b72584e18bb51f95f8ea1fb86843cbe6016f849f38591f",
-    "desktop.css": "6efc66c6964cdae34cdab3d78ad2636c7511c1977d8adbff02053eeb6327c65e",
-    "desktop.js": "19e38c7b821c18a3b470fc08369370db69c6fe3d48a974f35113b854b3f0041d",
+    "index.html": "c64cd3d60f194c1a4969a3299e4a60f8180ae066c042c465297c697c24878b8e",
+    "desktop.css": "5a3b8bc9c16d488763071284badd0d3a426bc5d09daff59645bed4dff959b3d4",
+    "desktop.js": "a9b11888cf870114ca5ba49ebdcc655811dcd2f8cc6fc2198077157ffe46eca6",
     "desktop-icon.svg": "e2174cb89cab099f82daa043f06e72f0c1dcffada25498612aa7086f9b378ee9"
   }
 }
