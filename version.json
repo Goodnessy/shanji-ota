@@ -1,29 +1,28 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.33",
-  "versionCode": 54133,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.33/app-release.apk",
-  "sha256": "b022a3227f2fe1c193ac139529923109fd08df624358e6ecb618bbf9c461ff68",
+  "versionName": "5.4.1.34",
+  "versionCode": 54134,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.34/app-release.apk",
+  "sha256": "68cb0b430cc5fa816461b73fb77f7c4c395e4a205faab119bda51be25607f605",
   "forceUpdate": false,
   "releaseNotes": [
-    "闪记 V5.4.1.33 · Web V2 与独立更新",
-    "电脑 Web 视觉系统升级：统一八个页面的导航、字体、排版、按钮、项目卡片和阅读区。",
-    "待办升级为七日紧凑周计划，增加逾期 / 未安排任务池；支持手机待办在日期之间拖动重排。",
-    "回顾支持安全排版；聊天、媒体、搜索页面精修，保留原有手机数据和受保护接口。",
-    "新增 Web 资源独立发布能力：手机联网验证并缓存来自官方 GitHub 的 HTML/CSS/JS，支持离线使用内置版与手动恢复。",
-    "保持局域网网址、六位连接码、手机数据、正式包名与签名不变，无云同步。",
-    "外部日历（OPPO / 飞书）完整读取尚未接入 Web 周计划；OPPO 真机浏览器实际体验仍需 OTA 后验收。"
+    "闪记 V5.4.1.34 · 日历同步与回顾精简",
+    "修复部分 OPPO 手机系统日历同步开关与 Android 接口状态不一致时，闪记错误拦截写入的问题。",
+    "日历先写入所选 Google 系统日历；云端同步单独交由系统处理，写入成功不冒充云端已同步。",
+    "日历重试优先更新原有事件，避免重复创建。",
+    "回顾移除 AI 预估时长按钮、缓存读取与回顾材料中的 AI 时长统计；保留实际日历和明确时间段的计划时长。",
+    "保留现有数据、包名、签名及 Windows Web V2 已上线能力。"
   ],
-  "apkSizeBytes": 40990584,
+  "apkSizeBytes": 40974200,
   "patches": [
     {
-      "fromVersionName": "5.4.1.32",
-      "fromVersionCode": 54132,
-      "fromSha256": "c3a82df04be7d440a4078e42f74cb1a9039b0d292075b47189e91d3beaa5842c",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.33/from-54132-to-54133.bsdiff",
-      "patchSha256": "e68663fadbda73e2fce394b714d20339f597cf4aace530795b85471581daa7ef",
-      "patchSizeBytes": 16868801
+      "fromVersionName": "5.4.1.33",
+      "fromVersionCode": 54133,
+      "fromSha256": "b022a3227f2fe1c193ac139529923109fd08df624358e6ecb618bbf9c461ff68",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.34/from-54133-to-54134.bsdiff",
+      "patchSha256": "a85e386e5a2c0e10d930d54234413bb7f04b04c19663f4f53aeb536e9e5d76a6",
+      "patchSizeBytes": 15892435
     }
   ]
 }
