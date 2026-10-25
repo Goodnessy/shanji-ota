@@ -1,28 +1,20 @@
 {
-  "schemaVersion": 2,
-  "enabled": true,
-  "versionName": "5.4.1.35",
-  "versionCode": 54135,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.35/app-release.apk",
-  "sha256": "6af51ff6bbff5b3b4aec2509c97fe43cf3a3288df5d9028562cb98ec0a4fb843",
-  "forceUpdate": false,
-  "releaseNotes": [
-    "闪记 V5.4.1.35 · Refined UI 与公众号验证导入",
-    "首页、闪记一下、待办、内容与回顾等主要页面的视觉与交互细节优化。",
-    "公众号文章遇到访问验证时，可手动验证后尝试提取已加载的正文与图片。",
-    "内容支持单条临时备忘录置顶，并优化文章图片、视频及日期选择体验。",
-    "保留原有数据、AI 与日历功能；本次更新不强制安装。",
-    "公众号验证受微信访问策略影响，部分文章仍可能无法提取。"
-  ],
-  "apkSizeBytes": 41023352,
-  "patches": [
-    {
-      "fromVersionName": "5.4.1.34",
-      "fromVersionCode": 54134,
-      "fromSha256": "68cb0b430cc5fa816461b73fb77f7c4c395e4a205faab119bda51be25607f605",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.35/from-54134-to-54135.bsdiff",
-      "patchSha256": "6d6088b88ec9a273282e40ab85558df263102d2531ce916e65d201dacc6f414f",
-      "patchSizeBytes": 17225702
-    }
-  ]
+    "schemaVersion":  2,
+    "enabled":  true,
+    "versionName":  "5.4.1.36",
+    "versionCode":  54136,
+    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.36/app-release.apk",
+    "sha256":  "1af96864a6087b831f7a08f22a3b50bee83d41522deb0aa1c75d97dd3373aad8",
+    "forceUpdate":  false,
+    "apkSizeBytes":  41023352,
+    "releaseNotes":  [
+                         "ShanJi V5.4.1.36 - Approved homepage restoration",
+                         "Only the homepage is restored to the accepted V5.4.1.34 design.",
+                         "The other page layouts are unchanged.",
+                         "Improve Huxiu WeChat original-link identification and WeChat fallback reporting.",
+                         "Verification-gated WeChat articles may still require platform access verification."
+                     ],
+    "patches":  [
+
+                ]
 }
