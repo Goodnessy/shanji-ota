@@ -1,21 +1,29 @@
 {
-    "schemaVersion":  2,
-    "enabled":  true,
-    "versionName":  "5.4.1.37",
-    "versionCode":  54137,
-    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.37/app-release.apk",
-    "sha256":  "dea0e586a54db71e0f6640a0e5e4130169cad26186c19d81f2e1670ee5813868",
-    "forceUpdate":  false,
-    "apkSizeBytes":  41039736,
-    "releaseNotes":  [
-                         "ShanJi V5.4.1.37 - article import and usability fixes",
-                         "Future tasks now show calendar date as well as time.",
-                         "Compact article actions, Notion moved into More.",
-                         "Remove Project Time card from Review.",
-                         "Attempt safe in-app browser recovery for verification-gated WeChat and ReaderMX.",
-                         "Keep original source links from ReaderMX and Huxiu when verified; some platform challenges still require manual steps."
-                     ],
-    "patches":  [
-
-                ]
+  "schemaVersion": 2,
+  "enabled": true,
+  "versionName": "5.4.1.37",
+  "versionCode": 54137,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.37/app-release.apk",
+  "sha256": "dea0e586a54db71e0f6640a0e5e4130169cad26186c19d81f2e1670ee5813868",
+  "forceUpdate": false,
+  "releaseNotes": [
+    "﻿ShanJi V5.4.1.37 - targeted reading and import fixes",
+    "Future tasks show actual dates and times.",
+    "Article top controls are compact, with Notion in More > Source and Sync.",
+    "Remove Review Project Time card while keeping original task/calendar data.",
+    "The in-app browser auto-recovers selected WeChat and ReaderMX article challenges when possible.",
+    "Preserve original-source links from ReaderMX and Huxiu when explicitly attributed.",
+    "Some verification challenges still need human completion; no account or data migrations."
+  ],
+  "apkSizeBytes": 41039736,
+  "patches": [
+    {
+      "fromVersionName": "5.4.1.36",
+      "fromVersionCode": 54136,
+      "fromSha256": "1af96864a6087b831f7a08f22a3b50bee83d41522deb0aa1c75d97dd3373aad8",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.37/from-54136-to-54137.bsdiff",
+      "patchSha256": "d20c83ed45d9656fe3eae924edef269a34b9576bbbbb6e8ccb51ecbfc401e03f",
+      "patchSizeBytes": 4652054
+    }
+  ]
 }
