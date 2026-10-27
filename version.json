@@ -1,19 +1,21 @@
 {
-  "schemaVersion": 2,
-  "enabled": true,
-  "versionName": "5.4.1.36",
-  "versionCode": 54136,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.36/app-release.apk",
-  "sha256": "1af96864a6087b831f7a08f22a3b50bee83d41522deb0aa1c75d97dd3373aad8",
-  "forceUpdate": false,
-  "apkSizeBytes": 41023352,
-  "releaseNotes": [
-    "闪记 V5.4.1.36｜首页恢复与文章来源修复",
-    "首页完整恢复至此前确认的 V5.4.1.34 版式、布局和操作入口。",
-    "其他页面保持 V5.4.1.35 现状，不做额外视觉调整。",
-    "虎嗅转载文章优先识别明确标注的微信公众号原文，并为已有收藏尝试补全原文入口。",
-    "改进公众号后台自动解析的失败识别与备用解析流程；需要微信访问验证的文章仍可能无法自动获取完整正文。",
-    "继续保留原有数据、日历、AI 能力和正式签名；本次为非强制更新。"
-  ],
-  "patches": []
+    "schemaVersion":  2,
+    "enabled":  true,
+    "versionName":  "5.4.1.37",
+    "versionCode":  54137,
+    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.37/app-release.apk",
+    "sha256":  "dea0e586a54db71e0f6640a0e5e4130169cad26186c19d81f2e1670ee5813868",
+    "forceUpdate":  false,
+    "apkSizeBytes":  41039736,
+    "releaseNotes":  [
+                         "ShanJi V5.4.1.37 - article import and usability fixes",
+                         "Future tasks now show calendar date as well as time.",
+                         "Compact article actions, Notion moved into More.",
+                         "Remove Project Time card from Review.",
+                         "Attempt safe in-app browser recovery for verification-gated WeChat and ReaderMX.",
+                         "Keep original source links from ReaderMX and Huxiu when verified; some platform challenges still require manual steps."
+                     ],
+    "patches":  [
+
+                ]
 }
