@@ -1,27 +1,17 @@
 {
-  "schemaVersion": 2,
-  "enabled": true,
-  "versionName": "5.4.1.38",
-  "versionCode": 54138,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.38/app-release.apk",
-  "sha256": "7cfee27fde38dc97a91f3d5ef88a0ac2795f3f957acabda3bc8def61a9afaf98",
-  "forceUpdate": false,
-  "releaseNotes": [
-    "AI助手统一命名，内容、待办、网页、提问常驻输入框上方。",
-    "阅读页优化留白、原文横条、图文排版和视频封面。",
-    "统一新建、编辑与AI助手修改待办的表单。",
-    "项目支持搜索，日期支持快捷选择、全天及具体时间。",
-    "新建待办去除重复标题，支持撤销整理、失败保留草稿和防止重复提交。"
-  ],
-  "apkSizeBytes": 41056120,
-  "patches": [
-    {
-      "fromVersionName": "5.4.1.37",
-      "fromVersionCode": 54137,
-      "fromSha256": "dea0e586a54db71e0f6640a0e5e4130169cad26186c19d81f2e1670ee5813868",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.38/from-54137-to-54138.bsdiff",
-      "patchSha256": "1d4a6adb61837e53b7959c4d4ebd23ac81387caf6c52adecc507f0c609faa2f3",
-      "patchSizeBytes": 4673481
-    }
-  ]
+    "schemaVersion":  2,
+    "enabled":  true,
+    "versionName":  "5.4.1.39",
+    "versionCode":  54139,
+    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.39/app-release.apk",
+    "sha256":  "5ee9cf8e15934d4d9fd78cf2827076cb406357970f35a087d056ea649c4fa183",
+    "forceUpdate":  false,
+    "apkSizeBytes":  41056120,
+    "releaseNotes":  [
+                         "Copy the phone connection as a ready-to-send Weixin command.",
+                         "Prioritize paragraph-local Huxiu WeChat attribution and retain deeply located account/author metadata."
+                     ],
+    "patches":  [
+
+                ]
 }
