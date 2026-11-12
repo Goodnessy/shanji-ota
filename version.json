@@ -1,17 +1,24 @@
 {
-    "schemaVersion":  2,
-    "enabled":  true,
-    "versionName":  "5.4.1.39",
-    "versionCode":  54139,
-    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.39/app-release.apk",
-    "sha256":  "5ee9cf8e15934d4d9fd78cf2827076cb406357970f35a087d056ea649c4fa183",
-    "forceUpdate":  false,
-    "apkSizeBytes":  41056120,
-    "releaseNotes":  [
-                         "Copy the phone connection as a ready-to-send Weixin command.",
-                         "Prioritize paragraph-local Huxiu WeChat attribution and retain deeply located account/author metadata."
-                     ],
-    "patches":  [
-
-                ]
+  "schemaVersion": 2,
+  "enabled": true,
+  "versionName": "5.4.1.39",
+  "versionCode": 54139,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.39/app-release.apk",
+  "sha256": "5ee9cf8e15934d4d9fd78cf2827076cb406357970f35a087d056ea649c4fa183",
+  "forceUpdate": false,
+  "releaseNotes": [
+    "Copy the phone connection as a ready-to-send Weixin command.",
+    "Prioritize paragraph-local Huxiu WeChat attribution and retain deeply located account/author metadata."
+  ],
+  "apkSizeBytes": 41056120,
+  "patches": [
+    {
+      "fromVersionName": "5.4.1.38",
+      "fromVersionCode": 54138,
+      "fromSha256": "7cfee27fde38dc97a91f3d5ef88a0ac2795f3f957acabda3bc8def61a9afaf98",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.39/from-54138-to-54139.bsdiff",
+      "patchSha256": "b61a2df7572f3ca05fb79a00f719c2e93637120f5bb5e52412694a79ba8cdf09",
+      "patchSizeBytes": 4679871
+    }
+  ]
 }
