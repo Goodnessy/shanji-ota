@@ -1,24 +1,16 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.4.1.39",
-  "versionCode": 54139,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.39/app-release.apk",
-  "sha256": "5ee9cf8e15934d4d9fd78cf2827076cb406357970f35a087d056ea649c4fa183",
+  "versionName": "5.4.1.40",
+  "versionCode": 54140,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.40/app-release.apk",
+  "sha256": "e8bacd4a1de7444f8b28dd11b48e30ea663b222e55137d96c491a60452b65066",
   "forceUpdate": false,
   "releaseNotes": [
-    "Copy the phone connection as a ready-to-send Weixin command.",
-    "Prioritize paragraph-local Huxiu WeChat attribution and retain deeply located account/author metadata."
+    "新增 Telegram 机器人消息同步：设置 → 默认配置 → Telegram 消息同步。",
+    "打开闪记时自动获取已绑定私人聊天的文字消息，并交由现有 AI 整理与确认流程。",
+    "无需电脑常开或同一 WiFi；支持立即同步、断开连接及同步进度记录。"
   ],
-  "apkSizeBytes": 41056120,
-  "patches": [
-    {
-      "fromVersionName": "5.4.1.38",
-      "fromVersionCode": 54138,
-      "fromSha256": "7cfee27fde38dc97a91f3d5ef88a0ac2795f3f957acabda3bc8def61a9afaf98",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.4.1.39/from-54138-to-54139.bsdiff",
-      "patchSha256": "b61a2df7572f3ca05fb79a00f719c2e93637120f5bb5e52412694a79ba8cdf09",
-      "patchSizeBytes": 4679871
-    }
-  ]
+  "apkSizeBytes": 41088888,
+  "patches": []
 }
