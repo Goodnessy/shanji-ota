@@ -6,11 +6,21 @@
   "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.5/app-release.apk",
   "sha256": "7327dad22b4b7cb67610416402b9b667afb944b7801505031050592745df6581",
   "forceUpdate": false,
-  "apkSizeBytes": 41138097,
   "releaseNotes": [
+    "﻿ShanJi V5.5.5",
     "重复待办复用现有记录，继续同步后续消息。",
     "回执发送失败时独立重试，避免阻塞消息拉取。",
     "批量确认逐项处理，回执标注未完成的数量。"
   ],
-  "patches": []
+  "apkSizeBytes": 41138097,
+  "patches": [
+    {
+      "fromVersionName": "5.5.4",
+      "fromVersionCode": 55004,
+      "fromSha256": "ff965c0dadbae0f2f6cfa11238efb81abde07739f35b02dce50b1852d057c17d",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.5/from-55004-to-55005.bsdiff",
+      "patchSha256": "7e72d3e72131a6277131efce0a8de97663c15dcfe7c0cabc519cb7b23c5d5db4",
+      "patchSizeBytes": 4693501
+    }
+  ]
 }
