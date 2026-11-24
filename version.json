@@ -1,26 +1,16 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.5.4",
-  "versionCode": 55004,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.4/app-release.apk",
-  "sha256": "ff965c0dadbae0f2f6cfa11238efb81abde07739f35b02dce50b1852d057c17d",
+  "versionName": "5.5.5",
+  "versionCode": 55005,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.5/app-release.apk",
+  "sha256": "7327dad22b4b7cb67610416402b9b667afb944b7801505031050592745df6581",
   "forceUpdate": false,
-  "releaseNotes": [
-    "﻿ShanJi V5.5.4",
-    "Telegram 录入键盘改为待办、内容、日记。",
-    "修复素材列表显示原始 JSON 的问题，更换透明底绿色闪电图标。",
-    "日记采用图文玻璃卡片与右下角新增按钮。"
-  ],
   "apkSizeBytes": 41138097,
-  "patches": [
-    {
-      "fromVersionName": "5.5.3",
-      "fromVersionCode": 55003,
-      "fromSha256": "e5d5cd747dce659617320dacf57a078c303abe7fb77897b8b1c150014df990dc",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.4/from-55003-to-55004.bsdiff",
-      "patchSha256": "bc1c1948800a3cfed494de7d8197aeabbcb4ef8daffb5f25e849fdd88405d60c",
-      "patchSizeBytes": 9203188
-    }
-  ]
+  "releaseNotes": [
+    "重复待办复用现有记录，继续同步后续消息。",
+    "回执发送失败时独立重试，避免阻塞消息拉取。",
+    "批量确认逐项处理，回执标注未完成的数量。"
+  ],
+  "patches": []
 }
