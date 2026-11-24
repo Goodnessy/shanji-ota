@@ -1,18 +1,16 @@
 {
-    "schemaVersion":  2,
-    "enabled":  true,
-    "versionName":  "5.5.0",
-    "versionCode":  55000,
-    "apkUrl":  "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.0/app-release.apk",
-    "sha256":  "f2f532351aa24293e8ff10d9e59c238078b440bfe19a5eef8fc6ea153a1e2e1c",
-    "forceUpdate":  false,
-    "apkSizeBytes":  41088888,
-    "releaseNotes":  [
-                         "Blue Glass styling for Home and the floating dock.",
-                         "The floating dock uses real background blur on supported Android versions.",
-                         "Tasks open in the weekly view. Telegram explicit task capture is improved."
-                     ],
-    "patches":  [
-
-                ]
+  "schemaVersion": 2,
+  "enabled": true,
+  "versionName": "5.5.1",
+  "versionCode": 55001,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.1/app-release.apk",
+  "sha256": "e35b6eb81170573189e04a38bf1576cf3310b9b5fd08e5856f971e94375f945a",
+  "forceUpdate": false,
+  "apkSizeBytes": 41105272,
+  "releaseNotes": [
+    "Clear blue accents and softer milky glass on the floating dock.",
+    "Home keeps AI Assistant and computer connection. The dock links Home, Materials, Tasks and Journal.",
+    "Refined task, journal, chat and article controls."
+  ],
+  "patches": []
 }
