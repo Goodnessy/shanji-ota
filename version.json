@@ -1,26 +1,16 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.5.5",
-  "versionCode": 55005,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.5/app-release.apk",
-  "sha256": "7327dad22b4b7cb67610416402b9b667afb944b7801505031050592745df6581",
+  "versionName": "5.5.6",
+  "versionCode": 55006,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.6/app-release.apk",
+  "sha256": "b47113ed29ee2d980f800b4935a39ce29e35a0ca98fc660e28903b1848fa20be",
   "forceUpdate": false,
-  "releaseNotes": [
-    "﻿ShanJi V5.5.5",
-    "重复待办复用现有记录，继续同步后续消息。",
-    "回执发送失败时独立重试，避免阻塞消息拉取。",
-    "批量确认逐项处理，回执标注未完成的数量。"
-  ],
   "apkSizeBytes": 41138097,
-  "patches": [
-    {
-      "fromVersionName": "5.5.4",
-      "fromVersionCode": 55004,
-      "fromSha256": "ff965c0dadbae0f2f6cfa11238efb81abde07739f35b02dce50b1852d057c17d",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.5/from-55004-to-55005.bsdiff",
-      "patchSha256": "7e72d3e72131a6277131efce0a8de97663c15dcfe7c0cabc519cb7b23c5d5db4",
-      "patchSizeBytes": 4693501
-    }
-  ]
+  "releaseNotes": [
+    "已取消的 Telegram 待办不再阻塞后续消息同步。",
+    "保留原取消状态，处理余下的待收消息。",
+    "确认时遇到刚取消的待办会跳过该项。"
+  ],
+  "patches": []
 }
