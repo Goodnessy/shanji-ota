@@ -1,26 +1,16 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.5.2",
-  "versionCode": 55002,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.2/app-release.apk",
-  "sha256": "4dc5970c26c03f562a9752bcaeb1a5ba340b8ae8f107f9faa21ba51e0aeef17d",
+  "versionName": "5.5.3",
+  "versionCode": 55003,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.3/app-release.apk",
+  "sha256": "e5d5cd747dce659617320dacf57a078c303abe7fb77897b8b1c150014df990dc",
   "forceUpdate": false,
+  "apkSizeBytes": 41121656,
   "releaseNotes": [
-    "﻿ShanJi V5.5.2",
-    "Telegram 支持先选待办、素材、日记或智能，再发送正文。",
-    "日记、餐食和素材按明确分类归档，保留原消息。",
-    "待办未指定计划日期时按消息发送当天处理。"
+    "Telegram 键盘改为三个图标，打开闪记后自动同步并回复处理结果。",
+    "支持明确待办直接保存、按回执确认一批待办，并查询链接解析结果。",
+    "支持查询当天待办，以及修改上一条已保存待办的日期、项目和完成状态。"
   ],
-  "apkSizeBytes": 41105272,
-  "patches": [
-    {
-      "fromVersionName": "5.5.1",
-      "fromVersionCode": 55001,
-      "fromSha256": "e35b6eb81170573189e04a38bf1576cf3310b9b5fd08e5856f971e94375f945a",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.2/from-55001-to-55002.bsdiff",
-      "patchSha256": "bfd323a924961607a7a081580ff471db92c1da65019e49f94e61b406cea70c1f",
-      "patchSizeBytes": 4705689
-    }
-  ]
+  "patches": []
 }
