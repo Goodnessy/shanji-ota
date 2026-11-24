@@ -1,26 +1,16 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.5.1",
-  "versionCode": 55001,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.1/app-release.apk",
-  "sha256": "e35b6eb81170573189e04a38bf1576cf3310b9b5fd08e5856f971e94375f945a",
+  "versionName": "5.5.2",
+  "versionCode": 55002,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.2/app-release.apk",
+  "sha256": "4dc5970c26c03f562a9752bcaeb1a5ba340b8ae8f107f9faa21ba51e0aeef17d",
   "forceUpdate": false,
-  "releaseNotes": [
-    "﻿ShanJi V5.5.1 - Clear Blue",
-    "Clear blue accents and softer milky glass on the floating dock.",
-    "Home keeps AI Assistant and computer connection. The dock links Home, Materials, Tasks and Journal.",
-    "Refined task, journal, chat and article controls."
-  ],
   "apkSizeBytes": 41105272,
-  "patches": [
-    {
-      "fromVersionName": "5.5.0",
-      "fromVersionCode": 55000,
-      "fromSha256": "f2f532351aa24293e8ff10d9e59c238078b440bfe19a5eef8fc6ea153a1e2e1c",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.1/from-55000-to-55001.bsdiff",
-      "patchSha256": "301177215996d25ef67c7fb349d2a90fe89951676fb06c31aa44b41d29e3a577",
-      "patchSizeBytes": 9262594
-    }
-  ]
+  "releaseNotes": [
+    "Telegram 支持先选待办、素材、日记或智能，再发送正文。",
+    "日记、餐食和素材按明确分类归档，保留原消息。",
+    "待办未指定计划日期时按消息发送当天处理。"
+  ],
+  "patches": []
 }
