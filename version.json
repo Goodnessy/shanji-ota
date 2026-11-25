@@ -6,11 +6,21 @@
   "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.7/app-release.apk",
   "sha256": "8d61da157b38a6ba151d14f49d679424a71fed2903709acceed8d762831e39cc",
   "forceUpdate": false,
-  "apkSizeBytes": 41170865,
   "releaseNotes": [
+    "﻿ShanJi V5.5.7",
     "恢复文章、待办、内容与日记的详细 Telegram 回执，完善分类及取消指令。",
     "新增 LangSearch + 智谱免费模型联网问答与来源引用，独立保存搜索密钥。",
     "可选无常驻通知后台接收；失败消息留待核对，系统回收进程后依赖定时补同步。"
   ],
-  "patches": []
+  "apkSizeBytes": 41170865,
+  "patches": [
+    {
+      "fromVersionName": "5.5.6",
+      "fromVersionCode": 55006,
+      "fromSha256": "b47113ed29ee2d980f800b4935a39ce29e35a0ca98fc660e28903b1848fa20be",
+      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.7/from-55006-to-55007.bsdiff",
+      "patchSha256": "aee2dc95329daf903d73e63c3ecafca54343f7cea63072f56232b2c24736b5fa",
+      "patchSizeBytes": 17343188
+    }
+  ]
 }
