@@ -1,26 +1,16 @@
 {
   "schemaVersion": 2,
   "enabled": true,
-  "versionName": "5.5.7",
-  "versionCode": 55007,
-  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.7/app-release.apk",
-  "sha256": "8d61da157b38a6ba151d14f49d679424a71fed2903709acceed8d762831e39cc",
+  "versionName": "5.5.8",
+  "versionCode": 55008,
+  "apkUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.8/app-release.apk",
+  "sha256": "c268cd6118f791cb4b9caa736c451daca0205fffea4413059173c6195c916f0b",
   "forceUpdate": false,
+  "apkSizeBytes": 41187305,
   "releaseNotes": [
-    "﻿ShanJi V5.5.7",
-    "恢复文章、待办、内容与日记的详细 Telegram 回执，完善分类及取消指令。",
-    "新增 LangSearch + 智谱免费模型联网问答与来源引用，独立保存搜索密钥。",
-    "可选无常驻通知后台接收；失败消息留待核对，系统回收进程后依赖定时补同步。"
+    "日记按日期分组，新增独立无边框编辑页及本地草稿。",
+    "新增通知栏闪记同步磁贴，待办默认周视图。",
+    "移除 Telegram 通用问答入口，保留记录同步、分类、回执及失败核对机制。"
   ],
-  "apkSizeBytes": 41170865,
-  "patches": [
-    {
-      "fromVersionName": "5.5.6",
-      "fromVersionCode": 55006,
-      "fromSha256": "b47113ed29ee2d980f800b4935a39ce29e35a0ca98fc660e28903b1848fa20be",
-      "patchUrl": "https://github.com/Goodnessy/shanji-ota/releases/download/v5.5.7/from-55006-to-55007.bsdiff",
-      "patchSha256": "aee2dc95329daf903d73e63c3ecafca54343f7cea63072f56232b2c24736b5fa",
-      "patchSizeBytes": 17343188
-    }
-  ]
+  "patches": []
 }
